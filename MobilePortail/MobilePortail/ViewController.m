@@ -3,7 +3,7 @@
 //  MobilePortail
 //
 //  Created by Justin Proulx on 2017-10-18.
-//  Copyright © 2017 Briccsquad. All rights reserved.
+//  Copyright © 2017 Bricc Squad. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -19,6 +19,10 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (IBAction)login:(id)sender
+{
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
