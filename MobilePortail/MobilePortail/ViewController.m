@@ -14,13 +14,23 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (IBAction)login:(id)sender
 {
+    // username string
+    NSString *username = usernameTextField.text;
+    
+    // password string
+    NSString *password = passwordTextField.text;
+    
+    NSLog(@"%@", username);
+    NSLog(@"%@", password);
+    
     
 }
 
