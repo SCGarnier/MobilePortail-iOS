@@ -30,9 +30,11 @@
 
 - (void)checkForAuthentification
 {
+    //retrieve saved login info
     NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
     
+    //if there is some missing saved info, open the login screen
     if ([savedUsername length] == 0 || [savedPassword length] == 0)
     {
         ViewController *login = [self.storyboard instantiateViewControllerWithIdentifier:@"login"];

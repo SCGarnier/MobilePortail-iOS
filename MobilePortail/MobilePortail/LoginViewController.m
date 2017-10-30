@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad
 {
+    //retrieve saved info and then put them in the textfields
     NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     usernameTextField.text = savedUsername;
     passwordTextField.text = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
@@ -41,6 +42,7 @@
     //request for schedule
     [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:username andPassword:password saveResponseToFileName:@"schedule.html"];
     
+    //save login info
     [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"PortailUsername"];
     [SAMKeychain setPassword:password forService:@"Portail" account:username];
 }
