@@ -31,6 +31,11 @@
 		D03E436A1FA11E1000E47E5D /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D03E435A1FA11E1000E47E5D /* AFNetworkReachabilityManager.m */; };
 		D03E436B1FA11E1000E47E5D /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = D03E435B1FA11E1000E47E5D /* AFSecurityPolicy.m */; };
 		D03E436E1FA121AD00E47E5D /* MPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D03E436D1FA121AD00E47E5D /* MPRequest.m */; };
+		D0712BC21FA7C2D7005F631F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712BC11FA7C2D7005F631F /* LoginViewController.m */; };
+		D0712BC51FA7C3FA005F631F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712BC41FA7C3FA005F631F /* MainViewController.m */; };
+		D0712BC81FA7C50D005F631F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0712BC71FA7C502005F631F /* Security.framework */; };
+		D0712BCE1FA7C5EA005F631F /* SAMKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712BCA1FA7C5EA005F631F /* SAMKeychainQuery.m */; };
+		D0712BCF1FA7C5EA005F631F /* SAMKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712BCD1FA7C5EA005F631F /* SAMKeychain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +107,15 @@
 		D03E435C1FA11E1000E47E5D /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		D03E436C1FA121AD00E47E5D /* MPRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPRequest.h; sourceTree = "<group>"; };
 		D03E436D1FA121AD00E47E5D /* MPRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPRequest.m; sourceTree = "<group>"; };
+		D0712BC01FA7C2D7005F631F /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		D0712BC11FA7C2D7005F631F /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		D0712BC31FA7C3FA005F631F /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		D0712BC41FA7C3FA005F631F /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		D0712BC71FA7C502005F631F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D0712BCA1FA7C5EA005F631F /* SAMKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMKeychainQuery.m; sourceTree = "<group>"; };
+		D0712BCB1FA7C5EA005F631F /* SAMKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychain.h; sourceTree = "<group>"; };
+		D0712BCC1FA7C5EA005F631F /* SAMKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychainQuery.h; sourceTree = "<group>"; };
+		D0712BCD1FA7C5EA005F631F /* SAMKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMKeychain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0712BC81FA7C50D005F631F /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,10 +149,12 @@
 			children = (
 				D03E434F1FA11E1000E47E5D /* AFNetworking */,
 				D03E433A1FA11E0F00E47E5D /* UIKit+AFNetworking */,
+				D0712BC91FA7C5EA005F631F /* SAMKeychain */,
 				D02F3A4F1F97E8AB00E49A46 /* MobilePortail */,
 				D02F3A681F97E8AB00E49A46 /* MobilePortailTests */,
 				D02F3A731F97E8AB00E49A46 /* MobilePortailUITests */,
 				D02F3A4E1F97E8AB00E49A46 /* Products */,
+				D0712BC61FA7C502005F631F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,6 +177,10 @@
 				D03E436D1FA121AD00E47E5D /* MPRequest.m */,
 				D02F3A531F97E8AB00E49A46 /* ViewController.h */,
 				D02F3A541F97E8AB00E49A46 /* ViewController.m */,
+				D0712BC01FA7C2D7005F631F /* LoginViewController.h */,
+				D0712BC11FA7C2D7005F631F /* LoginViewController.m */,
+				D0712BC31FA7C3FA005F631F /* MainViewController.h */,
+				D0712BC41FA7C3FA005F631F /* MainViewController.m */,
 				D02F3A561F97E8AB00E49A46 /* Main.storyboard */,
 				D02F3A591F97E8AB00E49A46 /* Assets.xcassets */,
 				D02F3A5B1F97E8AB00E49A46 /* LaunchScreen.storyboard */,
@@ -233,6 +254,25 @@
 			);
 			name = AFNetworking;
 			path = "../../../../../../Assets/External App Components/AFNetworking/AFNetworking";
+			sourceTree = "<group>";
+		};
+		D0712BC61FA7C502005F631F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0712BC71FA7C502005F631F /* Security.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0712BC91FA7C5EA005F631F /* SAMKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				D0712BCA1FA7C5EA005F631F /* SAMKeychainQuery.m */,
+				D0712BCB1FA7C5EA005F631F /* SAMKeychain.h */,
+				D0712BCD1FA7C5EA005F631F /* SAMKeychain.m */,
+				D0712BCC1FA7C5EA005F631F /* SAMKeychainQuery.h */,
+			);
+			path = SAMKeychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,14 +412,18 @@
 				D03E435D1FA11E1000E47E5D /* UIProgressView+AFNetworking.m in Sources */,
 				D02F3A551F97E8AB00E49A46 /* ViewController.m in Sources */,
 				D03E43631FA11E1000E47E5D /* UIWebView+AFNetworking.m in Sources */,
+				D0712BC51FA7C3FA005F631F /* MainViewController.m in Sources */,
+				D0712BC21FA7C2D7005F631F /* LoginViewController.m in Sources */,
 				D03E435F1FA11E1000E47E5D /* AFNetworkActivityIndicatorManager.m in Sources */,
 				D03E435E1FA11E1000E47E5D /* UIRefreshControl+AFNetworking.m in Sources */,
 				D03E43671FA11E1000E47E5D /* AFHTTPSessionManager.m in Sources */,
 				D03E43691FA11E1000E47E5D /* AFURLRequestSerialization.m in Sources */,
 				D03E43661FA11E1000E47E5D /* AFURLResponseSerialization.m in Sources */,
 				D02F3A601F97E8AB00E49A46 /* main.m in Sources */,
+				D0712BCE1FA7C5EA005F631F /* SAMKeychainQuery.m in Sources */,
 				D03E436B1FA11E1000E47E5D /* AFSecurityPolicy.m in Sources */,
 				D03E43601FA11E1000E47E5D /* UIImageView+AFNetworking.m in Sources */,
+				D0712BCF1FA7C5EA005F631F /* SAMKeychain.m in Sources */,
 				D03E436A1FA11E1000E47E5D /* AFNetworkReachabilityManager.m in Sources */,
 				D03E43621FA11E1000E47E5D /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				D03E436E1FA121AD00E47E5D /* MPRequest.m in Sources */,

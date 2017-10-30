@@ -9,12 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-{
-    IBOutlet UIButton *loginButton;
-    
-    IBOutlet UITextField *usernameTextField;
-    IBOutlet UITextField *passwordTextField;
-}
+
 
 @end
 
