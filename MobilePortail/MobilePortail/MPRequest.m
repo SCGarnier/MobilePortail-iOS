@@ -12,7 +12,7 @@
 
 @implementation MPRequest
 
-- (void)requestLoginWithUsername:(NSString *)username andPassword:(NSString *)password
+- (void)requestLoginAtURL:(NSString *)postURL withUsername:(NSString *)username andPassword:(NSString *)password saveResponseToFileName:(NSString *)responseFileName
 {
     //parameters, do not touch anything pls
     NSDictionary *parameterDictionary = @{
@@ -23,9 +23,6 @@
                                               @"Tpassword":password,
                                               @"Blogin":@"Entrer"
                                           };
-    
-    //url to post to
-    NSString *postURL = @"https://apps.cscmonavenir.ca/PortailEleves/index.aspx";
     
     //set up internet connection things
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -47,7 +44,7 @@
          NSString *dataDir = [documentsDirectory stringByAppendingPathComponent:@"tempData"];
          
          //get the data file path
-         NSString *htmlFilePath = [dataDir stringByAppendingPathComponent:@"data.html"];
+         NSString *htmlFilePath = [dataDir stringByAppendingPathComponent:responseFileName];
          
          //create a directory for the data files if it doesn't already exist
          if (![fileManager fileExistsAtPath:dataDir])

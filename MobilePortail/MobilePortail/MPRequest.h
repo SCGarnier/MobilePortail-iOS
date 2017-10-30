@@ -10,6 +10,6 @@
 
 @interface MPRequest : NSObject
 
-- (void)requestLoginWithUsername:(NSString *)username andPassword:(NSString *)password;
+- (void)requestLoginAtURL:(NSString *)postURL withUsername:(NSString *)username andPassword:(NSString *)password saveResponseToFileName:(NSString *)responseFileName;
 
 @end
