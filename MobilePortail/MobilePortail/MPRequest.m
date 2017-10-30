@@ -37,9 +37,32 @@
     
     [manager POST:postURL parameters:parameterDictionary progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
      {
-         NSString *decodedstring = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-
-         NSLog(@"Response :%@",decodedstring);
+         //set up file manager
+         NSFileManager *fileManager = [NSFileManager defaultManager];
+         
+         //get documents directory
+         NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+         
+         //get the data directory
+         NSString *dataDir = [documentsDirectory stringByAppendingPathComponent:@"tempData"];
+         
+         //get the data file path
+         NSString *htmlFilePath = [dataDir stringByAppendingPathComponent:@"data.html"];
+         
+         //create a directory for the data files if it doesn't already exist
+         if (![fileManager fileExistsAtPath:dataDir])
+         {
+             NSError *error;
+             [fileManager createDirectoryAtPath:dataDir withIntermediateDirectories:YES attributes:nil error:&error];
+         }
+         
+         //delete old data
+         if ([fileManager fileExistsAtPath:htmlFilePath])
+         {
+             [fileManager removeItemAtPath:htmlFilePath error:nil];
+         }
+         
+         [fileManager createFileAtPath:htmlFilePath contents:responseObject attributes:nil];
      }
      failure:^(NSURLSessionDataTask  *_Nullable task, NSError  *_Nonnull error)
      {
@@ -53,7 +76,7 @@
          }
          
          //show the failure alert
-         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Failure" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Échec" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
          [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
          [topController presentViewController:alert animated:YES completion:nil];
      }];
