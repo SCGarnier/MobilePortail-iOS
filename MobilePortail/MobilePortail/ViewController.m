@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "MPRequest.h"
 
 @interface ViewController ()
 
@@ -27,11 +28,9 @@
     
     // password string
     NSString *password = passwordTextField.text;
-    
-    NSLog(@"%@", username);
-    NSLog(@"%@", password);
-    
-    
+
+    MPRequest *request = [MPRequest new];
+    [request requestLoginWithUsername:username andPassword:password];
 }
 
 - (void)didReceiveMemoryWarning {

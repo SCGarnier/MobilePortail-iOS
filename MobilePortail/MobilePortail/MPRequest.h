@@ -10,4 +10,6 @@
 
 @interface MPRequest : NSObject
 
+- (void)requestLoginWithUsername:(NSString *)username andPassword:(NSString *)password;
+
 @end
