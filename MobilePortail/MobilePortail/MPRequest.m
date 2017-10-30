@@ -14,7 +14,7 @@
 
 - (void)requestLoginWithUsername:(NSString *)username andPassword:(NSString *)password
 {
-    //parameters
+    //parameters, do not touch anything pls
     NSDictionary *parameterDictionary = @{
                                               @"__VIEWSTATE":@"/wEPDwULLTE1OTEzODk5NDRkZHeWIDblnhXfWVgudGFcvrqUrsa8oUjUBNqAwiyC5bQZ",
                                               @"__VIEWSTATEGENERATOR":@"3738FB10",
@@ -62,6 +62,7 @@
              [fileManager removeItemAtPath:htmlFilePath error:nil];
          }
          
+         //write data to HTML file
          [fileManager createFileAtPath:htmlFilePath contents:responseObject attributes:nil];
      }
      failure:^(NSURLSessionDataTask  *_Nullable task, NSError  *_Nonnull error)
