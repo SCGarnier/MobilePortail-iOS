@@ -9,11 +9,12 @@
 #import "MPRequest.h"
 #import "AFNetworking.h"
 #import "ViewController.h"
+#import "LoginViewController.h"
 #import "HTMLReader.h"
 
 @implementation MPRequest
 
-- (void)requestLoginAtURL:(NSString *)postURL withUsername:(NSString *)username andPassword:(NSString *)password saveResponseToFileName:(NSString *)responseFileName isMainRequest:(BOOL)isMainRequest
+- (void)requestLoginAtURL:(NSString *)postURL withUsername:(NSString *)username andPassword:(NSString *)password saveResponseToFileName:(NSString *)responseFileName isMainRequest:(BOOL)isMainRequest isAutoLogin:(BOOL)isAutoLogin
 {
     //parameters, do not touch anything pls
     NSDictionary *parameterDictionary = @{
@@ -64,7 +65,7 @@
          [fileManager createFileAtPath:htmlFilePath contents:responseObject attributes:nil];
          
          //check for successful login
-         [self checkForSuccessfulLogin:htmlFilePath isMainRequest:isMainRequest];
+         [self checkForSuccessfulLogin:htmlFilePath isMainRequest:isMainRequest isAutoLogin:isAutoLogin];
      }
      failure:^(NSURLSessionDataTask  *_Nullable task, NSError  *_Nonnull error)
      {
@@ -72,7 +73,7 @@
      }];
 }
 
-- (void)checkForSuccessfulLogin:(NSString *)filePath isMainRequest:(BOOL)isMainRequest
+- (void)checkForSuccessfulLogin:(NSString *)filePath isMainRequest:(BOOL)isMainRequest isAutoLogin:(BOOL)isAutoLogin
 {
     //get data from html file
     NSData *htmlData = [NSData dataWithContentsOfFile:filePath];
@@ -83,26 +84,60 @@
     //make an HTML document for HTMLReader to parse
     HTMLDocument *document = [HTMLDocument documentWithString:rawHTML];
     
-    if (isMainRequest && [[document firstNodeMatchingSelector:@"title"].textContent containsString:@"portail"])
+    //if it's the main request (the one that returns the school performance), then keep going. Otherwise, skip this whole section
+    if (isMainRequest)
     {
-        [self failureAlert:@"Nom d'utilisateur ou mot de passe incorrect" withMessage:@"Veuillez entrer le bon nom d'utilisateur et mot de passe"];
-    }
-    else if ([[document firstNodeMatchingSelector:@"title"].textContent containsString:@"scolaires"])
-    {
-        //necessary stuff to show an alert from an NSObject subclass
-        //finds the current view controller
-        UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
-        //honestly not quire sure what this does
-        while (topController.presentedViewController)
+        if ([[document firstNodeMatchingSelector:@"title"].textContent containsString:@"portail"])
         {
-            topController = topController.presentedViewController;
+            //If the title contains "portail", then the login failed due to an incorrect username or password.
+            if (isAutoLogin)
+            {
+                UIViewController *topController = [self getTopController];
+                
+                //if the autologin fails, open the manual login screen
+                @try
+                {
+                    ViewController *login = [topController.storyboard instantiateViewControllerWithIdentifier:@"login"];
+                    [topController presentViewController:login animated:YES completion:nil];
+                }
+                @catch (NSException *exception)
+                {
+                    //i don't really trust the code I wrote inside the try statement, which is why it's in a try-catch setup. There's no way to easily test it unless the school board messed up our passwords again, so if it fails, we just handle it gracefully.
+                    [self failureAlert:@"Échec de l'application" withMessage:@"S'il ne fonctionne plus, veuillez s'il-vous-plaît supprimer l'application et ensuite la re-télécharger"];
+                }
+                
+            }
+            [self failureAlert:@"Nom d'utilisateur ou mot de passe incorrect" withMessage:@"Veuillez entrer le bon nom d'utilisateur et mot de passe"];
         }
-        
-        [topController dismissViewControllerAnimated:YES completion:nil];
+        else if ([[document firstNodeMatchingSelector:@"title"].textContent containsString:@"scolaires"])
+        {
+            //If it contains "scolaires", then the login succeeded.
+            
+            UIViewController *topController = [self getTopController];
+            
+            //dismiss the login view controller
+            [topController dismissViewControllerAnimated:YES completion:nil];
+        }
+        else
+        {
+            //If neither are contained, either portail is broken, or got a large enough update that it warrants an app update
+            
+            [self failureAlert:@"Portail est brisé" withMessage:@"Le portail des élèves ne marche pas comme il fault. S'il vous plaît, essayez encore plus tard"];
+        }
     }
 }
 
 - (void)failureAlert:(NSString *)title withMessage:(NSString *)message
+{
+    UIViewController *topController = [self getTopController];
+    
+    //show the failure alert
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    [topController presentViewController:alert animated:YES completion:nil];
+}
+                 
+- (UIViewController *)getTopController
 {
     //necessary stuff to show an alert from an NSObject subclass
     //finds the current view controller
@@ -113,10 +148,7 @@
         topController = topController.presentedViewController;
     }
     
-    //show the failure alert
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-    [topController presentViewController:alert animated:YES completion:nil];
+    return topController;
 }
 
 @end
