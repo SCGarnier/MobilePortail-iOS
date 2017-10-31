@@ -38,13 +38,15 @@
     
     MPRequest *request = [MPRequest new];
     //request for class results
-    [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx" withUsername:username andPassword:password saveResponseToFileName:@"resultdata.html"];
+    [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx" withUsername:username andPassword:password saveResponseToFileName:@"resultdata.html" isMainRequest:YES];
     //request for schedule
-    [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:username andPassword:password saveResponseToFileName:@"schedule.html"];
+    [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:username andPassword:password saveResponseToFileName:@"schedule.html" isMainRequest:NO];
     
     //save login info
     [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"PortailUsername"];
     [SAMKeychain setPassword:password forService:@"Portail" account:username];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

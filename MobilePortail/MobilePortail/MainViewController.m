@@ -37,12 +37,18 @@
     //if there is some missing saved info, open the login screen
     if ([savedUsername length] == 0 || [savedPassword length] == 0)
     {
-        ViewController *login = [self.storyboard instantiateViewControllerWithIdentifier:@"login"];
-        [self presentViewController:login animated:YES completion:nil];
+        [self openLoginPage];
     }
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)openLoginPage
+{
+    ViewController *login = [self.storyboard instantiateViewControllerWithIdentifier:@"login"];
+    [self presentViewController:login animated:YES completion:nil];
+}
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
