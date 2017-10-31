@@ -20,6 +20,8 @@
 
 - (void)viewDidLoad
 {
+    usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }

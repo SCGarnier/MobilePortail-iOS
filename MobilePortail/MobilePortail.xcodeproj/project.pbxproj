@@ -173,6 +173,7 @@
 		D0712BF71FA806B6005F631F /* HTMLPreprocessedInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLPreprocessedInputStream.m; sourceTree = "<group>"; };
 		D0712BF81FA806B6005F631F /* HTMLOrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLOrderedDictionary.m; sourceTree = "<group>"; };
 		D0712BF91FA806B6005F631F /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
+		D0712C0B1FA83F42005F631F /* MobilePortail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MobilePortail.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +230,7 @@
 		D02F3A4F1F97E8AB00E49A46 /* MobilePortail */ = {
 			isa = PBXGroup;
 			children = (
+				D0712C0B1FA83F42005F631F /* MobilePortail.entitlements */,
 				D02F3A501F97E8AB00E49A46 /* AppDelegate.h */,
 				D02F3A511F97E8AB00E49A46 /* AppDelegate.m */,
 				D03E436C1FA121AD00E47E5D /* MPRequest.h */,
@@ -244,6 +246,7 @@
 				D02F3A5B1F97E8AB00E49A46 /* LaunchScreen.storyboard */,
 				D02F3A5E1F97E8AB00E49A46 /* Info.plist */,
 				D02F3A5F1F97E8AB00E49A46 /* main.m */,
+				D0712C0C1FA90175005F631F /* Supporting Files */,
 			);
 			path = MobilePortail;
 			sourceTree = "<group>";
@@ -388,6 +391,13 @@
 			path = include;
 			sourceTree = "<group>";
 		};
+		D0712C0C1FA90175005F631F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -456,6 +466,11 @@
 					D02F3A4C1F97E8AB00E49A46 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 					D02F3A641F97E8AB00E49A46 = {
 						CreatedOnToolsVersion = 9.0;
@@ -723,6 +738,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MobilePortail/MobilePortail.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5RL29674RT;
 				INFOPLIST_FILE = MobilePortail/Info.plist;
@@ -737,6 +753,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MobilePortail/MobilePortail.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5RL29674RT;
 				INFOPLIST_FILE = MobilePortail/Info.plist;

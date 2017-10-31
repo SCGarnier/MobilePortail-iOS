@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
-@interface MainViewController : ViewController
-
+@interface MainViewController : UITableViewController
+{
+    IBOutlet UILabel *usernameLabel;
+}
 @end
