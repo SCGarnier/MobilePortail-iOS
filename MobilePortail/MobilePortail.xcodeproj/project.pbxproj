@@ -53,6 +53,7 @@
 		D0712C081FA806B6005F631F /* HTMLPreprocessedInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712BF71FA806B6005F631F /* HTMLPreprocessedInputStream.m */; };
 		D0712C091FA806B6005F631F /* HTMLOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712BF81FA806B6005F631F /* HTMLOrderedDictionary.m */; };
 		D0712C0A1FA806B6005F631F /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712BF91FA806B6005F631F /* HTMLNode.m */; };
+		D0712C0F1FA90961005F631F /* MPStringFromHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712C0E1FA90961005F631F /* MPStringFromHTML.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +175,8 @@
 		D0712BF81FA806B6005F631F /* HTMLOrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLOrderedDictionary.m; sourceTree = "<group>"; };
 		D0712BF91FA806B6005F631F /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
 		D0712C0B1FA83F42005F631F /* MobilePortail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MobilePortail.entitlements; sourceTree = "<group>"; };
+		D0712C0D1FA90961005F631F /* MPStringFromHTML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPStringFromHTML.h; sourceTree = "<group>"; };
+		D0712C0E1FA90961005F631F /* MPStringFromHTML.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPStringFromHTML.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +238,8 @@
 				D02F3A511F97E8AB00E49A46 /* AppDelegate.m */,
 				D03E436C1FA121AD00E47E5D /* MPRequest.h */,
 				D03E436D1FA121AD00E47E5D /* MPRequest.m */,
+				D0712C0D1FA90961005F631F /* MPStringFromHTML.h */,
+				D0712C0E1FA90961005F631F /* MPStringFromHTML.m */,
 				D02F3A531F97E8AB00E49A46 /* ViewController.h */,
 				D02F3A541F97E8AB00E49A46 /* ViewController.m */,
 				D0712BC01FA7C2D7005F631F /* LoginViewController.h */,
@@ -537,6 +542,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0712C0A1FA806B6005F631F /* HTMLNode.m in Sources */,
+				D0712C0F1FA90961005F631F /* MPStringFromHTML.m in Sources */,
 				D03E43681FA11E1000E47E5D /* AFURLSessionManager.m in Sources */,
 				D0712C021FA806B6005F631F /* HTMLSerialization.m in Sources */,
 				D0712BFA1FA806B6005F631F /* HTMLParser.m in Sources */,

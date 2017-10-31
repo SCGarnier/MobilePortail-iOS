@@ -11,6 +11,7 @@
 #import "MPRequest.h"
 #import "SAMKeychain.h"
 #import "SAMKeychainQuery.h"
+#import "MPStringFromHTML.h"
 
 @interface MainViewController ()
 
@@ -61,6 +62,18 @@
 {
     ViewController *login = [self.storyboard instantiateViewControllerWithIdentifier:@"login"];
     [self presentViewController:login animated:YES completion:nil];
+}
+
+- (NSString *)getDayNumberText:(NSString *)dayNumberText
+{
+    MPStringFromHTML *getString = [MPStringFromHTML new];
+    
+    //get string from data
+    NSString *rawHTML = [getString getStringFromHTMLWithFileName:@"schedule"];
+    
+    
+    
+    return dayNumberText;
 }
 
 - (void)didReceiveMemoryWarning

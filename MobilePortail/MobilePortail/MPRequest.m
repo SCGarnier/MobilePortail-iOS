@@ -11,6 +11,7 @@
 #import "ViewController.h"
 #import "LoginViewController.h"
 #import "HTMLReader.h"
+#import "MPStringFromHTML.h"
 
 @implementation MPRequest
 
@@ -65,7 +66,7 @@
          [fileManager createFileAtPath:htmlFilePath contents:responseObject attributes:nil];
          
          //check for successful login
-         [self checkForSuccessfulLogin:htmlFilePath isMainRequest:isMainRequest isAutoLogin:isAutoLogin];
+         [self checkForSuccessfulLogin:responseFileName isMainRequest:isMainRequest isAutoLogin:isAutoLogin];
      }
      failure:^(NSURLSessionDataTask  *_Nullable task, NSError  *_Nonnull error)
      {
@@ -73,13 +74,12 @@
      }];
 }
 
-- (void)checkForSuccessfulLogin:(NSString *)filePath isMainRequest:(BOOL)isMainRequest isAutoLogin:(BOOL)isAutoLogin
+- (void)checkForSuccessfulLogin:(NSString *)fileName isMainRequest:(BOOL)isMainRequest isAutoLogin:(BOOL)isAutoLogin
 {
-    //get data from html file
-    NSData *htmlData = [NSData dataWithContentsOfFile:filePath];
+    MPStringFromHTML *getString = [MPStringFromHTML new];
     
     //get string from data
-    NSString *rawHTML = [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding];
+    NSString *rawHTML = [getString getStringFromHTMLWithFileName:fileName];
     
     //make an HTML document for HTMLReader to parse
     HTMLDocument *document = [HTMLDocument documentWithString:rawHTML];

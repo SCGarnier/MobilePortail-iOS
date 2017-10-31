@@ -86,8 +86,8 @@
                                                         <constraint firstAttribute="width" secondItem="8Rh-IO-USX" secondAttribute="height" multiplier="1:1" id="heN-wX-i8Y"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ude-mo-6oI">
-                                                    <rect key="frame" x="70" y="23" width="256" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ude-mo-6oI">
+                                                    <rect key="frame" x="78" y="8" width="256" height="54"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -97,9 +97,11 @@
                                                 <constraint firstItem="8Rh-IO-USX" firstAttribute="top" secondItem="GDJ-16-Ci2" secondAttribute="top" constant="8" id="C4b-EX-Vjz"/>
                                                 <constraint firstItem="Ude-mo-6oI" firstAttribute="centerY" secondItem="GDJ-16-Ci2" secondAttribute="centerY" id="PDp-F7-8aR"/>
                                                 <constraint firstItem="8Rh-IO-USX" firstAttribute="leading" secondItem="GDJ-16-Ci2" secondAttribute="leading" constant="8" id="QDG-hT-CHW"/>
+                                                <constraint firstItem="Ude-mo-6oI" firstAttribute="top" secondItem="GDJ-16-Ci2" secondAttribute="top" constant="8" id="WFt-se-SJf"/>
                                                 <constraint firstItem="Ude-mo-6oI" firstAttribute="leading" secondItem="8Rh-IO-USX" secondAttribute="trailing" constant="16" id="bBK-er-TAn"/>
                                                 <constraint firstItem="Ude-mo-6oI" firstAttribute="trailing" secondItem="GDJ-16-Ci2" secondAttribute="trailingMargin" id="ewC-sM-07J"/>
                                                 <constraint firstAttribute="bottom" secondItem="8Rh-IO-USX" secondAttribute="bottom" constant="8" id="kT5-Lb-wSS"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ude-mo-6oI" secondAttribute="bottom" constant="8" id="yuR-jC-HBI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -113,6 +115,20 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yrb-Lv-GsG" id="zhj-fC-V3Q">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jour" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8j-JO-ETH">
+                                                    <rect key="frame" x="16" y="8" width="310" height="54"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="n8j-JO-ETH" secondAttribute="bottom" constant="7.5" id="7a5-Rx-GpK"/>
+                                                <constraint firstItem="n8j-JO-ETH" firstAttribute="leading" secondItem="zhj-fC-V3Q" secondAttribute="leading" constant="16" id="B9M-bS-ORl"/>
+                                                <constraint firstItem="n8j-JO-ETH" firstAttribute="top" secondItem="zhj-fC-V3Q" secondAttribute="top" constant="8" id="E5k-Xk-rwe"/>
+                                                <constraint firstAttribute="trailing" secondItem="n8j-JO-ETH" secondAttribute="trailing" constant="16" id="ldX-54-lem"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -125,6 +141,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Portail" id="VDf-0q-1xc"/>
                     <connections>
+                        <outlet property="dayLabel" destination="n8j-JO-ETH" id="XjX-BR-5FR"/>
                         <outlet property="usernameLabel" destination="Ude-mo-6oI" id="IWy-HQ-VxV"/>
                     </connections>
                 </tableViewController>
