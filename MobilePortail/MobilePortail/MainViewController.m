@@ -12,6 +12,7 @@
 #import "SAMKeychain.h"
 #import "SAMKeychainQuery.h"
 #import "MPStringFromHTML.h"
+#import "HTMLReader.h"
 
 @interface MainViewController ()
 
@@ -70,6 +71,9 @@
     
     //get string from data
     NSString *rawHTML = [getString getStringFromHTMLWithFileName:@"schedule"];
+    
+    //get document for parsing from the string
+    HTMLDocument *schedulePage = [HTMLDocument documentWithString:rawHTML];
     
     
     
