@@ -31,6 +31,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self checkForAuthentification];
+    
+    usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
 }
 
 - (void)checkForAuthentification
@@ -55,7 +57,7 @@
         //request for schedule
         [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schedule.html" isMainRequest:NO isAutoLogin:YES];
         
-        
+        [self getDayNumberText:nil];
     }
 }
 
@@ -70,12 +72,14 @@
     MPStringFromHTML *getString = [MPStringFromHTML new];
     
     //get string from data
-    NSString *rawHTML = [getString getStringFromHTMLWithFileName:@"schedule"];
+    NSString * rawHTML = [getString getStringFromHTMLWithFileName:@"schedule.html"];
     
     //get document for parsing from the string
-    HTMLDocument *schedulePage = [HTMLDocument documentWithString:rawHTML];
+    HTMLDocument * schedulePage = [HTMLDocument documentWithString:rawHTML];
     
+    NSArray * scheduleTableArray = [schedulePage nodesMatchingSelector:@"table"];
     
+    NSLog(@"%@", scheduleTableArray);
     
     return dayNumberText;
 }
