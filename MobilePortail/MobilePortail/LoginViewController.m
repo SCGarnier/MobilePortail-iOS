@@ -17,6 +17,11 @@
 
 @implementation LoginViewController
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (void)viewDidLoad
 {
     //retrieve saved info and then put them in the textfields
