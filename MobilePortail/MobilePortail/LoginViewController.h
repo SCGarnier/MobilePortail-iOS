@@ -14,5 +14,11 @@
     
     IBOutlet UITextField *usernameTextField;
     IBOutlet UITextField *passwordTextField;
+    
+    IBOutlet UIView *squircleView;
+    
+    IBOutlet UILabel *titleLabel;
+    
+    int position;
 }
 @end

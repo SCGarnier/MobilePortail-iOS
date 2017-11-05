@@ -23,7 +23,7 @@
 - (void)viewDidLoad
 {
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
-    
+        
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -57,7 +57,7 @@
         //request for schedule
         [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schedule.html" isMainRequest:NO isAutoLogin:YES];
         
-        [self getDayNumberText:nil];
+        NSArray *schedule = [self DaySchedule];
     }
 }
 
@@ -67,8 +67,10 @@
     [self presentViewController:login animated:YES completion:nil];
 }
 
-- (NSString *)getDayNumberText:(NSString *)dayNumberText
+- (NSArray *)DaySchedule
 {
+    NSArray *schedule;
+    
     MPStringFromHTML *getString = [MPStringFromHTML new];
     
     //get string from data
@@ -81,7 +83,7 @@
     
     NSLog(@"%@", scheduleTableArray);
     
-    return dayNumberText;
+    return schedule;
 }
 
 - (void)didReceiveMemoryWarning

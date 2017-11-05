@@ -11,6 +11,5 @@
 @interface MainViewController : UITableViewController
 {
     IBOutlet UILabel *usernameLabel;
-    IBOutlet UILabel *dayLabel;
 }
 @end

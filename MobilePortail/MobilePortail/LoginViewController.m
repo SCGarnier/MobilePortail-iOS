@@ -31,6 +31,14 @@
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:Nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasHidden:) name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (IBAction)login:(id)sender
@@ -59,6 +67,45 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - keyboard stuff
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
+}
+
+- (void)keyboardWasShown:(NSNotification *)notif
+{
+    CGSize keyboardSize = [[[notif userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    position = squircleView.frame.origin.y;
+    
+    [UIView animateWithDuration:0.35 animations:^
+     {
+         squircleView.frame = CGRectMake(squircleView.frame.origin.x, position - keyboardSize.height/2, squircleView.frame.size.width, squircleView.frame.size.height);
+         
+         titleLabel.alpha = 0;
+     }];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasHidden:) name:UIKeyboardDidHideNotification object:nil];
+    
+}
+/*
+- (void)keyboardWasHidden:(NSNotification *)notif
+{
+    [UIView animateWithDuration:0.35 animations:^
+     {
+         squircleView.frame = CGRectMake(squircleView.frame.origin.x, position, squircleView.frame.size.width, squircleView.frame.size.height);
+         
+         titleLabel.alpha = 1;
+     }];
+    
+    position = squircleView.frame.origin.y;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:Nil];
+}*/
 
 /*
 #pragma mark - Navigation
