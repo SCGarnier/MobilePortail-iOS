@@ -23,7 +23,9 @@
 - (void)viewDidLoad
 {
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
-        
+    
+    self.navigationController.navigationBar.prefersLargeTitles = true;
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }

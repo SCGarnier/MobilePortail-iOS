@@ -108,14 +108,14 @@
             </objects>
             <point key="canvasLocation" x="-98.400000000000006" y="125.4872563718141"/>
         </scene>
-        <!--Portail-->
+        <!--Jour 7-->
         <scene sceneID="EG3-P4-MZK">
             <objects>
                 <tableViewController id="Bvv-OB-MvT" customClass="MainViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="ZNJ-iT-EiL">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="ZNJ-iT-EiL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.15861051768680445" green="0.15861051768680445" blue="0.15861051768680445" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Horaire d'aujourd'hui" id="UcF-MR-XOk">
                                 <cells>
@@ -123,7 +123,7 @@
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yrb-Lv-GsG" id="zhj-fC-V3Q">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2JI-Vr-iBd">
@@ -157,7 +157,7 @@
                                         <rect key="frame" x="0.0" y="141.5" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fuW-2P-Awe" id="N2A-dj-dlN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hzv-Nt-9mN">
@@ -191,7 +191,7 @@
                                         <rect key="frame" x="0.0" y="227.5" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XgH-zv-Kbq" id="Bv6-4e-9GF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v0X-on-RvK">
@@ -225,7 +225,7 @@
                                         <rect key="frame" x="0.0" y="313.5" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n2C-y5-JXd" id="nIo-VB-OUX">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JoQ-Ra-lOr">
@@ -263,7 +263,7 @@
                                         <rect key="frame" x="0.0" y="455.5" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uSi-cj-ZO8" id="1FC-GN-XCu">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="85.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cle-26-E1g">
@@ -299,7 +299,7 @@
                             <outlet property="delegate" destination="Bvv-OB-MvT" id="PJH-Cp-H0U"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Portail" id="VDf-0q-1xc"/>
+                    <navigationItem key="navigationItem" title="Jour 7" id="VDf-0q-1xc"/>
                     <connections>
                         <outlet property="usernameLabel" destination="2jD-fg-kjc" id="VFc-Po-vNj"/>
                     </connections>

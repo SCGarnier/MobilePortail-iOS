@@ -58,6 +58,7 @@
 		D0712C0A1FA806B6005F631F /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712BF91FA806B6005F631F /* HTMLNode.m */; };
 		D0712C0F1FA90961005F631F /* MPStringFromHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712C0E1FA90961005F631F /* MPStringFromHTML.m */; };
 		D089FEF71FAEB32A00184BD9 /* BeautifulTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D089FEF61FAEB32A00184BD9 /* BeautifulTableViewCell.m */; };
+		D089FEF91FAEBE7D00184BD9 /* cscmonavenir_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D089FEF81FAEBE7D00184BD9 /* cscmonavenir_logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +190,7 @@
 		D0712C0E1FA90961005F631F /* MPStringFromHTML.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPStringFromHTML.m; sourceTree = "<group>"; };
 		D089FEF51FAEB32A00184BD9 /* BeautifulTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautifulTableViewCell.h; sourceTree = "<group>"; };
 		D089FEF61FAEB32A00184BD9 /* BeautifulTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautifulTableViewCell.m; sourceTree = "<group>"; };
+		D089FEF81FAEBE7D00184BD9 /* cscmonavenir_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cscmonavenir_logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,6 +452,7 @@
 		D0712C0C1FA90175005F631F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D089FEF81FAEBE7D00184BD9 /* cscmonavenir_logo.png */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D089FEF91FAEBE7D00184BD9 /* cscmonavenir_logo.png in Resources */,
 				D02F3A5D1F97E8AB00E49A46 /* LaunchScreen.storyboard in Resources */,
 				D02F3A5A1F97E8AB00E49A46 /* Assets.xcassets in Resources */,
 				D02F3A581F97E8AB00E49A46 /* Main.storyboard in Resources */,
