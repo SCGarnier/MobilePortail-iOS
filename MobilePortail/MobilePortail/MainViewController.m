@@ -87,6 +87,10 @@
     
     return schedule;
 }
+- (IBAction)logout:(id)sender
+{
+    [self openLoginPage];
+}
 
 - (void)didReceiveMemoryWarning
 {

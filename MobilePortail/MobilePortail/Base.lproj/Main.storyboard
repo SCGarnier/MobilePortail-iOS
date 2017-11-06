@@ -28,13 +28,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XRf-fi-p6Z">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9oK-FM-W7x" customClass="PaddedTextField">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nom d'utilisateur" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9oK-FM-W7x" customClass="PaddedTextField">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="80"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="81H-d3-b6z" customClass="PaddedTextField">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mot de passe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="81H-d3-b6z" customClass="PaddedTextField">
                                                         <rect key="frame" x="0.0" y="80" width="240" height="80"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -299,7 +299,14 @@
                             <outlet property="delegate" destination="Bvv-OB-MvT" id="PJH-Cp-H0U"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Jour 7" id="VDf-0q-1xc"/>
+                    <navigationItem key="navigationItem" title="Jour 7" id="VDf-0q-1xc">
+                        <barButtonItem key="rightBarButtonItem" title="Quitter" id="cwY-eU-5vn">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="logout:" destination="Bvv-OB-MvT" id="Kng-SN-xUW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="usernameLabel" destination="2jD-fg-kjc" id="VFc-Po-vNj"/>
                     </connections>
