@@ -20,6 +20,7 @@
 
 @implementation MainViewController
 
+#pragma mark - Loading
 - (void)viewDidLoad
 {
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
@@ -35,6 +36,22 @@
     [self checkForAuthentification];
     
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
+}
+
+#pragma mark - Authentification
+- (void)openLoginPage
+{
+    ViewController *login = [self.storyboard instantiateViewControllerWithIdentifier:@"login"];
+    [self presentViewController:login animated:YES completion:nil];
+}
+
+- (IBAction)logout:(id)sender
+{
+    [self openLoginPage];
+    
+    //delete saved password
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
+    [SAMKeychain deletePasswordForService:@"Portail" account:username];
 }
 
 - (void)checkForAuthentification
@@ -64,12 +81,8 @@
     }
 }
 
-- (void)openLoginPage
-{
-    ViewController *login = [self.storyboard instantiateViewControllerWithIdentifier:@"login"];
-    [self presentViewController:login animated:YES completion:nil];
-}
 
+#pragma mark - Schedule related things
 - (NSMutableArray *)DaySchedule
 {
     NSMutableArray *schedule = [[NSMutableArray alloc] init];
@@ -149,30 +162,21 @@
     int dayNumber;
     BOOL foundCurrentDay = NO;
     
-    NSDictionary *dataDict = [self searchClassesForDayNumberWithPeriod:pOne];
-    foundCurrentDay = [[dataDict objectForKey:@"foundCurrentDay"] boolValue];
+    NSArray *periodArray = [NSArray arrayWithObjects:pOne, pTwo, pThree, pFour, nil];
+    int index = 0;
     
-    if (!foundCurrentDay)
+    while (!foundCurrentDay)
     {
-        dataDict = [self searchClassesForDayNumberWithPeriod:pTwo];
+        dataDict = [self searchClassesForDayNumberWithPeriod:[periodArray objectAtIndex:index]];
         foundCurrentDay = [[dataDict objectForKey:@"foundCurrentDay"] boolValue];
-    }
-    
-    if (!foundCurrentDay)
-    {
-        NSDictionary *dataDict = [self searchClassesForDayNumberWithPeriod:pThree];
-        foundCurrentDay = [[dataDict objectForKey:@"foundCurrentDay"] boolValue];
-    }
-    
-    if (!foundCurrentDay)
-    {
-        NSDictionary *dataDict = [self searchClassesForDayNumberWithPeriod:pFour];
-        foundCurrentDay = [[dataDict objectForKey:@"foundCurrentDay"] boolValue];
-    }
-    
-    if (!foundCurrentDay)
-    {
-        dayNumber = -1;
+        
+        index++;
+        
+        if (index >= [periodArray count])
+        {
+            dayNumber = -1;
+            break;
+        }
     }
     
     dayNumber = [[dataDict objectForKey:@"dayNumber"] intValue];
@@ -206,14 +210,7 @@
 
 
 
-- (IBAction)logout:(id)sender
-{
-    [self openLoginPage];
-    
-    //delete saved password
-    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
-    [SAMKeychain deletePasswordForService:@"Portail" account:username];
-}
+#pragma mark - Other
 
 - (void)didReceiveMemoryWarning
 {
