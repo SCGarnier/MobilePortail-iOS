@@ -34,6 +34,7 @@
 		D03E436A1FA11E1000E47E5D /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D03E435A1FA11E1000E47E5D /* AFNetworkReachabilityManager.m */; };
 		D03E436B1FA11E1000E47E5D /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = D03E435B1FA11E1000E47E5D /* AFSecurityPolicy.m */; };
 		D03E436E1FA121AD00E47E5D /* MPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D03E436D1FA121AD00E47E5D /* MPRequest.m */; };
+		D067A5A11FB2083000EDC90E /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D067A5A01FB2082F00EDC90E /* ResultsTableViewController.m */; };
 		D0712BC21FA7C2D7005F631F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712BC11FA7C2D7005F631F /* LoginViewController.m */; };
 		D0712BC51FA7C3FA005F631F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712BC41FA7C3FA005F631F /* MainViewController.m */; };
 		D0712BC81FA7C50D005F631F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0712BC71FA7C502005F631F /* Security.framework */; };
@@ -136,6 +137,8 @@
 		D03E435C1FA11E1000E47E5D /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		D03E436C1FA121AD00E47E5D /* MPRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPRequest.h; sourceTree = "<group>"; };
 		D03E436D1FA121AD00E47E5D /* MPRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPRequest.m; sourceTree = "<group>"; };
+		D067A59F1FB2082F00EDC90E /* ResultsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsTableViewController.h; sourceTree = "<group>"; };
+		D067A5A01FB2082F00EDC90E /* ResultsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewController.m; sourceTree = "<group>"; };
 		D0712BC01FA7C2D7005F631F /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D0712BC11FA7C2D7005F631F /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D0712BC31FA7C3FA005F631F /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -298,6 +301,8 @@
 				D0712BC11FA7C2D7005F631F /* LoginViewController.m */,
 				D0712BC31FA7C3FA005F631F /* MainViewController.h */,
 				D0712BC41FA7C3FA005F631F /* MainViewController.m */,
+				D067A59F1FB2082F00EDC90E /* ResultsTableViewController.h */,
+				D067A5A01FB2082F00EDC90E /* ResultsTableViewController.m */,
 				D02F3A561F97E8AB00E49A46 /* Main.storyboard */,
 				D02F3A591F97E8AB00E49A46 /* Assets.xcassets */,
 				D02F3A5B1F97E8AB00E49A46 /* LaunchScreen.storyboard */,
@@ -613,6 +618,7 @@
 				D0712C061FA806B6005F631F /* HTMLString.m in Sources */,
 				D0712C041FA806B6005F631F /* HTMLEncoding.m in Sources */,
 				D0712BFB1FA806B6005F631F /* HTMLTextNode.m in Sources */,
+				D067A5A11FB2083000EDC90E /* ResultsTableViewController.m in Sources */,
 				D03E435D1FA11E1000E47E5D /* UIProgressView+AFNetworking.m in Sources */,
 				D0712C011FA806B6005F631F /* HTMLDocument.m in Sources */,
 				D02F3A551F97E8AB00E49A46 /* ViewController.m in Sources */,

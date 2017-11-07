@@ -106,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-98.400000000000006" y="125.4872563718141"/>
+            <point key="canvasLocation" x="-99" y="181"/>
         </scene>
         <!--Jour X-->
         <scene sceneID="EG3-P4-MZK">
@@ -290,6 +290,9 @@
                                                 <constraint firstItem="2jD-fg-kjc" firstAttribute="centerY" secondItem="1FC-GN-XCu" secondAttribute="centerY" id="tgU-TV-KEq"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="1Pg-gM-lqm" kind="show" id="GhR-oe-O1e"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -328,7 +331,26 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A45-fH-p58" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="852" y="-571.66416791604206"/>
+            <point key="canvasLocation" x="425" y="-573"/>
+        </scene>
+        <!--Résultats-->
+        <scene sceneID="VNt-xl-oWQ">
+            <objects>
+                <tableViewController id="1Pg-gM-lqm" customClass="ResultsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wP4-Oz-9nY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="1Pg-gM-lqm" id="FRs-W1-3Ir"/>
+                            <outlet property="delegate" destination="1Pg-gM-lqm" id="14B-4J-Mhj"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Résultats" id="Gkd-wF-dRn"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SDR-8W-E1e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="941" y="-572"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ETu-ar-uv5">
@@ -337,6 +359,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="0TU-r4-tML">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <connections>
                         <segue destination="Bvv-OB-MvT" kind="relationship" relationship="rootViewController" id="sAw-Dq-aNM"/>
