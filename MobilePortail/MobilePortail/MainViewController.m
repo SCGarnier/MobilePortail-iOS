@@ -93,10 +93,23 @@
     
     int dayNumber = [self currentDayNumberWithPeriodOne:periodOneList andPeriodTwo:periodTwoList andPeriodThree:periodThreeList andPeriodFour:periodFourList];
     
-    NSOrderedSet *periodOneClassInfo = [[[[[periodOneList children] objectAtIndex:dayNumber] children] objectAtIndex:0] children];
-    NSOrderedSet *periodTwoClassInfo = [[[[[periodTwoList children] objectAtIndex:dayNumber] children] objectAtIndex:0] children];
+    if (dayNumber == 0)
+    {
+        //say there's no school
+        self.navigationItem.title = @"Pas de cours";
+    }
+    else
+    {
+        //set title to day number
+        self.navigationItem.title = [@"Jour " stringByAppendingString:[NSString stringWithFormat:@"%d", dayNumber]];
+        
+        NSOrderedSet *periodOneClassInfo = [[[[[periodOneList children] objectAtIndex:dayNumber] children] objectAtIndex:0] children];
+        NSOrderedSet *periodTwoClassInfo = [[[[[periodTwoList children] objectAtIndex:dayNumber] children] objectAtIndex:0] children];
+    }
     
-    self.navigationItem.title = [@"Jour " stringByAppendingString:[NSString stringWithFormat:@"%d", dayNumber]];
+    
+    
+    
     
     //NSLog(@"%@", periodOneClassInfo);
     
