@@ -70,7 +70,12 @@
      }
      failure:^(NSURLSessionDataTask  *_Nullable task, NSError  *_Nonnull error)
      {
-         [self failureAlert:@"Échec" withMessage:error.localizedDescription];
+         if (isMainRequest)
+         {
+             [self failureAlert:@"Échec" withMessage:error.localizedDescription];
+             [self resetButtonText];
+         }
+         
      }];
 }
 
