@@ -91,7 +91,7 @@
     HTMLNode * periodThreeList = [actualTable childAtIndex:3];
     HTMLNode * periodFourList = [actualTable childAtIndex:4];
     
-    int dayNumber = [self currentDayNumberWithPeriodOne:periodOneList andPeriodTwo:periodTwoList andPeriodThree:periodThreeList andPeriodFour:periodFourList];
+    int dayNumber = [self currentDayNumberWithPeriodOne:periodOneList andPeriodTwo:periodTwoList andPeriodThree:periodThreeList andPeriodFour:periodFourList] + 1;
     
     if (dayNumber == 0)
     {
@@ -105,13 +105,11 @@
         
         NSOrderedSet *periodOneClassInfo = [[[[[periodOneList children] objectAtIndex:dayNumber] children] objectAtIndex:0] children];
         NSOrderedSet *periodTwoClassInfo = [[[[[periodTwoList children] objectAtIndex:dayNumber] children] objectAtIndex:0] children];
+        //NSOrderedSet *periodThreeClassInfo = [[[[[periodThreeList children] objectAtIndex:dayNumber] children] objectAtIndex:0] children];
+        //NSOrderedSet *periodFourClassInfo = [[[[[periodFourList children] objectAtIndex:dayNumber] children] objectAtIndex:0] children];
+        
+        NSLog(@"%@", periodOneClassInfo);
     }
-    
-    
-    
-    
-    
-    //NSLog(@"%@", periodOneClassInfo);
     
     return schedule;
 }
@@ -140,6 +138,11 @@
     {
         NSDictionary *dataDict = [self searchClassesForDayNumberWithPeriod:pFour];
         foundCurrentDay = [[dataDict objectForKey:@"foundCurrentDay"] boolValue];
+    }
+    
+    if (!foundCurrentDay)
+    {
+        dayNumber = -1;
     }
     
     dayNumber = [[dataDict objectForKey:@"dayNumber"] intValue];
