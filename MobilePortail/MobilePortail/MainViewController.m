@@ -76,6 +76,14 @@
         //request for schedule
         [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schedule.html" isMainRequest:NO isAutoLogin:YES];
         
+        //fail check one last time in case it missed it
+        BOOL isLoggedIn = [request checkForSuccessfulLogin:@"resultdata.html" isMainRequest:YES isAutoLogin:YES];
+        
+        if (!isLoggedIn)
+        {
+            [self logout:nil];
+        }
+        
         
         //get and display info after login
         NSArray *schedule = [self DaySchedule];

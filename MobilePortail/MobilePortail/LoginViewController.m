@@ -49,6 +49,8 @@
     // password string
     NSString *password = passwordTextField.text;
     
+    [loginButton setTitle:@"Chargement..." forState:UIControlStateNormal];
+    
     MPRequest *request = [MPRequest new];
     //request for class results
     [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx" withUsername:username andPassword:password saveResponseToFileName:@"resultdata.html" isMainRequest:YES isAutoLogin:NO];
@@ -58,8 +60,11 @@
     //save login info
     [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"PortailUsername"];
     [SAMKeychain setPassword:password forService:@"Portail" account:username];
-    
-    
+}
+
+- (void)resetLoginButtonText
+{
+    loginButton.titleLabel.text = @"Log in";
 }
 
 - (void)didReceiveMemoryWarning

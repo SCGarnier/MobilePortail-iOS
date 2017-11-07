@@ -21,4 +21,7 @@
     
     int position;
 }
+
+- (void)resetLoginButtonText;
+
 @end

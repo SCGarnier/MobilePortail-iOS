@@ -74,7 +74,7 @@
      }];
 }
 
-- (void)checkForSuccessfulLogin:(NSString *)fileName isMainRequest:(BOOL)isMainRequest isAutoLogin:(BOOL)isAutoLogin
+- (BOOL)checkForSuccessfulLogin:(NSString *)fileName isMainRequest:(BOOL)isMainRequest isAutoLogin:(BOOL)isAutoLogin
 {
     MPStringFromHTML *getString = [MPStringFromHTML new];
     
@@ -107,7 +107,12 @@
                 }
                 
             }
+            
+            [self resetButtonText];
+            
             [self failureAlert:@"Nom d'utilisateur ou mot de passe incorrect" withMessage:@"Veuillez entrer le bon nom d'utilisateur et mot de passe"];
+            
+            return NO;
         }
         else if ([[document firstNodeMatchingSelector:@"title"].textContent containsString:@"scolaires"])
         {
@@ -115,16 +120,30 @@
             
             UIViewController *topController = [self getTopController];
             
+            [self resetButtonText];
+            
             //dismiss the login view controller
             [topController dismissViewControllerAnimated:YES completion:nil];
+            
+            return YES;
         }
         else
         {
             //If neither are contained, either portail is broken, or got a large enough update that it warrants an app update
+            [self resetButtonText];
             
             [self failureAlert:@"Portail est brisé" withMessage:@"Le portail des élèves ne marche pas comme il fault. S'il vous plaît, essayez encore plus tard"];
+            
+            return NO;
         }
     }
+}
+
+- (void)resetButtonText
+{
+    //reset button text
+    LoginViewController *loginVC = [[LoginViewController alloc] init];
+    [loginVC resetLoginButtonText];
 }
 
 - (void)failureAlert:(NSString *)title withMessage:(NSString *)message
