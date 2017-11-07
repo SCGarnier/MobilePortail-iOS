@@ -76,8 +76,13 @@
         //request for schedule
         [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schedule.html" isMainRequest:NO isAutoLogin:YES];
         
+        
+        //get and display info after login
         NSArray *schedule = [self DaySchedule];
         
+        
+        
+        NSLog(@"%@", schedule);
     }
 }
 
@@ -110,6 +115,7 @@
     {
         //say there's no school
         self.navigationItem.title = @"Pas de cours";
+        schedule = nil;
     }
     else
     {
@@ -117,44 +123,59 @@
         self.navigationItem.title = [@"Jour " stringByAppendingString:[NSString stringWithFormat:@"%d", dayNumber]];
         
         //set up the ordered sets for all the class info
-        NSOrderedSet *periodOneClassInfo;
-        NSOrderedSet *periodTwoClassInfo;
-        NSOrderedSet *periodThreeClassInfo;
-        NSOrderedSet *periodFourClassInfo;
+        NSOrderedSet *periodOneClassInfo = [self getClassInfoWithOverviewList:periodOneList andDayNumber:dayNumber];
+        NSOrderedSet *periodTwoClassInfo = [self getClassInfoWithOverviewList:periodTwoList andDayNumber:dayNumber];
+        NSOrderedSet *periodThreeClassInfo = [self getClassInfoWithOverviewList:periodThreeList andDayNumber:dayNumber];
+        NSOrderedSet *periodFourClassInfo = [self getClassInfoWithOverviewList:periodFourList andDayNumber:dayNumber];
         
         
-        //get the info from period 1
-        NSOrderedSet *periodOneClassHead = [[[periodOneList children] objectAtIndex:dayNumber+1] children];
-        if ([periodOneClassHead count] > 0)
-        {
-            periodOneClassInfo = [[[[[periodOneList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
-            
-            
-        }
+        //get useful information for classes
+        NSArray *periodOneInfoArray = [self getClassInfoArrayFromClassInfoOrderedSet:periodOneClassInfo];
+        NSArray *periodTwoInfoArray = [self getClassInfoArrayFromClassInfoOrderedSet:periodTwoClassInfo];
+        NSArray *periodThreeInfoArray = [self getClassInfoArrayFromClassInfoOrderedSet:periodThreeClassInfo];
+        NSArray *periodFourInfoArray = [self getClassInfoArrayFromClassInfoOrderedSet:periodFourClassInfo];
         
-        //get the info from period 2
-        NSOrderedSet *periodTwoClassHead = [[[periodTwoList children] objectAtIndex:dayNumber+1] children];
-        if ([periodTwoClassHead count] > 0)
-        {
-            periodTwoClassInfo = [[[[[periodTwoList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
-        }
         
-        //get the info from period 3
-        NSOrderedSet *periodThreeClassHead = [[[periodThreeList children] objectAtIndex:dayNumber+1] children];
-        if ([periodThreeClassHead count] > 0)
-        {
-            periodThreeClassInfo = [[[[[periodThreeList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
-        }
-        
-        //get the info from period 4
-        NSOrderedSet *periodFourClassHead = [[[periodFourList children] objectAtIndex:dayNumber+1] children];
-        if ([periodFourClassHead count] > 0)
-        {
-            periodFourClassInfo = [[[[[periodFourList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
-        }
+        schedule = [NSMutableArray arrayWithObjects:periodOneInfoArray, periodTwoInfoArray, periodThreeInfoArray, periodFourInfoArray, nil];
     }
     
     return schedule;
+}
+
+- (NSArray *)getClassInfoArrayFromClassInfoOrderedSet:(NSOrderedSet *)classInfoOrderedSet
+{
+    NSArray *classInfoArray = [[NSArray alloc] init];
+    
+    if ([classInfoOrderedSet count] > 0)
+    {
+        //get course info
+        NSString *teacherName = [[classInfoOrderedSet objectAtIndex:3] textContent];
+        NSString *courseCode = [[classInfoOrderedSet objectAtIndex:1] textContent];
+        NSString *courseName = [[[classInfoOrderedSet objectAtIndex:0] childAtIndex:0] textContent];
+        
+        //add course info to array
+        classInfoArray = [NSArray arrayWithObjects:teacherName, courseCode, courseName, nil];
+    }
+    else
+    {
+        classInfoArray = [[NSArray alloc] init];;
+    }
+    
+    
+    return classInfoArray;
+}
+
+- (NSOrderedSet *)getClassInfoWithOverviewList:(HTMLNode *)classOverview andDayNumber:(int)dayNumber
+{
+    NSOrderedSet * classInfo = [[NSOrderedSet alloc] init];
+    
+    NSOrderedSet * classHead = [[[classOverview children] objectAtIndex:dayNumber+1] children];
+    if ([classHead count] > 0)
+    {
+        classInfo = [[[[[classOverview children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
+    }
+    
+    return classInfo;
 }
 
 - (int)currentDayNumberWithPeriodOne:(HTMLNode *)pOne andPeriodTwo:(HTMLNode *)pTwo andPeriodThree:(HTMLNode *)pThree andPeriodFour:(HTMLNode *)pFour
