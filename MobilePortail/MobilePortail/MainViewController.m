@@ -60,6 +60,7 @@
         [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schedule.html" isMainRequest:NO isAutoLogin:YES];
         
         NSArray *schedule = [self DaySchedule];
+        
     }
 }
 
@@ -69,9 +70,9 @@
     [self presentViewController:login animated:YES completion:nil];
 }
 
-- (NSArray *)DaySchedule
+- (NSMutableArray *)DaySchedule
 {
-    NSArray *schedule;
+    NSMutableArray *schedule = [[NSMutableArray alloc] init];
     
     MPStringFromHTML *getString = [MPStringFromHTML new];
     
@@ -81,15 +82,91 @@
     //get document for parsing from the string
     HTMLDocument * schedulePage = [HTMLDocument documentWithString:rawHTML];
     
-    NSArray * scheduleTableArray = [schedulePage nodesMatchingSelector:@"table"];
+    HTMLNode *scheduleTable = [schedulePage firstNodeMatchingSelector:@"table.text"];
     
-    NSLog(@"%@", scheduleTableArray);
+    HTMLNode *actualTable = [scheduleTable childAtIndex:1];
+    
+    HTMLNode * periodOneList = [actualTable childAtIndex:1];
+    HTMLNode * periodTwoList = [actualTable childAtIndex:2];
+    HTMLNode * periodThreeList = [actualTable childAtIndex:3];
+    HTMLNode * periodFourList = [actualTable childAtIndex:4];
+    
+    int dayNumber = [self currentDayNumberWithPeriodOne:periodOneList andPeriodTwo:periodTwoList andPeriodThree:periodThreeList andPeriodFour:periodFourList];
+    
+    NSOrderedSet *periodOneClassInfo = [[[[[periodOneList children] objectAtIndex:dayNumber] children] objectAtIndex:0] children];
+    NSOrderedSet *periodTwoClassInfo = [[[[[periodTwoList children] objectAtIndex:dayNumber] children] objectAtIndex:0] children];
+    
+    self.navigationItem.title = [@"Jour " stringByAppendingString:[NSString stringWithFormat:@"%d", dayNumber]];
+    
+    //NSLog(@"%@", periodOneClassInfo);
     
     return schedule;
 }
+
+- (int)currentDayNumberWithPeriodOne:(HTMLNode *)pOne andPeriodTwo:(HTMLNode *)pTwo andPeriodThree:(HTMLNode *)pThree andPeriodFour:(HTMLNode *)pFour
+{
+    int dayNumber;
+    BOOL foundCurrentDay = NO;
+    
+    NSDictionary *dataDict = [self searchClassesForDayNumberWithPeriod:pOne];
+    foundCurrentDay = [[dataDict objectForKey:@"foundCurrentDay"] boolValue];
+    
+    if (!foundCurrentDay)
+    {
+        dataDict = [self searchClassesForDayNumberWithPeriod:pTwo];
+        foundCurrentDay = [[dataDict objectForKey:@"foundCurrentDay"] boolValue];
+    }
+    
+    if (!foundCurrentDay)
+    {
+        NSDictionary *dataDict = [self searchClassesForDayNumberWithPeriod:pThree];
+        foundCurrentDay = [[dataDict objectForKey:@"foundCurrentDay"] boolValue];
+    }
+    
+    if (!foundCurrentDay)
+    {
+        NSDictionary *dataDict = [self searchClassesForDayNumberWithPeriod:pFour];
+        foundCurrentDay = [[dataDict objectForKey:@"foundCurrentDay"] boolValue];
+    }
+    
+    dayNumber = [[dataDict objectForKey:@"dayNumber"] intValue];
+    
+    return dayNumber;
+}
+
+- (NSDictionary *)searchClassesForDayNumberWithPeriod:(HTMLNode *)period
+{
+    int dayNumber = 0;
+    BOOL foundCurrentDay = NO;
+    
+    NSOrderedSet *classList = [period children];
+    
+    for (id item in classList)
+    {
+        HTMLNode * currentColumn = [period childAtIndex:[classList indexOfObject:item]];
+        
+        if ([[currentColumn innerHTML] containsString:@"<b>"])
+        {
+            foundCurrentDay = YES;
+            dayNumber = (int)[classList indexOfObject:item] - 1;
+        }
+    }
+    
+    NSDictionary * dataDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:dayNumber], @"dayNumber", [NSNumber numberWithBool:foundCurrentDay], @"foundCurrentDay", nil];
+    
+    return dataDict;
+}
+
+
+
+
 - (IBAction)logout:(id)sender
 {
     [self openLoginPage];
+    
+    //delete saved password
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
+    [SAMKeychain deletePasswordForService:@"Portail" account:username];
 }
 
 - (void)didReceiveMemoryWarning
