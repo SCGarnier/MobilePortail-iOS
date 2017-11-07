@@ -2,16 +2,15 @@
 Version mobile (iOS) du Portail des Élèves de CS MonAvenir
 
 # À faire
-- Extraction d'information à afficher du fichier HTML
-- Affichage de l'information extrait dans l'application
-- L'interface au complet
+- Extraire et afficher les résultats scolaires
 
 # Problèmes
-- Presque aucune fonctionnalité n'a été implémenté
+- Lorsqu'un nouvel utilisateur entre dans l'application, l'horaire ne se met pas toujours à jour.
 
 # Complété
 - Le système de login fonctionne, incluant le login automatique
 - Le sauvegarde d'information de login fonctionne
+- L'extraction de l'information d'horaire fonctionne
 
 # License
 Nous (le club de programmation et de robotique de l'école secondaire catholique Saint-Charles-Garnier, spécifiquement l'équipe de programmation iOS, incluant mais pas limité à Justin Proulx, Veronica Marrocco, Elyssa Proulx et Maeve Campbell) réservons tous les droits d'auteurs associés à ce projet.
