@@ -308,6 +308,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="period1Class" destination="soE-2O-dZq" id="szV-o5-oPk"/>
+                        <outlet property="period1Teacher" destination="Asp-bT-MCh" id="J02-5u-1eG"/>
+                        <outlet property="period2Class" destination="uIU-9F-SA0" id="d7g-c8-dCY"/>
+                        <outlet property="period2Teacher" destination="wfn-Yu-zdv" id="Wh6-0y-tPB"/>
+                        <outlet property="period3Class" destination="I0x-Oz-Peg" id="0Gg-TJ-lnc"/>
+                        <outlet property="period3Teacher" destination="IUL-ha-40P" id="yI2-Ur-p3s"/>
+                        <outlet property="period4Class" destination="Dpv-4q-gQ4" id="sWh-hW-Qz3"/>
+                        <outlet property="period4Teacher" destination="jWi-bh-3Ng" id="xbc-SW-Kmw"/>
                         <outlet property="usernameLabel" destination="2jD-fg-kjc" id="VFc-Po-vNj"/>
                     </connections>
                 </tableViewController>

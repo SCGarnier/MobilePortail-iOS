@@ -80,9 +80,59 @@
         //get and display info after login
         NSArray *schedule = [self DaySchedule];
         
+        //display period 1
+        period1Class.text = [[schedule objectAtIndex:0] objectForKey:@"courseName"];
+        period1Teacher.text = @"";
         
+        if ([period1Class.text length] == 0)
+        {
+            period1Class.text = @"Aucun cours";
+        }
         
-        NSLog(@"%@", schedule);
+        if ([period1Teacher.text length] == 0) {
+            period1Teacher.text = @"Aucun enseignant";
+        }
+        
+        //display period 2
+        period2Class.text = [[[[[schedule objectAtIndex:1] objectForKey:@"courseName"] stringByAppendingString:@" ("] stringByAppendingString:[[schedule objectAtIndex:1] objectForKey:@"courseCode"]] stringByAppendingString:@")"];
+        period2Teacher.text = [[schedule objectAtIndex:1] objectForKey:@"teacherName"];
+        
+        if ([period2Class.text length] == 0)
+        {
+            period2Class.text = @"Aucun cours";
+        }
+        
+        if ([period2Teacher.text length] == 0)
+        {
+            period2Teacher.text = @"Aucun enseignant";
+        }
+        //display period 3
+        period3Class.text = [[[[[schedule objectAtIndex:2] objectForKey:@"courseName"] stringByAppendingString:@" ("] stringByAppendingString:[[schedule objectAtIndex:2] objectForKey:@"courseCode"]] stringByAppendingString:@")"];
+        period3Teacher.text = @"";
+        
+        if ([period3Class.text length] == 0)
+        {
+            period3Class.text = @"Aucun cours";
+        }
+        
+        if ([period3Teacher.text length] == 0)
+        {
+            period3Teacher.text = @"Aucun enseignant";
+        }
+        
+        //display period 4
+        period4Class.text = [[[[[schedule objectAtIndex:3] objectForKey:@"courseName"] stringByAppendingString:@" ("] stringByAppendingString:[[schedule objectAtIndex:3] objectForKey:@"courseCode"]] stringByAppendingString:@")"];
+        period4Teacher.text = @"";
+        
+        if ([period4Class.text length] == 0)
+        {
+            period4Class.text = @"Aucun cours";
+        }
+        
+        if ([period4Teacher.text length] == 0)
+        {
+            period4Teacher.text = @"Aucun enseignant";
+        }
     }
 }
 
@@ -130,10 +180,10 @@
         
         
         //get useful information for classes
-        NSArray *periodOneInfoArray = [self getClassInfoArrayFromClassInfoOrderedSet:periodOneClassInfo];
-        NSArray *periodTwoInfoArray = [self getClassInfoArrayFromClassInfoOrderedSet:periodTwoClassInfo];
-        NSArray *periodThreeInfoArray = [self getClassInfoArrayFromClassInfoOrderedSet:periodThreeClassInfo];
-        NSArray *periodFourInfoArray = [self getClassInfoArrayFromClassInfoOrderedSet:periodFourClassInfo];
+        NSDictionary *periodOneInfoArray = [self getClassInfoArrayFromClassInfoOrderedSet:periodOneClassInfo];
+        NSDictionary *periodTwoInfoArray = [self getClassInfoArrayFromClassInfoOrderedSet:periodTwoClassInfo];
+        NSDictionary *periodThreeInfoArray = [self getClassInfoArrayFromClassInfoOrderedSet:periodThreeClassInfo];
+        NSDictionary *periodFourInfoArray = [self getClassInfoArrayFromClassInfoOrderedSet:periodFourClassInfo];
         
         
         schedule = [NSMutableArray arrayWithObjects:periodOneInfoArray, periodTwoInfoArray, periodThreeInfoArray, periodFourInfoArray, nil];
@@ -142,9 +192,9 @@
     return schedule;
 }
 
-- (NSArray *)getClassInfoArrayFromClassInfoOrderedSet:(NSOrderedSet *)classInfoOrderedSet
+- (NSDictionary *)getClassInfoArrayFromClassInfoOrderedSet:(NSOrderedSet *)classInfoOrderedSet
 {
-    NSArray *classInfoArray = [[NSArray alloc] init];
+    NSDictionary *classInfoDict = [[NSDictionary alloc] init];
     
     if ([classInfoOrderedSet count] > 0)
     {
@@ -154,15 +204,15 @@
         NSString *courseName = [[[classInfoOrderedSet objectAtIndex:0] childAtIndex:0] textContent];
         
         //add course info to array
-        classInfoArray = [NSArray arrayWithObjects:teacherName, courseCode, courseName, nil];
+        classInfoDict = [NSDictionary dictionaryWithObjectsAndKeys:teacherName, @"teacherName", courseCode, @"courseCode", courseName, @"courseName", nil];
     }
     else
     {
-        classInfoArray = [[NSArray alloc] init];;
+        classInfoDict = [[NSDictionary alloc] init];;
     }
     
     
-    return classInfoArray;
+    return classInfoDict;
 }
 
 - (NSOrderedSet *)getClassInfoWithOverviewList:(HTMLNode *)classOverview andDayNumber:(int)dayNumber
