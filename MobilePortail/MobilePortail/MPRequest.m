@@ -73,9 +73,8 @@
          if (isMainRequest)
          {
              [self failureAlert:@"Échec" withMessage:error.localizedDescription];
-             [self resetButtonText];
          }
-         
+         [self resetButtonText];
      }];
 }
 
@@ -153,6 +152,8 @@
 
 - (void)failureAlert:(NSString *)title withMessage:(NSString *)message
 {
+    [self resetButtonText];
+    
     UIViewController *topController = [self getTopController];
     
     //show the failure alert
