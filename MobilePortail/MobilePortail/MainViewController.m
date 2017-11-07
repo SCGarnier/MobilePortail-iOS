@@ -103,12 +103,42 @@
         //set title to day number
         self.navigationItem.title = [@"Jour " stringByAppendingString:[NSString stringWithFormat:@"%d", dayNumber]];
         
-        NSOrderedSet *periodOneClassInfo = [[[[[periodOneList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
-        NSOrderedSet *periodTwoClassInfo = [[[[[periodTwoList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
-        //NSOrderedSet *periodThreeClassInfo = [[[[[periodThreeList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
-        //NSOrderedSet *periodFourClassInfo = [[[[[periodFourList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
+        //set up the ordered sets for all the class info
+        NSOrderedSet *periodOneClassInfo;
+        NSOrderedSet *periodTwoClassInfo;
+        NSOrderedSet *periodThreeClassInfo;
+        NSOrderedSet *periodFourClassInfo;
         
-        NSLog(@"%@", periodOneClassInfo);
+        
+        //get the info from period 1
+        NSOrderedSet *periodOneClassHead = [[[periodOneList children] objectAtIndex:dayNumber+1] children];
+        if ([periodOneClassHead count] > 0)
+        {
+            periodOneClassInfo = [[[[[periodOneList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
+            
+            
+        }
+        
+        //get the info from period 2
+        NSOrderedSet *periodTwoClassHead = [[[periodTwoList children] objectAtIndex:dayNumber+1] children];
+        if ([periodTwoClassHead count] > 0)
+        {
+            periodTwoClassInfo = [[[[[periodTwoList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
+        }
+        
+        //get the info from period 3
+        NSOrderedSet *periodThreeClassHead = [[[periodThreeList children] objectAtIndex:dayNumber+1] children];
+        if ([periodThreeClassHead count] > 0)
+        {
+            periodThreeClassInfo = [[[[[periodThreeList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
+        }
+        
+        //get the info from period 4
+        NSOrderedSet *periodFourClassHead = [[[periodFourList children] objectAtIndex:dayNumber+1] children];
+        if ([periodFourClassHead count] > 0)
+        {
+            periodFourClassInfo = [[[[[periodFourList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
+        }
     }
     
     return schedule;
