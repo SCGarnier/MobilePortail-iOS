@@ -200,8 +200,23 @@
     {
         //get course info
         NSString *teacherName = [[classInfoOrderedSet objectAtIndex:3] textContent];
+        if ([teacherName hasPrefix:@" "] && [teacherName length] > 1)
+        {
+            teacherName = [teacherName substringFromIndex:1];
+        }
+        
         NSString *courseCode = [[classInfoOrderedSet objectAtIndex:1] textContent];
+        if ([courseCode hasPrefix:@" "] && [courseCode length] > 1)
+        {
+            courseCode = [courseCode substringFromIndex:1];
+        }
+        
         NSString *courseName = [[[classInfoOrderedSet objectAtIndex:0] childAtIndex:0] textContent];
+        if ([courseName hasPrefix:@" "] && [courseName length] > 1)
+        {
+            courseName = [courseName substringFromIndex:1];
+        }
+        
         
         //add course info to array
         classInfoDict = [NSDictionary dictionaryWithObjectsAndKeys:teacherName, @"teacherName", courseCode, @"courseCode", courseName, @"courseName", nil];
