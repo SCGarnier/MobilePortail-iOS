@@ -82,7 +82,7 @@
         
         //display period 1
         period1Class.text = [[schedule objectAtIndex:0] objectForKey:@"courseName"];
-        period1Teacher.text = @"";
+        period1Teacher.text = [[schedule objectAtIndex:0] objectForKey:@"teacherName"];
         
         if ([period1Class.text length] == 0)
         {
@@ -108,7 +108,7 @@
         }
         //display period 3
         period3Class.text = [[[[[schedule objectAtIndex:2] objectForKey:@"courseName"] stringByAppendingString:@" ("] stringByAppendingString:[[schedule objectAtIndex:2] objectForKey:@"courseCode"]] stringByAppendingString:@")"];
-        period3Teacher.text = @"";
+        period3Teacher.text = [[schedule objectAtIndex:2] objectForKey:@"teacherName"];
         
         if ([period3Class.text length] == 0)
         {
@@ -122,7 +122,7 @@
         
         //display period 4
         period4Class.text = [[[[[schedule objectAtIndex:3] objectForKey:@"courseName"] stringByAppendingString:@" ("] stringByAppendingString:[[schedule objectAtIndex:3] objectForKey:@"courseCode"]] stringByAppendingString:@")"];
-        period4Teacher.text = @"";
+        period4Teacher.text = [[schedule objectAtIndex:3] objectForKey:@"teacherName"];
         
         if ([period4Class.text length] == 0)
         {
