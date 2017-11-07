@@ -162,6 +162,8 @@
     int dayNumber;
     BOOL foundCurrentDay = NO;
     
+    NSDictionary *dataDict = [[NSDictionary alloc] init];
+    
     NSArray *periodArray = [NSArray arrayWithObjects:pOne, pTwo, pThree, pFour, nil];
     int index = 0;
     
