@@ -16,7 +16,6 @@
 {
     [super awakeFromNib];
     // Initialization code
-    
 }
 
 - (void)layoutSubviews
@@ -25,6 +24,8 @@
     [self doCircleRadius];
     [self setTintColor:[UIColor colorWithRed:0.41 green:0.41 blue:0.41 alpha:1.0]];
     [self setColours];
+    
+    self.layer.masksToBounds = YES;
 }
 
 

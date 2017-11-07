@@ -303,6 +303,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Jour X" id="VDf-0q-1xc">
+                        <barButtonItem key="backBarButtonItem" title="Horaire" id="N6R-Ju-twe"/>
                         <barButtonItem key="rightBarButtonItem" title="Quitter" id="cwY-eU-5vn">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -311,6 +312,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Hqw-0D-UkZ">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="refreshTableView:" destination="Bvv-OB-MvT" eventType="valueChanged" id="h9W-79-X8O"/>
@@ -331,7 +333,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A45-fH-p58" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="425" y="-573"/>
+            <point key="canvasLocation" x="692" y="-572"/>
         </scene>
         <!--Résultats-->
         <scene sceneID="VNt-xl-oWQ">
@@ -340,17 +342,20 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wP4-Oz-9nY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
-                            <outlet property="dataSource" destination="1Pg-gM-lqm" id="FRs-W1-3Ir"/>
-                            <outlet property="delegate" destination="1Pg-gM-lqm" id="14B-4J-Mhj"/>
+                            <outlet property="dataSource" destination="1Pg-gM-lqm" id="ZUI-iL-YAU"/>
+                            <outlet property="delegate" destination="1Pg-gM-lqm" id="5TO-cR-afc"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Résultats" id="Gkd-wF-dRn"/>
+                    <connections>
+                        <outlet property="_tableView" destination="wP4-Oz-9nY" id="wx1-Sz-6FB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SDR-8W-E1e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="941" y="-572"/>
+            <point key="canvasLocation" x="1497" y="-572"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ETu-ar-uv5">

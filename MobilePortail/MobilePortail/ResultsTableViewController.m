@@ -7,6 +7,8 @@
 //
 
 #import "ResultsTableViewController.h"
+#import "BeautifulTableViewCell.h"
+#import "MPStringFromHTML.h"
 
 @interface ResultsTableViewController ()
 
@@ -14,7 +16,12 @@
 
 @implementation ResultsTableViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
+    self.tableView.separatorColor = [UIColor clearColor];
+    [self.tableView setContentInset:UIEdgeInsetsMake(8, 0, 0, 0)];
+    
+    
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -24,32 +31,61 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Incomplete implementation, return the number of sections
-    return 0;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete implementation, return the number of rows
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSArray *results = [self getSchoolResults];
     
-    // Configure the cell...
+    return [results count];
+}
+
+- (NSArray *)getSchoolResults
+{
+    NSArray *results = [[NSArray alloc] init];
+    
+    MPStringFromHTML *getString = [MPStringFromHTML new];
+    
+    //get string from data
+    NSString * rawHTML = [getString getStringFromHTMLWithFileName:@"resultdata.html"];
+    
+    NSLog(@"%@", rawHTML);
+    
+    return results;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    BeautifulTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[BeautifulTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    // Configure the cell.
+    cell.textLabel.text = [booksArray objectAtIndex:indexPath.row];
     
     return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 86;
+}
 
 /*
 // Override to support conditional editing of the table view.

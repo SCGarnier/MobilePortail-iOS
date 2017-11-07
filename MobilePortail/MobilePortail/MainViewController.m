@@ -91,7 +91,6 @@
             [self logout:nil];
         }
         
-        
         //get and display info after login
         NSArray *schedule = [self DaySchedule];
         
@@ -109,7 +108,7 @@
         }
         
         //display period 2
-        period2Class.text = [[[[[schedule objectAtIndex:1] objectForKey:@"courseName"] stringByAppendingString:@" ("] stringByAppendingString:[[schedule objectAtIndex:1] objectForKey:@"courseCode"]] stringByAppendingString:@")"];
+        period2Class.text = [[schedule objectAtIndex:1] objectForKey:@"courseName"];
         period2Teacher.text = [[schedule objectAtIndex:1] objectForKey:@"teacherName"];
         
         if ([period2Class.text length] == 0)
@@ -122,7 +121,7 @@
             period2Teacher.text = @"Aucun enseignant";
         }
         //display period 3
-        period3Class.text = [[[[[schedule objectAtIndex:2] objectForKey:@"courseName"] stringByAppendingString:@" ("] stringByAppendingString:[[schedule objectAtIndex:2] objectForKey:@"courseCode"]] stringByAppendingString:@")"];
+        period3Class.text = [[schedule objectAtIndex:2] objectForKey:@"courseName"];
         period3Teacher.text = [[schedule objectAtIndex:2] objectForKey:@"teacherName"];
         
         if ([period3Class.text length] == 0)
@@ -136,7 +135,7 @@
         }
         
         //display period 4
-        period4Class.text = [[[[[schedule objectAtIndex:3] objectForKey:@"courseName"] stringByAppendingString:@" ("] stringByAppendingString:[[schedule objectAtIndex:3] objectForKey:@"courseCode"]] stringByAppendingString:@")"];
+        period4Class.text = [[schedule objectAtIndex:3] objectForKey:@"courseName"];
         period4Teacher.text = [[schedule objectAtIndex:3] objectForKey:@"teacherName"];
         
         if ([period4Class.text length] == 0)

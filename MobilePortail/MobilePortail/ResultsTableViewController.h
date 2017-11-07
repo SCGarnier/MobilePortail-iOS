@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ResultsTableViewController : UITableViewController
-
+{
+    NSArray *booksArray;
+    
+    IBOutlet UITableView *_tableView;
+}
 @end
