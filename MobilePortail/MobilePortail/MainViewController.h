@@ -23,5 +23,7 @@
     
     IBOutlet UILabel *period4Class;
     IBOutlet UILabel *period4Teacher;
+    
+    IBOutlet UITableView *TableView;
 }
 @end

@@ -23,12 +23,19 @@
 #pragma mark - Loading
 - (void)viewDidLoad
 {
+    //sets the name to your username
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     
+    //sexy title
     self.navigationController.navigationBar.prefersLargeTitles = true;
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (IBAction)refreshTableView:(id)sender
+{
+    [self checkForAuthentification];
 }
 
 - (void)viewDidAppear:(BOOL)animated

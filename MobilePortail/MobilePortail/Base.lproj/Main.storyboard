@@ -307,7 +307,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Hqw-0D-UkZ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshTableView:" destination="Bvv-OB-MvT" eventType="valueChanged" id="h9W-79-X8O"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
+                        <outlet property="TableView" destination="ZNJ-iT-EiL" id="5nz-6N-3B5"/>
                         <outlet property="period1Class" destination="soE-2O-dZq" id="szV-o5-oPk"/>
                         <outlet property="period1Teacher" destination="Asp-bT-MCh" id="J02-5u-1eG"/>
                         <outlet property="period2Class" destination="uIU-9F-SA0" id="d7g-c8-dCY"/>
