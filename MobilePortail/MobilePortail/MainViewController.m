@@ -91,7 +91,7 @@
     HTMLNode * periodThreeList = [actualTable childAtIndex:3];
     HTMLNode * periodFourList = [actualTable childAtIndex:4];
     
-    int dayNumber = [self currentDayNumberWithPeriodOne:periodOneList andPeriodTwo:periodTwoList andPeriodThree:periodThreeList andPeriodFour:periodFourList] + 1;
+    int dayNumber = [self currentDayNumberWithPeriodOne:periodOneList andPeriodTwo:periodTwoList andPeriodThree:periodThreeList andPeriodFour:periodFourList];
     
     if (dayNumber == 0)
     {
@@ -103,10 +103,10 @@
         //set title to day number
         self.navigationItem.title = [@"Jour " stringByAppendingString:[NSString stringWithFormat:@"%d", dayNumber]];
         
-        NSOrderedSet *periodOneClassInfo = [[[[[periodOneList children] objectAtIndex:dayNumber] children] objectAtIndex:0] children];
-        NSOrderedSet *periodTwoClassInfo = [[[[[periodTwoList children] objectAtIndex:dayNumber] children] objectAtIndex:0] children];
-        //NSOrderedSet *periodThreeClassInfo = [[[[[periodThreeList children] objectAtIndex:dayNumber] children] objectAtIndex:0] children];
-        //NSOrderedSet *periodFourClassInfo = [[[[[periodFourList children] objectAtIndex:dayNumber] children] objectAtIndex:0] children];
+        NSOrderedSet *periodOneClassInfo = [[[[[periodOneList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
+        NSOrderedSet *periodTwoClassInfo = [[[[[periodTwoList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
+        //NSOrderedSet *periodThreeClassInfo = [[[[[periodThreeList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
+        //NSOrderedSet *periodFourClassInfo = [[[[[periodFourList children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
         
         NSLog(@"%@", periodOneClassInfo);
     }
