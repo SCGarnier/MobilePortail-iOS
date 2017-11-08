@@ -9,6 +9,7 @@
 #import "ResultsTableViewController.h"
 #import "BeautifulTableViewCell.h"
 #import "MPStringFromHTML.h"
+#import "HTMLReader.h"
 
 @interface ResultsTableViewController ()
 
@@ -60,7 +61,40 @@
     //get string from data
     NSString * rawHTML = [getString getStringFromHTMLWithFileName:@"resultdata.html"];
     
-    NSLog(@"%@", rawHTML);
+    //get document for parsing from the string
+    HTMLDocument * schedulePage = [HTMLDocument documentWithString:rawHTML];
+    
+    HTMLNode *scheduleTable = [schedulePage firstNodeMatchingSelector:@"table#Table1"];
+    
+    //NSLog(@"%@", [[[[[[[scheduleTable children] objectAtIndex:1] children] objectAtIndex:0] children] objectAtIndex:1] children]);
+    
+    NSOrderedSet *markTable = [[[scheduleTable children] objectAtIndex:1] children];
+    NSMutableArray *markInfo = [[NSMutableArray alloc] init];
+    
+    for (id item in markTable)
+    {
+        if ([markTable indexOfObject:item] != 0)
+        {
+            int index = (int)[markTable indexOfObject:item];
+            
+            NSOrderedSet * classMarkInfoSet = [[markTable objectAtIndex:index] children];
+            
+            if ([classMarkInfoSet count] > 0)
+            {
+                //get the teacher and the course name
+                NSOrderedSet *teacherAndCourseName = [[[[classMarkInfoSet objectAtIndex:1] children] objectAtIndex:0] children];
+                
+                NSString *teacher = [[teacherAndCourseName objectAtIndex:2] textContent];
+                NSString *className = [[[[teacherAndCourseName objectAtIndex:0] children] objectAtIndex:0] textContent];
+                
+                
+                
+                
+            }
+
+            //NSString *className = [[[[[[classMarkInfoSet objectAtIndex:1] children] objectAtIndex:0] children] objectAtIndex:2] textContent];
+        }
+    }
     
     return results;
 }
