@@ -20,7 +20,7 @@
 - (void)viewDidLoad
 {
     self.tableView.separatorColor = [UIColor clearColor];
-    [self.tableView setContentInset:UIEdgeInsetsMake(8, 0, 8, 0)];
+    [self.tableView setContentInset:UIEdgeInsetsMake(8, 0, 32, 0)];
     
     
     [super viewDidLoad];
@@ -87,7 +87,27 @@
                 NSString *teacher = [[teacherAndCourseName objectAtIndex:2] textContent];
                 NSString *className = [[[[teacherAndCourseName objectAtIndex:0] children] objectAtIndex:0] textContent];
                 
-                NSString *performance = [[[[[[markTable objectAtIndex:index] children] objectAtIndex:4] children] objectAtIndex:0] textContent];
+                
+                BOOL hasData;
+                if ([[[[[markTable objectAtIndex:index] children] objectAtIndex:4] children] count] != 0)
+                {
+                    hasData = YES;
+                }
+                else
+                {
+                    hasData = NO;
+                }
+                
+                NSString *performance = [[NSString alloc] init];
+                if (hasData == YES)
+                {
+                    performance = [[[[[[markTable objectAtIndex:index] children] objectAtIndex:4] children] objectAtIndex:0] textContent];
+                }
+                else
+                {
+                    performance = @"N/A";
+                }
+                
                 
                 NSArray *currentClassInfo = [NSArray arrayWithObjects:teacher, className, performance, nil];
                 

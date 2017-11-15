@@ -94,9 +94,9 @@
      }];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasHidden:) name:UIKeyboardDidHideNotification object:nil];
     
 }
+
 /*
 - (void)keyboardWasHidden:(NSNotification *)notif
 {
