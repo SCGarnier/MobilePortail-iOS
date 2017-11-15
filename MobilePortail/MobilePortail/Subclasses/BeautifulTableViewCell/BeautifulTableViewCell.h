@@ -12,5 +12,6 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *classLabel;
 @property (nonatomic, weak) IBOutlet UILabel *teacherLabel;
+@property (nonatomic, weak) IBOutlet UILabel *resultLabel;
 
 @end

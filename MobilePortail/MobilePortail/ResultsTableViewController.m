@@ -116,12 +116,20 @@
     }
     
     // Configure the cell.
+    //set labels to values
     cell.classLabel.text = [[classResults objectAtIndex:indexPath.row] objectAtIndex:1];
     cell.teacherLabel.text = [[[classResults objectAtIndex:indexPath.row] objectAtIndex:0] stringByReplacingOccurrencesOfString:@"Enseignant(e): " withString:@""];
+    cell.resultLabel.text = [[classResults objectAtIndex:indexPath.row] objectAtIndex:2];
     
-    if ([cell.teacherLabel.text isEqualToString:@""])
+    //add placeholder label values if they're empty
+    if ([cell.teacherLabel.text length] == 0)
     {
         cell.teacherLabel.text = @"N/A";
+    }
+    
+    if ([cell.resultLabel.text length] == 0)
+    {
+        cell.resultLabel.text = @"-";
     }
     
     return cell;

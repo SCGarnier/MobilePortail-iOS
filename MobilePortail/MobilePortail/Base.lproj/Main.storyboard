@@ -354,8 +354,8 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="J6R-hN-poc">
                                             <rect key="frame" x="16" y="12" width="343" height="61.5"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TlE-J8-u90">
-                                                    <rect key="frame" x="0.0" y="10.5" width="296.5" height="41"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="TlE-J8-u90">
+                                                    <rect key="frame" x="0.0" y="8.5" width="296.5" height="45"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aucun cours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojw-et-O3v">
                                                             <rect key="frame" x="0.0" y="0.0" width="296.5" height="20.5"/>
@@ -364,7 +364,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Aucun enseignant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmg-XQ-5Pt">
-                                                            <rect key="frame" x="0.0" y="20.5" width="296.5" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="24.5" width="296.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.57647058819999997" green="0.57647058819999997" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -392,6 +392,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="classLabel" destination="Ojw-et-O3v" id="zE1-MJ-c9h"/>
+                                    <outlet property="resultLabel" destination="gy9-Kb-eb8" id="Cab-0Z-pv4"/>
                                     <outlet property="teacherLabel" destination="fmg-XQ-5Pt" id="qNE-Ok-edm"/>
                                 </connections>
                             </tableViewCell>
