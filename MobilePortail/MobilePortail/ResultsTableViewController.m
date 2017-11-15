@@ -20,7 +20,7 @@
 - (void)viewDidLoad
 {
     self.tableView.separatorColor = [UIColor clearColor];
-    [self.tableView setContentInset:UIEdgeInsetsMake(8, 0, 0, 0)];
+    [self.tableView setContentInset:UIEdgeInsetsMake(8, 0, 8, 0)];
     
     
     [super viewDidLoad];
@@ -116,20 +116,51 @@
     }
     
     // Configure the cell.
-    //set labels to values
-    cell.classLabel.text = [[classResults objectAtIndex:indexPath.row] objectAtIndex:1];
-    cell.teacherLabel.text = [[[classResults objectAtIndex:indexPath.row] objectAtIndex:0] stringByReplacingOccurrencesOfString:@"Enseignant(e): " withString:@""];
-    cell.resultLabel.text = [[classResults objectAtIndex:indexPath.row] objectAtIndex:2];
+    //set values to variables
+    NSString *className = [[classResults objectAtIndex:indexPath.row] objectAtIndex:1];
+    NSString *teacherName = [[[classResults objectAtIndex:indexPath.row] objectAtIndex:0] stringByReplacingOccurrencesOfString:@"Enseignant(e): " withString:@""];
+    NSString *resultString = [[classResults objectAtIndex:indexPath.row] objectAtIndex:2];
     
-    //add placeholder label values if they're empty
-    if ([cell.teacherLabel.text length] == 0)
+    //set class label to the class name
+    cell.classLabel.text = className;
+    
+    //set the teacher's name to the right label if a teacher name is found
+    if ([[teacherName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
     {
-        cell.teacherLabel.text = @"N/A";
+        cell.teacherLabel.text = @"Inconnu";
+    }
+    else
+    {
+        cell.teacherLabel.text = teacherName;
     }
     
-    if ([cell.resultLabel.text length] == 0)
+    //set result to the right label if a result is found
+    if ([[resultString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
     {
-        cell.resultLabel.text = @"-";
+        cell.resultLabel.text = @"N/A";
+        cell.circleView.backgroundColor = [UIColor colorWithRed:0.60 green:0.60 blue:0.60 alpha:1.0];
+    }
+    else
+    {
+        cell.resultLabel.text = resultString;
+        
+        //set color-coding for marks
+        if ([resultString containsString:@"4"])
+        {
+            cell.circleView.backgroundColor = [UIColor colorWithRed:0.34 green:0.79 blue:0.00 alpha:1.0];
+        }
+        else if ([resultString containsString:@"3"])
+        {
+            cell.circleView.backgroundColor = [UIColor colorWithRed:0.00 green:0.55 blue:0.79 alpha:1.0];
+        }
+        else if ([resultString containsString:@"2"])
+        {
+            cell.circleView.backgroundColor = [UIColor colorWithRed:0.87 green:0.83 blue:0.00 alpha:1.0];
+        }
+        else
+        {
+            cell.circleView.backgroundColor = [UIColor colorWithRed:0.87 green:0.00 blue:0.00 alpha:1.0];
+        }
     }
     
     return cell;

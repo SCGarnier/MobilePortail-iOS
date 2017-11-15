@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D02001311FBC0034005712AD /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D020012F1FBC0033005712AD /* CircleView.m */; };
 		D020D2141FAD044A00256750 /* ImpressionableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D020D20C1FAD044A00256750 /* ImpressionableButton.m */; };
 		D020D2151FAD044A00256750 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = D020D2101FAD044A00256750 /* RoundedView.m */; };
 		D020D2161FAD044A00256750 /* PaddedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D020D2131FAD044A00256750 /* PaddedTextField.m */; };
@@ -80,6 +81,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D020012F1FBC0033005712AD /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
+		D02001301FBC0034005712AD /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		D020D20C1FAD044A00256750 /* ImpressionableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImpressionableButton.m; sourceTree = "<group>"; };
 		D020D20D1FAD044A00256750 /* ImpressionableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImpressionableButton.h; sourceTree = "<group>"; };
 		D020D20F1FAD044A00256750 /* RoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedView.h; sourceTree = "<group>"; };
@@ -222,12 +225,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D02001321FBC0042005712AD /* CircleView */ = {
+			isa = PBXGroup;
+			children = (
+				D02001301FBC0034005712AD /* CircleView.h */,
+				D020012F1FBC0033005712AD /* CircleView.m */,
+			);
+			path = CircleView;
+			sourceTree = "<group>";
+		};
 		D020D20A1FAD044A00256750 /* Subclasses */ = {
 			isa = PBXGroup;
 			children = (
 				D089FEF41FAEB31600184BD9 /* BeautifulTableViewCell */,
 				D020D20B1FAD044A00256750 /* Buttons */,
 				D020D20E1FAD044A00256750 /* RoundedView */,
+				D02001321FBC0042005712AD /* CircleView */,
 				D020D2111FAD044A00256750 /* PaddedTextField */,
 			);
 			path = Subclasses;
@@ -629,6 +642,7 @@
 				D0712BC51FA7C3FA005F631F /* MainViewController.m in Sources */,
 				D089FEF71FAEB32A00184BD9 /* BeautifulTableViewCell.m in Sources */,
 				D0712BC21FA7C2D7005F631F /* LoginViewController.m in Sources */,
+				D02001311FBC0034005712AD /* CircleView.m in Sources */,
 				D03E435F1FA11E1000E47E5D /* AFNetworkActivityIndicatorManager.m in Sources */,
 				D0712C031FA806B6005F631F /* NSString+HTMLEntities.m in Sources */,
 				D03E435E1FA11E1000E47E5D /* UIRefreshControl+AFNetworking.m in Sources */,
