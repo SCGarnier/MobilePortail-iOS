@@ -157,6 +157,10 @@
         {
             cell.circleView.backgroundColor = [UIColor colorWithRed:0.87 green:0.83 blue:0.00 alpha:1.0];
         }
+        else if ([resultString containsString:@"N/D"])
+        {
+            cell.circleView.backgroundColor = [UIColor colorWithRed:0.60 green:0.60 blue:0.60 alpha:1.0];
+        }
         else
         {
             cell.circleView.backgroundColor = [UIColor colorWithRed:0.87 green:0.00 blue:0.00 alpha:1.0];
