@@ -10,7 +10,7 @@
 
 @interface ResultsTableViewController : UITableViewController
 {
-    NSArray *booksArray;
+    NSArray *classResults;
     
     IBOutlet UITableView *_tableView;
 }

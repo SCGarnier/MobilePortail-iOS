@@ -59,6 +59,9 @@
     //delete saved password
     NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     [SAMKeychain deletePasswordForService:@"Portail" account:username];
+    
+    //delete mark info
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"currentMarks"];
 }
 
 - (void)checkForAuthentification

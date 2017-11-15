@@ -10,4 +10,7 @@
 
 @interface BeautifulTableViewCell : UITableViewCell
 
+@property (nonatomic, weak) IBOutlet UILabel *classLabel;
+@property (nonatomic, weak) IBOutlet UILabel *teacherLabel;
+
 @end

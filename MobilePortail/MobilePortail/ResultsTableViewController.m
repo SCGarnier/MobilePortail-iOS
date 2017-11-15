@@ -87,14 +87,19 @@
                 NSString *teacher = [[teacherAndCourseName objectAtIndex:2] textContent];
                 NSString *className = [[[[teacherAndCourseName objectAtIndex:0] children] objectAtIndex:0] textContent];
                 
+                NSString *performance = [[[[[[markTable objectAtIndex:index] children] objectAtIndex:4] children] objectAtIndex:0] textContent];
                 
+                NSArray *currentClassInfo = [NSArray arrayWithObjects:teacher, className, performance, nil];
                 
-                
+                [markInfo addObject:currentClassInfo];
             }
-
-            //NSString *className = [[[[[[classMarkInfoSet objectAtIndex:1] children] objectAtIndex:0] children] objectAtIndex:2] textContent];
         }
     }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:markInfo forKey:@"currentMarks"];
+    
+    results = [NSArray arrayWithArray:markInfo];
+    classResults = [NSArray arrayWithArray:markInfo];
     
     return results;
 }
@@ -107,11 +112,17 @@
     BeautifulTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
     {
-        cell = [[BeautifulTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[BeautifulTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell.
-    cell.textLabel.text = [booksArray objectAtIndex:indexPath.row];
+    cell.classLabel.text = [[classResults objectAtIndex:indexPath.row] objectAtIndex:1];
+    cell.teacherLabel.text = [[[classResults objectAtIndex:indexPath.row] objectAtIndex:0] stringByReplacingOccurrencesOfString:@"Enseignant(e): " withString:@""];
+    
+    if ([cell.teacherLabel.text isEqualToString:@""])
+    {
+        cell.teacherLabel.text = @"N/A";
+    }
     
     return cell;
 }
