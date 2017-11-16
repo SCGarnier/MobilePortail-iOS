@@ -155,7 +155,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.57502796589092875" green="1" blue="0.65364691823117371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.50583902010751014" green="0.88605011261261257" blue="0.5746279278899884" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="QVe-R1-rbw" secondAttribute="trailing" id="8J4-wF-whO"/>
                                                                 <constraint firstAttribute="bottom" secondItem="QVe-R1-rbw" secondAttribute="bottom" id="MbU-2R-7Rb"/>
@@ -208,13 +208,13 @@
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNB-cY-hHn">
                                                                     <rect key="frame" x="0.0" y="0.0" width="61.5" height="62"/>
-                                                                    <color key="backgroundColor" red="0.55809322022755603" green="0.97288836458780681" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.79027684359999995" green="0.72076979720000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.56188280423498105" green="0.92729448198198194" blue="0.90555554858616327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="MNB-cY-hHn" firstAttribute="top" secondItem="a0D-9B-EEe" secondAttribute="top" id="743-2G-lyz"/>
                                                                 <constraint firstAttribute="trailing" secondItem="MNB-cY-hHn" secondAttribute="trailing" id="8hS-Xb-PH2"/>
