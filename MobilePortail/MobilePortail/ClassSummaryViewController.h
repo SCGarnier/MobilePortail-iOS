@@ -16,6 +16,4 @@
     NSTimer *checkTimer;
 }
 
-- (void)showPDF;
-
 @end
