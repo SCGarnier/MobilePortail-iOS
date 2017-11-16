@@ -143,7 +143,7 @@
             //If neither are contained, either portail is broken, or got a large enough update that it warrants an app update
             [self resetButtonText];
             
-            [self failureAlert:@"Portail est brisé" withMessage:@"Le portail des élèves ne marche pas comme il fault. S'il vous plaît, essayez encore plus tard"];
+            [self failureAlert:@"Portail est brisé" withMessage:@"Le portail des élèves ne marche pas comme il faut. S'il vous plaît, essayez encore plus tard"];
             
             return NO;
         }
