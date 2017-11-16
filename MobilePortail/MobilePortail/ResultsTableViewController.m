@@ -110,9 +110,10 @@
                 }
                 //end of Veron's if statements
                 
-                
+                //put the current class' mark info in an array
                 NSArray *currentClassInfo = [NSArray arrayWithObjects:teacher, className, performance, nil];
                 
+                //add the current class to the array of classes
                 [markInfo addObject:currentClassInfo];
             }
         }
