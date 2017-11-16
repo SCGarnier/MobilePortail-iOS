@@ -52,10 +52,10 @@
     [loginButton setTitle:@"Chargement..." forState:UIControlStateNormal];
     
     MPRequest *request = [MPRequest new];
-    //request for class results
-    [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx" withUsername:username andPassword:password saveResponseToFileName:@"resultdata.html" isMainRequest:YES isAutoLogin:NO];
+    //request for list of class results
+    [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx" withUsername:username andPassword:password saveResponseToFileName:@"resultdata.html" isMainRequest:YES isAutoLogin:NO expectsPDF:NO];
     //request for schedule
-    [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:username andPassword:password saveResponseToFileName:@"schedule.html" isMainRequest:NO isAutoLogin:NO];
+    [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:username andPassword:password saveResponseToFileName:@"schedule.html" isMainRequest:NO isAutoLogin:NO expectsPDF:NO];
     
     //save login info
     [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"PortailUsername"];

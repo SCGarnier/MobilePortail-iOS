@@ -36,6 +36,8 @@
 		D03E436B1FA11E1000E47E5D /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = D03E435B1FA11E1000E47E5D /* AFSecurityPolicy.m */; };
 		D03E436E1FA121AD00E47E5D /* MPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D03E436D1FA121AD00E47E5D /* MPRequest.m */; };
 		D05B08D11FBD2B1E00ABFC08 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D05B08CF1FBD2B1E00ABFC08 /* Reachability.m */; };
+		D05B08D41FBD39BF00ABFC08 /* ClassSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D05B08D31FBD39BF00ABFC08 /* ClassSummaryViewController.m */; };
+		D05B08D61FBD44B400ABFC08 /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D05B08D51FBD449B00ABFC08 /* PDFKit.framework */; };
 		D067A5A11FB2083000EDC90E /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D067A5A01FB2082F00EDC90E /* ResultsTableViewController.m */; };
 		D0712BC21FA7C2D7005F631F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712BC11FA7C2D7005F631F /* LoginViewController.m */; };
 		D0712BC51FA7C3FA005F631F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712BC41FA7C3FA005F631F /* MainViewController.m */; };
@@ -143,6 +145,9 @@
 		D03E436D1FA121AD00E47E5D /* MPRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPRequest.m; sourceTree = "<group>"; };
 		D05B08CF1FBD2B1E00ABFC08 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		D05B08D01FBD2B1E00ABFC08 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		D05B08D21FBD39BF00ABFC08 /* ClassSummaryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassSummaryViewController.h; sourceTree = "<group>"; };
+		D05B08D31FBD39BF00ABFC08 /* ClassSummaryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassSummaryViewController.m; sourceTree = "<group>"; };
+		D05B08D51FBD449B00ABFC08 /* PDFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFKit.framework; path = System/Library/Frameworks/PDFKit.framework; sourceTree = SDKROOT; };
 		D067A59F1FB2082F00EDC90E /* ResultsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsTableViewController.h; sourceTree = "<group>"; };
 		D067A5A01FB2082F00EDC90E /* ResultsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewController.m; sourceTree = "<group>"; };
 		D0712BC01FA7C2D7005F631F /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -207,6 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D05B08D61FBD44B400ABFC08 /* PDFKit.framework in Frameworks */,
 				D0712BC81FA7C50D005F631F /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +326,8 @@
 				D0712BC41FA7C3FA005F631F /* MainViewController.m */,
 				D067A59F1FB2082F00EDC90E /* ResultsTableViewController.h */,
 				D067A5A01FB2082F00EDC90E /* ResultsTableViewController.m */,
+				D05B08D21FBD39BF00ABFC08 /* ClassSummaryViewController.h */,
+				D05B08D31FBD39BF00ABFC08 /* ClassSummaryViewController.m */,
 				D02F3A561F97E8AB00E49A46 /* Main.storyboard */,
 				D02F3A591F97E8AB00E49A46 /* Assets.xcassets */,
 				D02F3A5B1F97E8AB00E49A46 /* LaunchScreen.storyboard */,
@@ -409,6 +417,7 @@
 		D0712BC61FA7C502005F631F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D05B08D51FBD449B00ABFC08 /* PDFKit.framework */,
 				D0712BC71FA7C502005F631F /* Security.framework */,
 			);
 			name = Frameworks;
@@ -652,6 +661,7 @@
 				D0712C071FA806B6005F631F /* HTMLSelector.m in Sources */,
 				D0712BFC1FA806B6005F631F /* HTMLEntities.m in Sources */,
 				D03E43631FA11E1000E47E5D /* UIWebView+AFNetworking.m in Sources */,
+				D05B08D41FBD39BF00ABFC08 /* ClassSummaryViewController.m in Sources */,
 				D0712BFD1FA806B6005F631F /* HTMLTokenizer.m in Sources */,
 				D0712BC51FA7C3FA005F631F /* MainViewController.m in Sources */,
 				D089FEF71FAEB32A00184BD9 /* BeautifulTableViewCell.m in Sources */,

@@ -12,10 +12,11 @@
 #import "LoginViewController.h"
 #import "HTMLReader.h"
 #import "MPStringFromHTML.h"
+#import "ClassSummaryViewController.h"
 
 @implementation MPRequest
 
-- (void)requestLoginAtURL:(NSString *)postURL withUsername:(NSString *)username andPassword:(NSString *)password saveResponseToFileName:(NSString *)responseFileName isMainRequest:(BOOL)isMainRequest isAutoLogin:(BOOL)isAutoLogin
+- (void)requestLoginAtURL:(NSString *)postURL withUsername:(NSString *)username andPassword:(NSString *)password saveResponseToFileName:(NSString *)responseFileName isMainRequest:(BOOL)isMainRequest isAutoLogin:(BOOL)isAutoLogin expectsPDF:(BOOL)expectsPDF
 {
     //parameters, do not touch anything pls
     NSDictionary *parameterDictionary = @{
@@ -31,7 +32,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     AFHTTPResponseSerializer *responseSerializer = [AFHTTPResponseSerializer serializer];
-    responseSerializer.acceptableContentTypes = [NSSet setWithObjects: @"text/html", @"application/json", @"text/json", @"text/javascript", @"text/plain", nil];
+    responseSerializer.acceptableContentTypes = [NSSet setWithObjects: @"text/html", @"application/pdf", @"application/json", @"text/json", @"text/javascript", @"text/plain", nil];
     
     manager.responseSerializer = responseSerializer;
     
@@ -65,8 +66,12 @@
          //write data to HTML file
          [fileManager createFileAtPath:htmlFilePath contents:responseObject attributes:nil];
          
+         
          //check for successful login
-         [self checkForSuccessfulLogin:responseFileName isMainRequest:isMainRequest isAutoLogin:isAutoLogin];
+         if (expectsPDF != YES)
+         {
+             [self checkForSuccessfulLogin:responseFileName isMainRequest:isMainRequest isAutoLogin:isAutoLogin];
+         }
      }
      failure:^(NSURLSessionDataTask  *_Nullable task, NSError  *_Nonnull error)
      {
@@ -75,6 +80,8 @@
              [self failureAlert:@"Échec" withMessage:error.localizedDescription];
          }
          [self resetButtonText];
+         
+         NSLog(@"%@", error);
      }];
 }
 
@@ -160,7 +167,10 @@
     //get the data directory
     NSString *dataDir = [documentsDirectory stringByAppendingPathComponent:@"tempData"];
     
-    [fileManager removeItemAtPath:dataDir error:nil];
+    if ([fileManager fileExistsAtPath:dataDir])
+    {
+        [fileManager removeItemAtPath:dataDir error:nil];
+    }
 }
 
 - (void)failureAlert:(NSString *)title withMessage:(NSString *)message

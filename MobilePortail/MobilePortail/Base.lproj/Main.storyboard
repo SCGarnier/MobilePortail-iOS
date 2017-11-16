@@ -115,7 +115,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="ZNJ-iT-EiL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.15684100985527039" green="0.15687525272369385" blue="0.15683883428573608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Horaire d'aujourd'hui" id="UcF-MR-XOk">
                                 <cells>
@@ -424,12 +424,41 @@
             </objects>
             <point key="canvasLocation" x="1496.8" y="-572.56371814092961"/>
         </scene>
+        <!--Cours-->
+        <scene sceneID="LfU-Jr-xeL">
+            <objects>
+                <viewController restorationIdentifier="PDFViewer" storyboardIdentifier="PDFViewer" id="lua-Y1-3Ph" customClass="ClassSummaryViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dvh-g9-Pzj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8vt-CY-TAL">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.15684100989999999" green="0.1568752527" blue="0.15683883430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="8vt-CY-TAL" firstAttribute="centerX" secondItem="dvh-g9-Pzj" secondAttribute="centerX" id="8KE-2i-Xn8"/>
+                            <constraint firstItem="8vt-CY-TAL" firstAttribute="centerY" secondItem="dvh-g9-Pzj" secondAttribute="centerY" id="KEx-nx-1iL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5xb-X0-oBX"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Cours" largeTitleDisplayMode="never" id="gAj-p5-bGZ"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="8vt-CY-TAL" id="a80-Cx-Hng"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P1t-7j-FQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2196" y="-572"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ETu-ar-uv5">
             <objects>
                 <navigationController id="fr1-p4-Cwm" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="0TU-r4-tML">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="0TU-r4-tML">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>

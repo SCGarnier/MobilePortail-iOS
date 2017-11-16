@@ -10,6 +10,7 @@
 #import "BeautifulTableViewCell.h"
 #import "MPStringFromHTML.h"
 #import "HTMLReader.h"
+#import "ClassSummaryViewController.h"
 
 @interface ResultsTableViewController ()
 
@@ -20,7 +21,7 @@
 - (void)viewDidLoad
 {
     self.tableView.separatorColor = [UIColor clearColor];
-    [self.tableView setContentInset:UIEdgeInsetsMake(8, 0, 32, 0)];
+    [self.tableView setContentInset:UIEdgeInsetsMake(16, 0, 32, 0)];
     
     
     [super viewDidLoad];
@@ -52,10 +53,8 @@
     return [results count];
 }
 
-- (NSArray *)getSchoolResults
+- (HTMLNode *)getResultTable
 {
-    NSArray *results = [[NSArray alloc] init];
-    
     MPStringFromHTML *getString = [MPStringFromHTML new];
     
     //get string from data
@@ -66,7 +65,15 @@
     
     HTMLNode *scheduleTable = [schedulePage firstNodeMatchingSelector:@"table#Table1"];
     
-    //NSLog(@"%@", [[[[[[[scheduleTable children] objectAtIndex:1] children] objectAtIndex:0] children] objectAtIndex:1] children]);
+    return scheduleTable;
+}
+
+- (NSArray *)getSchoolResults
+{
+    NSArray *results = [[NSArray alloc] init];
+    
+    //get the result table
+    HTMLNode *scheduleTable = [self getResultTable];
     
     NSOrderedSet *markTable = [[[scheduleTable children] objectAtIndex:1] children];
     NSMutableArray *markInfo = [[NSMutableArray alloc] init];
@@ -195,7 +202,58 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%ld", (long)indexPath.row);
+    //get the result table
+    HTMLNode *scheduleTable = [self getResultTable];
+    
+    NSOrderedSet *markTable = [[[scheduleTable children] objectAtIndex:1] children];
+    
+    BOOL hasData;
+    if ([[[[[markTable objectAtIndex:indexPath.row+1] children] objectAtIndex:4] children] count] != 0)
+    {
+        hasData = YES;
+    }
+    else
+    {
+        hasData = NO;
+    }
+    
+    if (hasData == YES)
+    {
+        HTMLNode *linkNode = [[[[[markTable objectAtIndex:indexPath.row+1] children] objectAtIndex:4] children] objectAtIndex:0];
+        
+        if ([[linkNode children] count] > 0)
+        {
+            //cut off the beginning unnecessary part and fix the ampersands
+            NSString *linkString = [[[linkNode serializedFragment] stringByReplacingOccurrencesOfString:@"<a onclick=\"javascript:window.open('" withString:@""] stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+            
+            //cut off the end unnecessary part
+            NSRange range = [linkString rangeOfString:@"'"];
+            if (range.location != NSNotFound)
+            {
+                linkString = [@"https://apps.cscmonavenir.ca" stringByAppendingString:[linkString substringToIndex:range.location]];
+            }
+            else
+            {
+                linkString = @"";
+            }
+            
+            [[NSUserDefaults standardUserDefaults] setObject:linkString forKey:@"desiredSummary"];
+            
+            //open class summary view
+            ClassSummaryViewController *summaryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PDFViewer"];
+            [self.navigationController pushViewController:summaryViewController animated:YES];
+        }
+        else
+        {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+    }
+    else
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
