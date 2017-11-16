@@ -21,7 +21,7 @@
 - (void)viewDidLoad
 {
     self.tableView.separatorColor = [UIColor clearColor];
-    [self.tableView setContentInset:UIEdgeInsetsMake(16, 0, 32, 0)];
+    [self.tableView setContentInset:UIEdgeInsetsMake(32, 0, 32, 0)];
     
     
     [super viewDidLoad];
