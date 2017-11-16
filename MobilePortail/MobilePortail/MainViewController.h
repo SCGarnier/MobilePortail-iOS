@@ -25,5 +25,7 @@
     IBOutlet UILabel *period4Teacher;
     
     IBOutlet UITableView *TableView;
+    
+    BOOL isConnectedToInternet;
 }
 @end

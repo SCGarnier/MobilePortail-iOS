@@ -35,6 +35,7 @@
 		D03E436A1FA11E1000E47E5D /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D03E435A1FA11E1000E47E5D /* AFNetworkReachabilityManager.m */; };
 		D03E436B1FA11E1000E47E5D /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = D03E435B1FA11E1000E47E5D /* AFSecurityPolicy.m */; };
 		D03E436E1FA121AD00E47E5D /* MPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D03E436D1FA121AD00E47E5D /* MPRequest.m */; };
+		D05B08D11FBD2B1E00ABFC08 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D05B08CF1FBD2B1E00ABFC08 /* Reachability.m */; };
 		D067A5A11FB2083000EDC90E /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D067A5A01FB2082F00EDC90E /* ResultsTableViewController.m */; };
 		D0712BC21FA7C2D7005F631F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712BC11FA7C2D7005F631F /* LoginViewController.m */; };
 		D0712BC51FA7C3FA005F631F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712BC41FA7C3FA005F631F /* MainViewController.m */; };
@@ -140,6 +141,8 @@
 		D03E435C1FA11E1000E47E5D /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		D03E436C1FA121AD00E47E5D /* MPRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPRequest.h; sourceTree = "<group>"; };
 		D03E436D1FA121AD00E47E5D /* MPRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPRequest.m; sourceTree = "<group>"; };
+		D05B08CF1FBD2B1E00ABFC08 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		D05B08D01FBD2B1E00ABFC08 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		D067A59F1FB2082F00EDC90E /* ResultsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsTableViewController.h; sourceTree = "<group>"; };
 		D067A5A01FB2082F00EDC90E /* ResultsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewController.m; sourceTree = "<group>"; };
 		D0712BC01FA7C2D7005F631F /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -280,6 +283,7 @@
 				D03E433A1FA11E0F00E47E5D /* UIKit+AFNetworking */,
 				D0712BC91FA7C5EA005F631F /* SAMKeychain */,
 				D0712BD01FA806B6005F631F /* HTMLReader */,
+				D05B08CE1FBD2B1E00ABFC08 /* Reachability */,
 				D02F3A4F1F97E8AB00E49A46 /* MobilePortail */,
 				D02F3A681F97E8AB00E49A46 /* MobilePortailTests */,
 				D02F3A731F97E8AB00E49A46 /* MobilePortailUITests */,
@@ -391,6 +395,15 @@
 			);
 			name = AFNetworking;
 			path = "../../../../../../Assets/External App Components/AFNetworking/AFNetworking";
+			sourceTree = "<group>";
+		};
+		D05B08CE1FBD2B1E00ABFC08 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				D05B08D01FBD2B1E00ABFC08 /* Reachability.h */,
+				D05B08CF1FBD2B1E00ABFC08 /* Reachability.m */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		D0712BC61FA7C502005F631F /* Frameworks */ = {
@@ -633,6 +646,7 @@
 				D0712BFB1FA806B6005F631F /* HTMLTextNode.m in Sources */,
 				D067A5A11FB2083000EDC90E /* ResultsTableViewController.m in Sources */,
 				D03E435D1FA11E1000E47E5D /* UIProgressView+AFNetworking.m in Sources */,
+				D05B08D11FBD2B1E00ABFC08 /* Reachability.m in Sources */,
 				D0712C011FA806B6005F631F /* HTMLDocument.m in Sources */,
 				D02F3A551F97E8AB00E49A46 /* ViewController.m in Sources */,
 				D0712C071FA806B6005F631F /* HTMLSelector.m in Sources */,

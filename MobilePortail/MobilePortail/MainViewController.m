@@ -13,6 +13,7 @@
 #import "SAMKeychainQuery.h"
 #import "MPStringFromHTML.h"
 #import "HTMLReader.h"
+#import "Reachability.h"
 
 @interface MainViewController ()
 
@@ -23,6 +24,8 @@
 #pragma mark - Loading
 - (void)viewDidLoad
 {
+    [self updateScheduleInfo];
+    
     //sets the name to your username
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     
@@ -33,8 +36,32 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)checkForInternet
+{
+    //check for internet
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    
+    if (networkStatus != NotReachable)
+    {
+        isConnectedToInternet = YES;
+    }
+    else
+    {
+        isConnectedToInternet = NO;
+    }
+}
+
 - (IBAction)refreshTableView:(id)sender
 {
+    [self checkForInternet];
+    
+    if (isConnectedToInternet)
+    {
+        MPRequest *request = [MPRequest new];
+        [request deleteOldData];
+    }
+    
     [self checkForAuthentification];
 }
 
@@ -94,62 +121,68 @@
             [self logout:nil];
         }
         
-        //get and display info after login
-        NSArray *schedule = [self DaySchedule];
-        
-        //display period 1
-        period1Class.text = [[schedule objectAtIndex:0] objectForKey:@"courseName"];
-        period1Teacher.text = [[schedule objectAtIndex:0] objectForKey:@"teacherName"];
-        
-        if ([period1Class.text length] == 0)
-        {
-            period1Class.text = @"Aucun cours";
-        }
-        
-        if ([period1Teacher.text length] == 0) {
-            period1Teacher.text = @"Aucun enseignant";
-        }
-        
-        //display period 2
-        period2Class.text = [[schedule objectAtIndex:1] objectForKey:@"courseName"];
-        period2Teacher.text = [[schedule objectAtIndex:1] objectForKey:@"teacherName"];
-        
-        if ([period2Class.text length] == 0)
-        {
-            period2Class.text = @"Aucun cours";
-        }
-        
-        if ([period2Teacher.text length] == 0)
-        {
-            period2Teacher.text = @"Aucun enseignant";
-        }
-        //display period 3
-        period3Class.text = [[schedule objectAtIndex:2] objectForKey:@"courseName"];
-        period3Teacher.text = [[schedule objectAtIndex:2] objectForKey:@"teacherName"];
-        
-        if ([period3Class.text length] == 0)
-        {
-            period3Class.text = @"Aucun cours";
-        }
-        
-        if ([period3Teacher.text length] == 0)
-        {
-            period3Teacher.text = @"Aucun enseignant";
-        }
-        
-        //display period 4
-        period4Class.text = [[schedule objectAtIndex:3] objectForKey:@"courseName"];
-        period4Teacher.text = [[schedule objectAtIndex:3] objectForKey:@"teacherName"];
-        
-        if ([period4Class.text length] == 0)
-        {
-            period4Class.text = @"Aucun cours";
-        }
-        
-        if ([period4Teacher.text length] == 0)
-        {
-            period4Teacher.text = @"Aucun enseignant";
-        }
+        [self updateScheduleInfo];
+    }
+}
+
+#pragma mark - Refreshing things
+- (void)updateScheduleInfo
+{
+    //get and display info after login
+    NSArray *schedule = [self DaySchedule];
+    
+    //display period 1
+    period1Class.text = [[schedule objectAtIndex:0] objectForKey:@"courseName"];
+    period1Teacher.text = [[schedule objectAtIndex:0] objectForKey:@"teacherName"];
+    
+    if ([period1Class.text length] == 0)
+    {
+        period1Class.text = @"Aucun cours";
+    }
+    
+    if ([period1Teacher.text length] == 0) {
+        period1Teacher.text = @"Aucun enseignant";
+    }
+    
+    //display period 2
+    period2Class.text = [[schedule objectAtIndex:1] objectForKey:@"courseName"];
+    period2Teacher.text = [[schedule objectAtIndex:1] objectForKey:@"teacherName"];
+    
+    if ([period2Class.text length] == 0)
+    {
+        period2Class.text = @"Aucun cours";
+    }
+    
+    if ([period2Teacher.text length] == 0)
+    {
+        period2Teacher.text = @"Aucun enseignant";
+    }
+    //display period 3
+    period3Class.text = [[schedule objectAtIndex:2] objectForKey:@"courseName"];
+    period3Teacher.text = [[schedule objectAtIndex:2] objectForKey:@"teacherName"];
+    
+    if ([period3Class.text length] == 0)
+    {
+        period3Class.text = @"Aucun cours";
+    }
+    
+    if ([period3Teacher.text length] == 0)
+    {
+        period3Teacher.text = @"Aucun enseignant";
+    }
+    
+    //display period 4
+    period4Class.text = [[schedule objectAtIndex:3] objectForKey:@"courseName"];
+    period4Teacher.text = [[schedule objectAtIndex:3] objectForKey:@"teacherName"];
+    
+    if ([period4Class.text length] == 0)
+    {
+        period4Class.text = @"Aucun cours";
+    }
+    
+    if ([period4Teacher.text length] == 0)
+    {
+        period4Teacher.text = @"Aucun enseignant";
     }
 }
 
@@ -311,8 +344,6 @@
     
     return dataDict;
 }
-
-
 
 
 #pragma mark - Other

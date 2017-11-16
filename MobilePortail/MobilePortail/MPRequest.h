@@ -14,4 +14,8 @@
 
 - (BOOL)checkForSuccessfulLogin:(NSString *)fileName isMainRequest:(BOOL)isMainRequest isAutoLogin:(BOOL)isAutoLogin;
 
+- (void)failureAlert:(NSString *)title withMessage:(NSString *)message;
+
+- (void)deleteOldData;
+
 @end

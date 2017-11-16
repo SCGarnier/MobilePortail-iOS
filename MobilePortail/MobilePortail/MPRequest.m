@@ -150,6 +150,19 @@
     [loginVC resetLoginButtonText];
 }
 
+- (void)deleteOldData
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    //get documents directory
+    NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    
+    //get the data directory
+    NSString *dataDir = [documentsDirectory stringByAppendingPathComponent:@"tempData"];
+    
+    [fileManager removeItemAtPath:dataDir error:nil];
+}
+
 - (void)failureAlert:(NSString *)title withMessage:(NSString *)message
 {
     [self resetButtonText];
