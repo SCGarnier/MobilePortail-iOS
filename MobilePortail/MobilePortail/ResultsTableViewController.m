@@ -88,6 +88,7 @@
                 NSString *className = [[[[teacherAndCourseName objectAtIndex:0] children] objectAtIndex:0] textContent];
                 
                 
+                //the next two if/else statements are purely to fix an issue that only occured on Veron's account
                 BOOL hasData;
                 if ([[[[[markTable objectAtIndex:index] children] objectAtIndex:4] children] count] != 0)
                 {
@@ -107,6 +108,7 @@
                 {
                     performance = @"N/A";
                 }
+                //end of Veron's if statements
                 
                 
                 NSArray *currentClassInfo = [NSArray arrayWithObjects:teacher, className, performance, nil];
@@ -155,7 +157,7 @@
     }
     
     //set result to the right label if a result is found
-    if ([[resultString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
+    if ([[resultString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0 || [resultString containsString:@"N/A"])
     {
         cell.resultLabel.text = @"N/A";
         cell.circleView.backgroundColor = [UIColor colorWithRed:0.60 green:0.60 blue:0.60 alpha:1.0];
