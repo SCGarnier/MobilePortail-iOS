@@ -24,7 +24,14 @@
 #pragma mark - Loading
 - (void)viewDidLoad
 {
-    [self updateScheduleInfo];
+    NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
+    NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
+    
+    if ([savedUsername length] != 0 && [savedPassword length] != 0)
+    {
+        [self updateScheduleInfo];
+    }
+    
     
     //sets the name to your username
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
