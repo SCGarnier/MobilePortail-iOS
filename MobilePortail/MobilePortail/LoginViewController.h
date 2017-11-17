@@ -18,8 +18,6 @@
     IBOutlet UIView *squircleView;
     
     IBOutlet UILabel *titleLabel;
-    
-    int position;
 }
 
 - (void)resetLoginButtonText;

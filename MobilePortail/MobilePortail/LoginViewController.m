@@ -11,7 +11,7 @@
 #import "SAMKeychain.h"
 #import "SAMKeychainQuery.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 
 @end
 
@@ -29,6 +29,11 @@
     usernameTextField.text = savedUsername;
     passwordTextField.text = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
     
+    usernameTextField.delegate = self;
+    passwordTextField.delegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:Nil];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -37,7 +42,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:Nil];
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasHidden:) name:UIKeyboardDidHideNotification object:nil];
 }
 
@@ -60,6 +64,8 @@
     //save login info
     [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"PortailUsername"];
     [SAMKeychain setPassword:password forService:@"Portail" account:username];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"alreadyMoved"];
 }
 
 - (void)resetLoginButtonText
@@ -75,7 +81,8 @@
 
 #pragma mark - keyboard stuff
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     [textField resignFirstResponder];
     return NO;
 }
@@ -84,17 +91,30 @@
 {
     CGSize keyboardSize = [[[notif userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
-    position = squircleView.frame.origin.y;
+    if (keyboardSize.height != 0)
+    {
+        NSString * cgSizeString = NSStringFromCGSize(keyboardSize);
+        [[NSUserDefaults standardUserDefaults] setObject:cgSizeString forKey:@"keyboardSize"];
+    }
+    else
+    {
+        NSString * cgSizeString = [[NSUserDefaults standardUserDefaults] objectForKey:@"keyboardSize"];
+        NSArray *parts = [cgSizeString componentsSeparatedByString:@","];
+        float width = [parts.firstObject floatValue];
+        float height = [parts.lastObject floatValue];
+        keyboardSize = CGSizeMake(width, height);
+    }
+    
+    int position = squircleView.frame.origin.y;
     
     [UIView animateWithDuration:0.35 animations:^
      {
-         squircleView.frame = CGRectMake(squircleView.frame.origin.x, position - keyboardSize.height/2, squircleView.frame.size.width, squircleView.frame.size.height);
+         squircleView.frame = CGRectMake(squircleView.frame.origin.x, position - (keyboardSize.height/2), squircleView.frame.size.width, squircleView.frame.size.height);
          
          titleLabel.alpha = 0;
      }];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
-    
 }
 
 /*
