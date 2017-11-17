@@ -524,7 +524,7 @@
         <!--Cours-->
         <scene sceneID="LfU-Jr-xeL">
             <objects>
-                <viewController restorationIdentifier="PDFViewer" storyboardIdentifier="PDFViewer" id="lua-Y1-3Ph" customClass="ClassSummaryViewController" sceneMemberID="viewController">
+                <viewController id="lua-Y1-3Ph" customClass="ClassSummaryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dvh-g9-Pzj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -540,7 +540,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5xb-X0-oBX"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Cours" largeTitleDisplayMode="never" id="gAj-p5-bGZ"/>
+                    <navigationItem key="navigationItem" title="Cours" largeTitleDisplayMode="never" id="gAj-p5-bGZ">
+                        <barButtonItem key="rightBarButtonItem" title="Terminé" style="done" id="eNC-kn-2mi">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="done:" destination="lua-Y1-3Ph" id="ebX-bN-eEe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
                         <outlet property="loadingIndicator" destination="8vt-CY-TAL" id="a80-Cx-Hng"/>
@@ -548,7 +555,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1t-7j-FQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2196" y="-572"/>
+            <point key="canvasLocation" x="2991" y="-572"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Sy0-Pv-tgZ">
+            <objects>
+                <navigationController restorationIdentifier="PDFViewer" storyboardIdentifier="PDFViewer" id="6Qp-Ia-KAz" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="6hN-rX-L2I">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lua-Y1-3Ph" kind="relationship" relationship="rootViewController" id="XCt-fp-F9R"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q9e-Hn-4lv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2231" y="-572"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ETu-ar-uv5">

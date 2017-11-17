@@ -241,7 +241,7 @@
             
             //open class summary view
             ClassSummaryViewController *summaryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PDFViewer"];
-            [self.navigationController pushViewController:summaryViewController animated:YES];
+            [self presentViewController:summaryViewController animated:YES completion:nil];
         }
         else
         {
