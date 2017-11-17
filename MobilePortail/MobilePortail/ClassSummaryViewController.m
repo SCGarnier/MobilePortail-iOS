@@ -79,6 +79,7 @@
     pdfView.document = pdfDocument;
     pdfView.displayMode = kPDFDisplaySinglePageContinuous;
     pdfView.autoScales = true;
+    pdfView.scaleFactor = pdfView.scaleFactor * 0.95;
 
     [self.view addSubview:pdfView];
 }
