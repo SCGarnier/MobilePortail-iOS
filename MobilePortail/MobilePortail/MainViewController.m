@@ -27,11 +27,12 @@
     NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
     
-    if ([savedUsername length] != 0 && [savedPassword length] != 0)
+    BOOL isLoggedIn = [self checkForAuthentification];
+    
+    if (isLoggedIn && ([savedUsername length] != 0 && [savedPassword length] != 0))
     {
         [self updateScheduleInfo];
     }
-    
     
     //sets the name to your username
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
@@ -98,7 +99,7 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"currentMarks"];
 }
 
-- (void)checkForAuthentification
+- (BOOL)checkForAuthentification
 {
     //retrieve saved login info
     NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
@@ -109,6 +110,7 @@
     {
         //if there is some missing saved info, open the login screen
         [self openLoginPage];
+        return NO;
     }
     else
     {
@@ -129,6 +131,7 @@
         }
         
         [self updateScheduleInfo];
+        return isLoggedIn;
     }
 }
 
