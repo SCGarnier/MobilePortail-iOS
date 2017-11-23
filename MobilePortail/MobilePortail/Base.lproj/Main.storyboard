@@ -513,12 +513,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Résultats" id="Gkd-wF-dRn"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="UYy-5P-U3a">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <connections>
-                            <action selector="refresh:" destination="1Pg-gM-lqm" eventType="valueChanged" id="Lmu-JZ-vwR"/>
-                        </connections>
-                    </refreshControl>
                     <connections>
                         <outlet property="_tableView" destination="wP4-Oz-9nY" id="wx1-Sz-6FB"/>
                     </connections>

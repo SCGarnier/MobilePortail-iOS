@@ -44,9 +44,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    /*
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [self.tableView addSubview:refreshControl];
     [refreshControl addTarget:self action:@selector(refreshTableView:) forControlEvents:UIControlEventValueChanged];
+     */
 }
 
 - (void)checkForInternet
@@ -139,7 +141,7 @@
         
         MPRequest *request = [MPRequest new];
         //request for class results
-        [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"resultdata.html" isMainRequest:YES isAutoLogin:YES expectsPDF:NO];
+        [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"resultdata.html" isMainRequest:NO isAutoLogin:YES expectsPDF:NO];
         //request for schedule
         [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schedule.html" isMainRequest:NO isAutoLogin:YES expectsPDF:NO];
         

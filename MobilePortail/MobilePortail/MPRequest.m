@@ -100,27 +100,7 @@
     {
         if ([[document firstNodeMatchingSelector:@"title"].textContent containsString:@"portail"])
         {
-            //If the title contains "portail", then the login failed due to an incorrect username or password.
-            if (isAutoLogin)
-            {
-                UIViewController *topController = [self getTopController];
-                
-                //if the autologin fails, open the manual login screen
-                @try
-                {
-                    ViewController *login = [topController.storyboard instantiateViewControllerWithIdentifier:@"login"];
-                    [topController presentViewController:login animated:YES completion:nil];
-                }
-                @catch (NSException *exception)
-                {
-                    //i don't really trust the code I wrote inside the try statement, which is why it's in a try-catch setup. There's no way to easily test it unless the school board messed up our passwords again, so if it fails, we just handle it gracefully.
-                    [self failureAlert:@"Échec de l'application" withMessage:@"S'il ne fonctionne plus, veuillez s'il-vous-plaît supprimer l'application et ensuite la re-télécharger"];
-                }
-            }
-            
-            [self resetButtonText];
-            
-            [self failureAlert:@"Nom d'utilisateur ou mot de passe incorrect" withMessage:@"Veuillez entrer le bon nom d'utilisateur et mot de passe"];
+            [self autoLoginFailure:isAutoLogin];
             
             return NO;
         }
@@ -139,7 +119,7 @@
         }
         else if ([[document firstNodeMatchingSelector:@"title"].textContent length] == 0)
         {
-            
+            return NO;
         }
         else
         {
@@ -151,6 +131,45 @@
             return NO;
         }
     }
+    else
+    {
+        if ([[document firstNodeMatchingSelector:@"title"].textContent containsString:@"portail"])
+        {
+            [self autoLoginFailure:isAutoLogin];
+            
+            return NO;
+        }
+        else
+        {
+            //just return no because if it's not the main request no one cares
+            return NO;
+        }
+    }
+}
+
+- (void)autoLoginFailure:(BOOL)isAutoLogin
+{
+    //If the title contains "portail", then the login failed due to an incorrect username or password.
+    if (isAutoLogin)
+    {
+        UIViewController *topController = [self getTopController];
+        
+        //if the autologin fails, open the manual login screen
+        @try
+        {
+            ViewController *login = [topController.storyboard instantiateViewControllerWithIdentifier:@"login"];
+            [topController presentViewController:login animated:YES completion:nil];
+        }
+        @catch (NSException *exception)
+        {
+            //i don't really trust the code I wrote inside the try statement, which is why it's in a try-catch setup. There's no way to easily test it unless the school board messed up our passwords again, so if it fails, we just handle it gracefully.
+            [self failureAlert:@"Échec de l'application" withMessage:@"S'il ne fonctionne plus, veuillez s'il-vous-plaît supprimer l'application et ensuite la re-télécharger"];
+        }
+    }
+    
+    [self resetButtonText];
+    
+    [self failureAlert:@"Nom d'utilisateur ou mot de passe incorrect" withMessage:@"Veuillez entrer le bon nom d'utilisateur et mot de passe"];
 }
 
 - (void)resetButtonText

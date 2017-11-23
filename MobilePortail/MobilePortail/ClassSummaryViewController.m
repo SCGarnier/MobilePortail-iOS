@@ -93,6 +93,7 @@
             [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
             [self presentViewController:alert animated:YES completion:nil];
         }];
+        NSLog(@"%@", exception);
     }
 }
 
