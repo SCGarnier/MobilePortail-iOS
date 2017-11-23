@@ -64,6 +64,7 @@
 		D0712C0F1FA90961005F631F /* MPStringFromHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0712C0E1FA90961005F631F /* MPStringFromHTML.m */; };
 		D089FEF71FAEB32A00184BD9 /* BeautifulTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D089FEF61FAEB32A00184BD9 /* BeautifulTableViewCell.m */; };
 		D089FEF91FAEBE7D00184BD9 /* cscmonavenir_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D089FEF81FAEBE7D00184BD9 /* cscmonavenir_logo.png */; };
+		D0A9F47B1FC4F1A800A44B5D /* templogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A9F47A1FC4F1A800A44B5D /* templogo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +206,7 @@
 		D089FEF51FAEB32A00184BD9 /* BeautifulTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautifulTableViewCell.h; sourceTree = "<group>"; };
 		D089FEF61FAEB32A00184BD9 /* BeautifulTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautifulTableViewCell.m; sourceTree = "<group>"; };
 		D089FEF81FAEBE7D00184BD9 /* cscmonavenir_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cscmonavenir_logo.png; sourceTree = "<group>"; };
+		D0A9F47A1FC4F1A800A44B5D /* templogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = templogo.png; path = ../../../Icons/templogo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,6 +494,7 @@
 		D0712C0C1FA90175005F631F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D0A9F47A1FC4F1A800A44B5D /* templogo.png */,
 				D089FEF81FAEBE7D00184BD9 /* cscmonavenir_logo.png */,
 			);
 			path = "Supporting Files";
@@ -621,6 +624,7 @@
 				D02F3A5D1F97E8AB00E49A46 /* LaunchScreen.storyboard in Resources */,
 				D02F3A5A1F97E8AB00E49A46 /* Assets.xcassets in Resources */,
 				D02F3A581F97E8AB00E49A46 /* Main.storyboard in Resources */,
+				D0A9F47B1FC4F1A800A44B5D /* templogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -54,6 +54,7 @@
     NSString *password = passwordTextField.text;
     
     [loginButton setTitle:@"Chargement..." forState:UIControlStateNormal];
+    [loginButton setEnabled:NO];
     
     MPRequest *request = [MPRequest new];
     //request for list of class results
@@ -70,7 +71,8 @@
 
 - (void)resetLoginButtonText
 {
-    loginButton.titleLabel.text = @"Log in";
+    [loginButton setTitle:@"Log In" forState:UIControlStateNormal];
+    [loginButton setEnabled:YES];
 }
 
 - (void)didReceiveMemoryWarning

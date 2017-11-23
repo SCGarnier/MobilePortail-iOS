@@ -129,8 +129,11 @@
         {
             [self logout:nil];
         }
+        else
+        {
+            [self updateScheduleInfo];
+        }
         
-        [self updateScheduleInfo];
         return isLoggedIn;
     }
 }
