@@ -70,68 +70,82 @@
 
 - (NSArray *)getSchoolResults
 {
-    NSArray *results = [[NSArray alloc] init];
-    
-    //get the result table
-    HTMLNode *scheduleTable = [self getResultTable];
-    
-    NSOrderedSet *markTable = [[[scheduleTable children] objectAtIndex:1] children];
-    NSMutableArray *markInfo = [[NSMutableArray alloc] init];
-    
-    for (id item in markTable)
+    @try
     {
-        if ([markTable indexOfObject:item] != 0)
+        NSArray *results = [[NSArray alloc] init];
+        
+        //get the result table
+        HTMLNode *scheduleTable = [self getResultTable];
+        
+        NSOrderedSet *markTable = [[[scheduleTable children] objectAtIndex:1] children];
+        NSMutableArray *markInfo = [[NSMutableArray alloc] init];
+        
+        for (id item in markTable)
         {
-            int index = (int)[markTable indexOfObject:item];
-            
-            NSOrderedSet * classMarkInfoSet = [[markTable objectAtIndex:index] children];
-            
-            if ([classMarkInfoSet count] > 0)
+            if ([markTable indexOfObject:item] != 0)
             {
-                //get the teacher and the course name
-                NSOrderedSet *teacherAndCourseName = [[[[classMarkInfoSet objectAtIndex:1] children] objectAtIndex:0] children];
+                int index = (int)[markTable indexOfObject:item];
                 
-                NSString *teacher = [[teacherAndCourseName objectAtIndex:2] textContent];
-                NSString *className = [[[[teacherAndCourseName objectAtIndex:0] children] objectAtIndex:0] textContent];
+                NSOrderedSet * classMarkInfoSet = [[markTable objectAtIndex:index] children];
                 
-                
-                //the next two if/else statements are purely to fix an issue that only occured on Veron's account
-                BOOL hasData;
-                if ([[[[[markTable objectAtIndex:index] children] objectAtIndex:4] children] count] != 0)
+                if ([classMarkInfoSet count] > 0)
                 {
-                    hasData = YES;
+                    //get the teacher and the course name
+                    NSOrderedSet *teacherAndCourseName = [[[[classMarkInfoSet objectAtIndex:1] children] objectAtIndex:0] children];
+                    
+                    NSString *teacher = [[teacherAndCourseName objectAtIndex:2] textContent];
+                    NSString *className = [[[[teacherAndCourseName objectAtIndex:0] children] objectAtIndex:0] textContent];
+                    
+                    
+                    //the next two if/else statements are purely to fix an issue that only occured on Veron's account
+                    BOOL hasData;
+                    if ([[[[[markTable objectAtIndex:index] children] objectAtIndex:4] children] count] != 0)
+                    {
+                        hasData = YES;
+                    }
+                    else
+                    {
+                        hasData = NO;
+                    }
+                    
+                    NSString *performance = [[NSString alloc] init];
+                    if (hasData == YES)
+                    {
+                        performance = [[[[[[markTable objectAtIndex:index] children] objectAtIndex:4] children] objectAtIndex:0] textContent];
+                    }
+                    else
+                    {
+                        performance = @"N/A";
+                    }
+                    //end of Veron's if statements
+                    
+                    //put the current class' mark info in an array
+                    NSArray *currentClassInfo = [NSArray arrayWithObjects:teacher, className, performance, nil];
+                    
+                    //add the current class to the array of classes
+                    [markInfo addObject:currentClassInfo];
                 }
-                else
-                {
-                    hasData = NO;
-                }
-                
-                NSString *performance = [[NSString alloc] init];
-                if (hasData == YES)
-                {
-                    performance = [[[[[[markTable objectAtIndex:index] children] objectAtIndex:4] children] objectAtIndex:0] textContent];
-                }
-                else
-                {
-                    performance = @"N/A";
-                }
-                //end of Veron's if statements
-                
-                //put the current class' mark info in an array
-                NSArray *currentClassInfo = [NSArray arrayWithObjects:teacher, className, performance, nil];
-                
-                //add the current class to the array of classes
-                [markInfo addObject:currentClassInfo];
             }
         }
+        
+        [[NSUserDefaults standardUserDefaults] setObject:markInfo forKey:@"currentMarks"];
+        
+        results = [NSArray arrayWithArray:markInfo];
+        classResults = [NSArray arrayWithArray:markInfo];
+        
+        return results;
     }
-    
-    [[NSUserDefaults standardUserDefaults] setObject:markInfo forKey:@"currentMarks"];
-    
-    results = [NSArray arrayWithArray:markInfo];
-    classResults = [NSArray arrayWithArray:markInfo];
-    
-    return results;
+    @catch (NSException *exception)
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Échec" message:@"L'application fonctionne seulement avec des comptes d'élèves qui sont en 9e année ou plus." preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action)
+        {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }]];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        return nil;
+    }
 }
 
 

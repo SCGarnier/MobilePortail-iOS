@@ -24,6 +24,7 @@
 #pragma mark - Loading
 - (void)viewDidLoad
 {
+    
     NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
     
@@ -60,7 +61,7 @@
     }
 }
 
-- (IBAction)refreshTableView:(id)sender
+- (void)deleteOldData
 {
     [self checkForInternet];
     
@@ -69,6 +70,11 @@
         MPRequest *request = [MPRequest new];
         [request deleteOldData];
     }
+}
+
+- (IBAction)refreshTableView:(id)sender
+{
+    [self deleteOldData];
     
     [self checkForAuthentification];
 }
@@ -76,6 +82,14 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self checkForAuthentification];
+    
+    MPRequest *request = [MPRequest new];
+    BOOL isLoggedIn = [request checkForSuccessfulLogin:@"resultdata.html" isMainRequest:YES isAutoLogin:YES];
+    if (isLoggedIn)
+    {
+        [self updateScheduleInfo];
+    }
+    
     
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
 }
@@ -97,6 +111,8 @@
     
     //delete mark info
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"currentMarks"];
+    
+    [self deleteOldData];
 }
 
 - (BOOL)checkForAuthentification
@@ -109,6 +125,7 @@
     if ([savedUsername length] == 0 || [savedPassword length] == 0)
     {
         //if there is some missing saved info, open the login screen
+        [self deleteOldData];
         [self openLoginPage];
         return NO;
     }

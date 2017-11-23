@@ -73,15 +73,27 @@
     
     NSURL *fileURL = [NSURL fileURLWithPath:path];
     
-    PDFDocument *pdfDocument = [[PDFDocument alloc] initWithURL:fileURL];
-    
-    PDFView *pdfView = [[PDFView alloc] initWithFrame: self.view.bounds];
-    pdfView.document = pdfDocument;
-    pdfView.displayMode = kPDFDisplaySinglePageContinuous;
-    pdfView.autoScales = true;
-    pdfView.scaleFactor = pdfView.scaleFactor * 0.95;
-
-    [self.view addSubview:pdfView];
+    @try
+    {
+        PDFDocument *pdfDocument = [[PDFDocument alloc] initWithURL:fileURL];
+        
+        PDFView *pdfView = [[PDFView alloc] initWithFrame: self.view.bounds];
+        pdfView.document = pdfDocument;
+        pdfView.displayMode = kPDFDisplaySinglePageContinuous;
+        pdfView.autoScales = true;
+        pdfView.scaleFactor = pdfView.scaleFactor * 0.95;
+        
+        [self.view addSubview:pdfView];
+    }
+    @catch (NSException *exception)
+    {
+        //if it fails to use the PDF function (probably iOS 9 or 10 or whatever), just go back
+        [self dismissViewControllerAnimated:YES completion:^{
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Échec" message:@"L'application n'a pas pu afficher les résultats" preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:alert animated:YES completion:nil];
+        }];
+    }
 }
 
 - (void)deleteOldData

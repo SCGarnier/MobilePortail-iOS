@@ -34,6 +34,11 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:Nil];
     
+    
+    NSTimer *checkForRequestFinishTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(resetLoginButtonText) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:checkForRequestFinishTimer forMode:NSDefaultRunLoopMode];
+    [checkForRequestFinishTimer fire];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -67,12 +72,16 @@
     [SAMKeychain setPassword:password forService:@"Portail" account:username];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"alreadyMoved"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"loggingInDone"];
 }
 
 - (void)resetLoginButtonText
 {
-    [loginButton setTitle:@"Log In" forState:UIControlStateNormal];
-    [loginButton setEnabled:YES];
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"loggingInDone"] boolValue])
+    {
+        [loginButton setTitle:@"Log In" forState:UIControlStateNormal];
+        [loginButton setEnabled:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
