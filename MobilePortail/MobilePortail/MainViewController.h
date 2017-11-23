@@ -30,5 +30,6 @@
 }
 
 - (void)deleteOldData;
+- (BOOL)checkForAuthentification;
 
 @end

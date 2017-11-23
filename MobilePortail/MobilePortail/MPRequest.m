@@ -137,6 +137,10 @@
             
             return YES;
         }
+        else if ([[document firstNodeMatchingSelector:@"title"].textContent length] == 0)
+        {
+            
+        }
         else
         {
             //If neither are contained, either portail is broken, or got a large enough update that it warrants an app update

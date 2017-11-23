@@ -43,6 +43,10 @@
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [self.tableView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(refreshTableView:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)checkForInternet
@@ -74,9 +78,9 @@
 
 - (IBAction)refreshTableView:(id)sender
 {
-    [self deleteOldData];
-    
     [self checkForAuthentification];
+    
+    [sender endRefreshing];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -89,7 +93,6 @@
     {
         [self updateScheduleInfo];
     }
-    
     
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
 }
@@ -110,7 +113,7 @@
     //delete mark info
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"currentMarks"];
     
-    //[self deleteOldData];
+    [self deleteOldData];
     
     //open login page only after cleaning out all the saved data
     [self openLoginPage];

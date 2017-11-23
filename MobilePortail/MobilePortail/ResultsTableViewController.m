@@ -11,6 +11,7 @@
 #import "MPStringFromHTML.h"
 #import "HTMLReader.h"
 #import "ClassSummaryViewController.h"
+#import "MainViewController.h"
 
 @interface ResultsTableViewController ()
 
@@ -18,6 +19,7 @@
 
 @implementation ResultsTableViewController
 
+#pragma mark - Information acquisition
 - (void)viewDidLoad
 {
     self.tableView.separatorColor = [UIColor clearColor];
@@ -37,6 +39,20 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (IBAction)refresh:(id)sender
+{
+    MainViewController *main = [MainViewController new];
+    BOOL isAuthenticated = [main checkForAuthentification];
+    
+    if (isAuthenticated)
+    {
+        [_tableView reloadData];
+    }
+    
+    [sender endRefreshing];
 }
 
 #pragma mark - Table view data source
