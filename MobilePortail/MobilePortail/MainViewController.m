@@ -103,8 +103,6 @@
 
 - (IBAction)logout:(id)sender
 {
-    [self openLoginPage];
-    
     //delete saved password
     NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     [SAMKeychain deletePasswordForService:@"Portail" account:username];
@@ -112,7 +110,10 @@
     //delete mark info
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"currentMarks"];
     
-    [self deleteOldData];
+    //[self deleteOldData];
+    
+    //open login page only after cleaning out all the saved data
+    [self openLoginPage];
 }
 
 - (BOOL)checkForAuthentification
@@ -239,7 +240,15 @@
     HTMLNode * periodThreeList = [actualTable childAtIndex:3];
     HTMLNode * periodFourList = [actualTable childAtIndex:4];
     
-    int dayNumber = [self currentDayNumberWithPeriodOne:periodOneList andPeriodTwo:periodTwoList andPeriodThree:periodThreeList andPeriodFour:periodFourList];
+    int dayNumber;
+    @try
+    {
+        dayNumber = [self currentDayNumberWithPeriodOne:periodOneList andPeriodTwo:periodTwoList andPeriodThree:periodThreeList andPeriodFour:periodFourList];
+    }
+    @catch (NSException *exception)
+    {
+        [self logout:nil];
+    }
     
     if (dayNumber == 0)
     {

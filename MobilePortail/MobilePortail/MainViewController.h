@@ -28,4 +28,7 @@
     
     BOOL isConnectedToInternet;
 }
+
+- (void)deleteOldData;
+
 @end

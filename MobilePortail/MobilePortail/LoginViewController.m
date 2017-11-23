@@ -24,8 +24,12 @@
 
 - (void)viewDidLoad
 {
+    //delete old data to begin
+    MPRequest *request = [MPRequest new];
+    [request deleteOldData];
+    
     //retrieve saved info and then put them in the textfields
-    NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
+    NSString *savedUsername = [[[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"] lowercaseString];
     usernameTextField.text = savedUsername;
     passwordTextField.text = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
     
@@ -53,7 +57,7 @@
 - (IBAction)login:(id)sender
 {
     // username string
-    NSString *username = usernameTextField.text;
+    NSString *username = [usernameTextField.text lowercaseString];
     
     // password string
     NSString *password = passwordTextField.text;
