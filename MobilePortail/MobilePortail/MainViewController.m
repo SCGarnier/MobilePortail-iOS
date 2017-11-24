@@ -127,6 +127,17 @@
     [self openLoginPage];
 }
 
+- (void)logOutLogIn
+{
+    //delete mark info
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"currentMarks"];
+    
+    [self deleteOldData];
+    
+    [self viewDidLoad];
+    [self viewDidAppear:YES];
+}
+
 - (BOOL)checkForAuthentification
 {
     //retrieve saved login info
@@ -258,7 +269,16 @@
     }
     @catch (NSException *exception)
     {
-        [self logout:nil];
+        @try
+        {
+            [self logOutLogIn];
+        }
+        @catch (NSException *exception)
+        {
+            [self logout:nil];
+        }
+        MPRequest *request = [MPRequest new];
+        [request failureAlert:@"Échec" withMessage:@"Il y a eu une erreur. Si vous voyez l'écran de login, s'il vous plaît, veuillez re-rentrer votre nom d'utilisateur et votre mot de passe"];
     }
     
     if (dayNumber == 0)
