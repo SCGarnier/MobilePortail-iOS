@@ -20,7 +20,10 @@
 
 - (void)viewDidLoad
 {
-    self.navigationController.navigationBar.prefersLargeTitles = true;
+    if (@available(iOS 11.0, *))
+    {
+        self.navigationController.navigationBar.prefersLargeTitles = true;
+    }
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -73,8 +76,9 @@
     
     NSURL *fileURL = [NSURL fileURLWithPath:path];
     
-    @try
+    if (@available(iOS 11.0, *))
     {
+        //Display PDF properly if iOS version is 11.0 or higher
         PDFDocument *pdfDocument = [[PDFDocument alloc] initWithURL:fileURL];
         
         PDFView *pdfView = [[PDFView alloc] initWithFrame: self.view.bounds];
@@ -85,15 +89,21 @@
         
         [self.view addSubview:pdfView];
     }
-    @catch (NSException *exception)
+    else
     {
-        //if it fails to use the PDF function (probably iOS 9 or 10 or whatever), just go back
-        [self dismissViewControllerAnimated:YES completion:^{
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Échec" message:@"L'application n'a pas pu afficher les résultats" preferredStyle:UIAlertControllerStyleAlert];
-            [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-            [self presentViewController:alert animated:YES completion:nil];
-        }];
-        NSLog(@"%@", exception);
+        //if it fails to use PDFKit (device is probably on iOS 9 or 10 or whatever), just use the old crusty way of displaying PDFs
+        UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+        [webView setScalesPageToFit:YES];
+        webView.opaque = NO;
+        webView.backgroundColor = [UIColor clearColor];
+        
+        webView.center = CGPointMake(webView.center.x, webView.center.y + 64);
+        
+        NSURL *targetURL = fileURL;
+        NSURLRequest *request = [NSURLRequest requestWithURL:targetURL];
+        [webView loadRequest:request];
+        
+        [self.view addSubview:webView];
     }
 }
 

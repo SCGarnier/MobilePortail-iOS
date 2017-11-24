@@ -39,7 +39,13 @@
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     
     //sexy title
-    self.navigationController.navigationBar.prefersLargeTitles = true;
+    if (@available(iOS 11.0, *))
+    {
+        self.navigationController.navigationBar.prefersLargeTitles = true;
+    } else
+    {
+        // Fallback on earlier versions
+    }
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
