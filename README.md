@@ -1,7 +1,8 @@
 # MobilePortail-iOS
 Version mobile (iOS) du Portail des Élèves du Conseil Scolaire MonAvenir
 
-[Télécharger](https://itunes.apple.com/us/app/portail-des-élèves/id1316264086?mt=8)
+[Télécharger (1.0)](https://itunes.apple.com/us/app/portail-des-élèves/id1316264086?mt=8)
+**Note:** *La version disponible sur le App Store n'est pas necessairement aussi mise à jour que le code retrouvée sur ce repositoire.*
 
 # À faire
 - Téléchargement, extraction et affichage d'information concernant la perturbation de transport et d'école dû au mauvais temps
