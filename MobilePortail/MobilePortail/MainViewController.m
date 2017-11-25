@@ -32,7 +32,11 @@
     
     if (isLoggedIn && ([savedUsername length] != 0 && [savedPassword length] != 0))
     {
-        [self updateScheduleInfo];
+        [self updateStuff];
+        
+        NSLog(@"about to do timer");
+        NSTimer *updateTimer = [NSTimer timerWithTimeInterval:5 target:self selector:@selector(updateStuff) userInfo:nil repeats:NO];
+        [updateTimer fire];
     }
     
     //sets the name to your username
@@ -55,6 +59,22 @@
     [self.tableView addSubview:refreshControl];
     [refreshControl addTarget:self action:@selector(refreshTableView:) forControlEvents:UIControlEventValueChanged];
      */
+}
+
+- (void)updateStuff
+{
+    [self checkForAuthentification];
+    [self updateScheduleInfo];
+    @try
+    {
+        [TableView reloadData];
+    }
+    @catch (NSException *exception)
+    {
+        MPRequest *request = [MPRequest new];
+        [request failureAlert:@"Échec" withMessage:@"L'application n'a pas pu charger les informations actualisés"];
+    }
+    //NSLog(@"updated");
 }
 
 - (void)checkForInternet

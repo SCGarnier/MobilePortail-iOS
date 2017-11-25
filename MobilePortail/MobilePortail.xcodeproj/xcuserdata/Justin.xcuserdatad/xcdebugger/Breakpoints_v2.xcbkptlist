@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.577025"
+            timestampString = "533279059.67734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-logout:"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.577723"
+            timestampString = "533279059.67799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "-checkForAuthentification"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "-logOutLogIn"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.57831"
+            timestampString = "533279059.678473"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
-            landmarkName = "-DaySchedule"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
+            landmarkName = "-updateScheduleInfo"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,27 +138,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.578858"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "399"
-            endingLineNumber = "399"
-            landmarkName = "-searchClassesForDayNumberWithPeriod:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.579434"
+            timestampString = "533279059.678916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "411"
             endingLineNumber = "411"
+            landmarkName = "-currentDayNumberWithPeriodOne:andPeriodTwo:andPeriodThree:andPeriodFour:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.679356"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "-searchClassesForDayNumberWithPeriod:"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.579981"
+            timestampString = "533279059.679774"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "413"
-            endingLineNumber = "413"
+            startingLineNumber = "425"
+            endingLineNumber = "425"
             landmarkName = "-searchClassesForDayNumberWithPeriod:"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,12 +186,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.580529"
+            timestampString = "533279059.680186"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
-            landmarkName = "-searchClassesForDayNumberWithPeriod:"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
+            landmarkName = "-currentDayNumberWithPeriodOne:andPeriodTwo:andPeriodThree:andPeriodFour:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -202,39 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.581065"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297"
-            landmarkName = "-DaySchedule"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.581609"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
-            landmarkName = "-getClassInfoArrayFromClassInfoOrderedSet:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.582161"
+            timestampString = "533279059.680609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "309"
@@ -250,27 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.582729"
+            timestampString = "533279059.681032"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
-            landmarkName = "-DaySchedule"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.583325"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
             landmarkName = "-getClassInfoArrayFromClassInfoOrderedSet:"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +234,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.583989"
+            timestampString = "533279059.681471"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
+            landmarkName = "-DaySchedule"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.681922"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
+            landmarkName = "-DaySchedule"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.682323"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
+            landmarkName = "MainViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.682725"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
             landmarkName = "-getClassInfoArrayFromClassInfoOrderedSet:"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.584584"
+            timestampString = "533279059.683109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "-DaySchedule"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.585163"
+            timestampString = "533279059.683528"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
             landmarkName = "-DaySchedule"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.585719"
+            timestampString = "533279059.683929"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "-DaySchedule"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,13 +394,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.586401"
+            timestampString = "533279059.684383"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "-DaySchedule"
-            landmarkType = "7">
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "MainViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -410,87 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.587312"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
-            landmarkName = "-DaySchedule"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.588365"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "-DaySchedule"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.589187"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
-            landmarkName = "-DaySchedule"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.590075"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
-            landmarkName = "-DaySchedule"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.590846"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
-            landmarkName = "-DaySchedule"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.591638"
+            timestampString = "533279059.684759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "264"
@@ -506,12 +426,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.592309"
+            timestampString = "533279059.685135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "370"
-            endingLineNumber = "370"
-            landmarkName = "-currentDayNumberWithPeriodOne:andPeriodTwo:andPeriodThree:andPeriodFour:"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "-DaySchedule"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -522,12 +442,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.593027"
+            timestampString = "533279059.685507"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
-            landmarkName = "-currentDayNumberWithPeriodOne:andPeriodTwo:andPeriodThree:andPeriodFour:"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "-DaySchedule"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -538,11 +458,91 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.593711"
+            timestampString = "533279059.685887"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "-DaySchedule"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.6863"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
+            landmarkName = "-DaySchedule"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.686694"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "-DaySchedule"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.687065"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
+            landmarkName = "-getClassInfoWithOverviewList:andDayNumber:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.687441"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "384"
+            endingLineNumber = "384"
+            landmarkName = "-getClassInfoWithOverviewList:andDayNumber:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.687805"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "-checkForAuthentification"
             landmarkType = "7">
          </BreakpointContent>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.594456"
+            timestampString = "533279059.688175"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-checkForAuthentification"
             landmarkType = "7">
          </BreakpointContent>
@@ -920,7 +920,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/LoginViewController.m"
-            timestampString = "533251549.596288"
+            timestampString = "533279059.688905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
@@ -936,7 +936,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/LoginViewController.m"
-            timestampString = "533251549.596398"
+            timestampString = "533279059.688974"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "127"
@@ -952,7 +952,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/LoginViewController.m"
-            timestampString = "533251549.596493"
+            timestampString = "533279059.689023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
@@ -968,7 +968,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/LoginViewController.m"
-            timestampString = "533251549.596589"
+            timestampString = "533279059.689078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
@@ -984,7 +984,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.596689"
+            timestampString = "533279059.689125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -1000,11 +1000,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.597418"
+            timestampString = "533279059.689518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "-DaySchedule"
             landmarkType = "7">
          </BreakpointContent>
@@ -1016,11 +1016,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.598112"
+            timestampString = "533279059.689894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -1032,7 +1032,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.598753"
+            timestampString = "533279059.69027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -1048,13 +1048,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.599333"
+            timestampString = "533279059.690651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "-DaySchedule"
-            landmarkType = "7">
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "MainViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1064,7 +1064,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.599957"
+            timestampString = "533279059.691033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -1096,11 +1096,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.600647"
+            timestampString = "533279059.691425"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "-checkForAuthentification"
             landmarkType = "7">
          </BreakpointContent>
@@ -1128,11 +1128,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.601367"
+            timestampString = "533279059.691823"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "-checkForAuthentification"
             landmarkType = "7">
          </BreakpointContent>
@@ -1144,13 +1144,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.602015"
+            timestampString = "533279059.692206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "-logout:"
-            landmarkType = "7">
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "MainViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1240,12 +1240,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.603233"
+            timestampString = "533279059.692651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "-deleteOldData"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-checkForInternet"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1256,7 +1256,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/LoginViewController.m"
-            timestampString = "533251549.603905"
+            timestampString = "533279059.693019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
@@ -1272,7 +1272,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.604011"
+            timestampString = "533279059.693082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
@@ -1320,11 +1320,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.604793"
+            timestampString = "533279059.693485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "-checkForAuthentification"
             landmarkType = "7">
          </BreakpointContent>
@@ -1431,11 +1431,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.605612"
+            timestampString = "533279059.693921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-checkForInternet"
             landmarkType = "7">
          </BreakpointContent>
@@ -1447,43 +1447,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.606185"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "-checkForInternet"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.606739"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "-checkForInternet"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.607306"
+            timestampString = "533279059.69429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
+            landmarkName = "-updateStuff"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.694661"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-updateStuff"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.69502"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "-checkForInternet"
             landmarkType = "7">
          </BreakpointContent>
@@ -1495,7 +1495,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/LoginViewController.m"
-            timestampString = "533251549.607865"
+            timestampString = "533279059.695388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -1511,7 +1511,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/LoginViewController.m"
-            timestampString = "533251549.60796"
+            timestampString = "533279059.695442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -1543,12 +1543,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.608152"
+            timestampString = "533279059.695521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "-openLoginPage"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "-viewDidAppear:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1559,7 +1559,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/LoginViewController.m"
-            timestampString = "533251549.60874"
+            timestampString = "533279059.69589"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -1575,7 +1575,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/LoginViewController.m"
-            timestampString = "533251549.608841"
+            timestampString = "533279059.695942"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -1591,11 +1591,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.608942"
+            timestampString = "533279059.695999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-deleteOldData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.696365"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "-logOutLogIn"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.696728"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "-refreshTableView:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1607,61 +1639,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.609526"
+            timestampString = "533279059.697096"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "-checkForAuthentification"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.610188"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "-viewDidAppear:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.610939"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "-viewDidAppear:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.611624"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "MainViewController"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.697459"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-deleteOldData"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1687,12 +1687,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.612382"
+            timestampString = "533279059.698003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "-deleteOldData"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-checkForInternet"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1703,13 +1703,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.612984"
+            timestampString = "533279059.698371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "-checkForAuthentification"
-            landmarkType = "7">
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "MainViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1719,11 +1719,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.613629"
+            timestampString = "533279059.698734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "-checkForAuthentification"
             landmarkType = "7">
          </BreakpointContent>
@@ -1751,11 +1751,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.614379"
+            timestampString = "533279059.699112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "-updateScheduleInfo"
             landmarkType = "7">
          </BreakpointContent>
@@ -1767,12 +1767,156 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobilePortail/MainViewController.m"
-            timestampString = "533251549.614983"
+            timestampString = "533279059.699511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "-viewDidAppear:"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-refreshTableView:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.699887"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "-checkForAuthentification"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.700245"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-checkForAuthentification"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.700579"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "-updateScheduleInfo"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.700905"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "-DaySchedule"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.701224"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
+            landmarkName = "-DaySchedule"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.701543"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
+            landmarkName = "MainViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.701864"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
+            landmarkName = "-searchClassesForDayNumberWithPeriod:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.702179"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
+            landmarkName = "-currentDayNumberWithPeriodOne:andPeriodTwo:andPeriodThree:andPeriodFour:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobilePortail/MainViewController.m"
+            timestampString = "533279059.702486"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
+            landmarkName = "-DaySchedule"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
