@@ -1,7 +1,7 @@
 # MobilePortail-iOS
 Version mobile (iOS) du Portail des Élèves du Conseil Scolaire MonAvenir
 
-[Télécharger (1.0)](https://itunes.apple.com/us/app/portail-des-élèves/id1316264086?mt=8)
+[Télécharger (1.0.1)](https://itunes.apple.com/us/app/portail-des-élèves/id1316264086?mt=8)
 
 **Note:** *La version disponible sur le App Store n'est pas necessairement aussi mise à jour que le code retrouvée sur ce repositoire.*
 
