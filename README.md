@@ -14,6 +14,7 @@ Version mobile (iOS) du Portail des Élèves du Conseil Scolaire MonAvenir
 # Problèmes
 - Les autres écoles de MonAvenir ne sont pas necessairement supportés
 - Les élèves de 8e ne peuvent pas voir leurs résultats scolaires
+- La dernière période est manquante pour les élèves de 8e année
 
 # Complété
 - Le système de login fonctionne, incluant le login automatique
