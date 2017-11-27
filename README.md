@@ -7,9 +7,13 @@ Version mobile (iOS) du Portail des Élèves du Conseil Scolaire MonAvenir
 
 # À faire
 - Téléchargement, extraction et affichage d'information concernant la perturbation de transport et d'école dû au mauvais temps
+- Résultats scolaires pour les élèves de 8e annee
+- Portail des Parents
+- Support pour des écoles autres que Garnier
 
 # Problèmes
-- Aucun problème connu
+- Les autres écoles de MonAvenir ne sont pas necessairement supportés
+- Les élèves de 8e ne peuvent pas voir leurs résultats scolaires
 
 # Complété
 - Le système de login fonctionne, incluant le login automatique
