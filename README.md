@@ -23,6 +23,7 @@ Version mobile (iOS) du Portail des Élèves du Conseil Scolaire MonAvenir
 - Les moyennes de cours s'affichent
 - Les résumés de cours s'affichent
 - Icône et logo
+- Support pour iOS 9 et plus
 
 # License
 Nous (le club de programmation et de robotique de l'école secondaire catholique Saint-Charles-Garnier, spécifiquement l'équipe de programmation iOS, incluant mais pas limité à Justin Proulx et Maeve Campbell) réservons tous les droits d'auteurs associés à ce projet.
