@@ -59,12 +59,20 @@
     [self.tableView addSubview:refreshControl];
     [refreshControl addTarget:self action:@selector(refreshTableView:) forControlEvents:UIControlEventValueChanged];
      */
+    
+    [self refreshTableView];
 }
 
 - (void)updateStuff
 {
     [self checkForAuthentification];
     [self updateScheduleInfo];
+    [self refreshTableView];
+    //NSLog(@"updated");
+}
+
+- (void)refreshTableView
+{
     @try
     {
         [TableView reloadData];
@@ -74,7 +82,6 @@
         MPRequest *request = [MPRequest new];
         [request failureAlert:@"Échec" withMessage:@"L'application n'a pas pu charger les informations actualisés"];
     }
-    //NSLog(@"updated");
 }
 
 - (void)checkForInternet
