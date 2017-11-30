@@ -27,6 +27,8 @@
     
     NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
+
+    [self refreshTableView];
     
     BOOL isLoggedIn = [self checkForAuthentification];
     
@@ -120,6 +122,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [self refreshTableView];
+    
     [self checkForAuthentification];
     
     MPRequest *request = [MPRequest new];
@@ -130,6 +134,8 @@
     }
     
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
+    
+    [self refreshTableView];
 }
 
 #pragma mark - Authentification
