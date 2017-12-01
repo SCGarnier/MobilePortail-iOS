@@ -113,7 +113,7 @@
     }
 }
 
-- (IBAction)refreshTableView:(id)sender
+- (IBAction)pullToRefreshTableView:(id)sender
 {
     [self checkForAuthentification];
     
@@ -122,9 +122,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self refreshTableView];
-    
-    [self checkForAuthentification];
+    [self updateStuff];
     
     MPRequest *request = [MPRequest new];
     BOOL isLoggedIn = [request checkForSuccessfulLogin:@"resultdata.html" isMainRequest:YES isAutoLogin:YES];
