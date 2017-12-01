@@ -270,6 +270,8 @@
     {
         period4Teacher.text = @"Aucun enseignant";
     }
+    
+    [self refreshTableView];
 }
 
 
