@@ -68,7 +68,6 @@
 - (void)updateStuff
 {
     [self checkForAuthentification];
-    [self updateScheduleInfo];
     [self refreshTableView];
     //NSLog(@"updated");
 }
@@ -92,7 +91,7 @@
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     
-    if (networkStatus != NotReachable)
+    if (networkStatus == ReachableViaWiFi || networkStatus == ReachableViaWWAN)
     {
         isConnectedToInternet = YES;
     }
@@ -349,35 +348,44 @@
 {
     NSDictionary *classInfoDict = [[NSDictionary alloc] init];
     
-    if ([classInfoOrderedSet count] > 0)
+    @try
     {
-        //get course info
-        NSString *teacherName = [[classInfoOrderedSet objectAtIndex:3] textContent];
-        if ([teacherName hasPrefix:@" "] && [teacherName length] > 1)
+        if ([classInfoOrderedSet count] > 0)
         {
-            teacherName = [teacherName substringFromIndex:1];
+            //get course info
+            NSString *teacherName = [[classInfoOrderedSet objectAtIndex:3] textContent];
+            if ([teacherName hasPrefix:@" "] && [teacherName length] > 1)
+            {
+                teacherName = [teacherName substringFromIndex:1];
+            }
+            
+            NSString *courseCode = [[classInfoOrderedSet objectAtIndex:1] textContent];
+            if ([courseCode hasPrefix:@" "] && [courseCode length] > 1)
+            {
+                courseCode = [courseCode substringFromIndex:1];
+            }
+            
+            NSString *courseName = [[[classInfoOrderedSet objectAtIndex:0] childAtIndex:0] textContent];
+            if ([courseName hasPrefix:@" "] && [courseName length] > 1)
+            {
+                courseName = [courseName substringFromIndex:1];
+            }
+            
+            
+            //add course info to array
+            classInfoDict = [NSDictionary dictionaryWithObjectsAndKeys:teacherName, @"teacherName", courseCode, @"courseCode", courseName, @"courseName", nil];
         }
-        
-        NSString *courseCode = [[classInfoOrderedSet objectAtIndex:1] textContent];
-        if ([courseCode hasPrefix:@" "] && [courseCode length] > 1)
+        else
         {
-            courseCode = [courseCode substringFromIndex:1];
+            classInfoDict = [[NSDictionary alloc] init];;
         }
-        
-        NSString *courseName = [[[classInfoOrderedSet objectAtIndex:0] childAtIndex:0] textContent];
-        if ([courseName hasPrefix:@" "] && [courseName length] > 1)
-        {
-            courseName = [courseName substringFromIndex:1];
-        }
-        
-        
-        //add course info to array
-        classInfoDict = [NSDictionary dictionaryWithObjectsAndKeys:teacherName, @"teacherName", courseCode, @"courseCode", courseName, @"courseName", nil];
     }
-    else
+    @catch (NSException * exception)
     {
-        classInfoDict = [[NSDictionary alloc] init];;
+        MPRequest *request = [MPRequest new];
+        [request failureAlert:@"Échec" withMessage:@"L'application fonctionne actuellement seulement avec Saint-Charles-Garnier. S'il vous plait, re-essayez lorsqu'il y a une mise à jour."];
     }
+    
     
     
     return classInfoDict;

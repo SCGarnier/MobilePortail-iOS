@@ -204,7 +204,7 @@
     {
         cell.resultLabel.text = resultString;
         
-        //set color-coding for marks
+        //set color-coding and specific properties for marks
         if ([resultString containsString:@"4"])
         {
             cell.circleView.backgroundColor = [UIColor colorWithRed:0.34 green:0.79 blue:0.00 alpha:1.0];
