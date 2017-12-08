@@ -24,22 +24,7 @@
 #pragma mark - Loading
 - (void)viewDidLoad
 {
-    
-    NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
-    NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
-
     [self refreshTableView];
-    
-    BOOL isLoggedIn = [self checkForAuthentification];
-    
-    if (isLoggedIn && ([savedUsername length] != 0 && [savedPassword length] != 0))
-    {
-        [self updateStuff];
-        
-        NSLog(@"about to do timer");
-        NSTimer *updateTimer = [NSTimer timerWithTimeInterval:5 target:self selector:@selector(updateStuff) userInfo:nil repeats:NO];
-        [updateTimer fire];
-    }
     
     //sets the name to your username
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
@@ -63,26 +48,6 @@
      */
     
     [self refreshTableView];
-}
-
-- (void)updateStuff
-{
-    [self checkForAuthentification];
-    [self refreshTableView];
-    //NSLog(@"updated");
-}
-
-- (void)refreshTableView
-{
-    @try
-    {
-        [TableView reloadData];
-    }
-    @catch (NSException *exception)
-    {
-        MPRequest *request = [MPRequest new];
-        [request failureAlert:@"Échec" withMessage:@"L'application n'a pas pu charger les informations actualisés"];
-    }
 }
 
 - (void)checkForInternet
@@ -127,6 +92,7 @@
     BOOL isLoggedIn = [request checkForSuccessfulLogin:@"resultdata.html" isMainRequest:YES isAutoLogin:YES];
     if (isLoggedIn)
     {
+        [self setUpdateTimer:3.0];
         [self updateScheduleInfo];
     }
     
@@ -269,6 +235,37 @@
     }
     
     [self refreshTableView];
+}
+
+- (void)updateStuff
+{
+    BOOL isAuthenticated = [self checkForAuthentification];
+    [self refreshTableView];
+    //NSLog(@"updated");
+    
+    [self checkForInternet];
+    if (isAuthenticated && isConnectedToInternet)
+    {
+        [self setUpdateTimer:30];
+    }
+}
+
+- (void)setUpdateTimer:(float)interval
+{
+    [self performSelector:@selector(updateStuff) withObject:self afterDelay:interval];
+}
+
+- (void)refreshTableView
+{
+    @try
+    {
+        [TableView reloadData];
+    }
+    @catch (NSException *exception)
+    {
+        MPRequest *request = [MPRequest new];
+        [request failureAlert:@"Échec" withMessage:@"L'application n'a pas pu charger les informations actualisés"];
+    }
 }
 
 

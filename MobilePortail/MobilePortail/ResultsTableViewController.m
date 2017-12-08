@@ -88,6 +88,7 @@
 {
     @try
     {
+        //9th+ grade results
         NSArray *results = [[NSArray alloc] init];
         
         //get the result table
@@ -153,6 +154,25 @@
     }
     @catch (NSException *exception)
     {
+        //8th- grade results
+        
+        
+        //finish in future update
+        /*
+        NSArray *results = [[NSArray alloc] init];
+        
+        //get the result table
+        HTMLNode *scheduleTable = [self getResultTable];
+        
+        NSOrderedSet *markTable = [[[scheduleTable children] objectAtIndex:1] children];
+        NSMutableArray *markInfo = [[NSMutableArray alloc] init];
+        
+        for (id item in markTable)
+        {
+            
+        }
+        */
+        
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Échec" message:@"L'application fonctionne seulement avec des comptes d'élèves qui sont en 9e année ou plus." preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action)
         {

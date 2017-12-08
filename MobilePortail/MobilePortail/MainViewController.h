@@ -27,6 +27,8 @@
     IBOutlet UITableView *TableView;
     
     BOOL isConnectedToInternet;
+    
+    float timerPeriod;
 }
 
 - (void)deleteOldData;
