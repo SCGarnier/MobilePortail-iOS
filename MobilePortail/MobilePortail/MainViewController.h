@@ -29,6 +29,8 @@
     BOOL isConnectedToInternet;
     
     float timerPeriod;
+    
+    int updateNumber;
 }
 
 - (void)deleteOldData;

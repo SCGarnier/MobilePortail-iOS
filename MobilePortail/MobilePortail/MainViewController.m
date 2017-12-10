@@ -17,6 +17,8 @@
 
 @interface MainViewController ()
 
+@property (nonatomic, strong) NSData *cachedPassword;
+
 @end
 
 @implementation MainViewController
@@ -24,7 +26,10 @@
 #pragma mark - Loading
 - (void)viewDidLoad
 {
-    [self refreshTableView];
+    NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
+    NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
+    
+    _cachedPassword = [savedPassword dataUsingEncoding:NSUTF8StringEncoding];
     
     //sets the name to your username
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
@@ -50,7 +55,7 @@
     [self refreshTableView];
 }
 
-- (void)checkForInternet
+- (BOOL)checkForInternet
 {
     //check for internet
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
@@ -59,10 +64,12 @@
     if (networkStatus == ReachableViaWiFi || networkStatus == ReachableViaWWAN)
     {
         isConnectedToInternet = YES;
+        return YES;
     }
     else
     {
         isConnectedToInternet = NO;
+        return NO;
     }
 }
 
@@ -88,11 +95,14 @@
 {
     [self updateStuff];
     
+    BOOL isOnline = [self checkForInternet];
+    
     MPRequest *request = [MPRequest new];
     BOOL isLoggedIn = [request checkForSuccessfulLogin:@"resultdata.html" isMainRequest:YES isAutoLogin:YES];
-    if (isLoggedIn)
+    if (isLoggedIn && isOnline)
     {
-        [self setUpdateTimer:3.0];
+        updateNumber = 0;
+        [self updateStuff];
         [self updateScheduleInfo];
     }
     
@@ -140,38 +150,57 @@
     NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
     
-    
-    if ([savedUsername length] == 0 || [savedPassword length] == 0)
+    //fix for log out issue. While the app is waiting for the keychain to become available after coming back into the foreground, just use the cached copy of it.
+    if ([savedPassword length] == 0)
     {
-        //if there is some missing saved info, open the login screen
-        [self deleteOldData];
-        [self openLoginPage];
-        return NO;
+        savedPassword = [[NSString alloc] initWithData:_cachedPassword encoding:NSUTF8StringEncoding];
     }
     else
     {
-        //if all the login info is saved, try to log in
-        
-        MPRequest *request = [MPRequest new];
-        //request for class results
-        [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"resultdata.html" isMainRequest:NO isAutoLogin:YES expectsPDF:NO];
-        //request for schedule
-        [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schedule.html" isMainRequest:NO isAutoLogin:YES expectsPDF:NO];
-        
-        //fail check one last time in case it missed it
-        BOOL isLoggedIn = [request checkForSuccessfulLogin:@"resultdata.html" isMainRequest:YES isAutoLogin:YES];
-        
-        if (!isLoggedIn)
+        _cachedPassword = [savedPassword dataUsingEncoding:NSUTF8StringEncoding];
+    }
+    
+    BOOL isOnline = [self checkForInternet];
+    
+    if (isOnline)
+    {
+        if ([savedUsername length] == 0 || [savedPassword length] == 0)
         {
-            [self logout:nil];
+            //if there is some missing saved info, open the login screen
+            [self deleteOldData];
+            [self openLoginPage];
+            return NO;
         }
         else
         {
-            [self updateScheduleInfo];
+            //if all the login info is saved, try to log in
+            
+            MPRequest *request = [MPRequest new];
+            //request for class results
+            [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"resultdata.html" isMainRequest:NO isAutoLogin:YES expectsPDF:NO];
+            //request for schedule
+            [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schedule.html" isMainRequest:NO isAutoLogin:YES expectsPDF:NO];
+            
+            //fail check one last time in case it missed it
+            BOOL isLoggedIn = [request checkForSuccessfulLogin:@"resultdata.html" isMainRequest:YES isAutoLogin:YES];
+            
+            if (!isLoggedIn)
+            {
+                [self logout:nil];
+            }
+            else
+            {
+                [self updateScheduleInfo];
+            }
+            
+            return isLoggedIn;
         }
-        
-        return isLoggedIn;
     }
+    else
+    {
+        return NO;
+    }
+    
 }
 
 #pragma mark - Refreshing things
@@ -241,12 +270,20 @@
 {
     BOOL isAuthenticated = [self checkForAuthentification];
     [self refreshTableView];
-    //NSLog(@"updated");
+    NSLog(@"updated");
     
-    [self checkForInternet];
-    if (isAuthenticated && isConnectedToInternet)
+    BOOL isOnline = [self checkForInternet];
+    if (isAuthenticated && isOnline)
     {
-        [self setUpdateTimer:30];
+        if (updateNumber == 0)
+        {
+            [self setUpdateTimer:3.0];
+        }
+        else
+        {
+            [self setUpdateTimer:30];
+        }
+        updateNumber++;
     }
 }
 
