@@ -42,7 +42,7 @@
     
     MPRequest *request = [MPRequest new];
     
-    [request requestLoginAtURL:linkToDownloadFrom withUsername:savedPassword andPassword:savedPassword saveResponseToFileName:@"summary.pdf" isMainRequest:NO isAutoLogin:NO expectsPDF:YES];
+    [request requestLoginAtURL:linkToDownloadFrom withUsername:savedPassword andPassword:savedPassword saveResponseToFileName:@"summary.pdf" isMainRequest:NO isAutoLogin:NO expectsPDF:YES showErrors:YES];
     
     
     checkTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkForDownloadCompletion) userInfo:nil repeats:YES];

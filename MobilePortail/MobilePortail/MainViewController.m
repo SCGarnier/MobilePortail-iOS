@@ -26,9 +26,13 @@
 #pragma mark - Loading
 - (void)viewDidLoad
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(midnightRefresh) name:NSCalendarDayChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStuff) name:UIApplicationDidBecomeActiveNotification object:[UIApplication sharedApplication]];
-
+    MPRequest *request = [MPRequest new];
+    BOOL isLoggedIn = [request checkForSuccessfulLogin:@"resultdata.html" isMainRequest:YES isAutoLogin:YES];
+    if (isLoggedIn)
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(midnightRefresh) name:NSCalendarDayChangedNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStuff) name:UIApplicationDidBecomeActiveNotification object:[UIApplication sharedApplication]];
+    }
     
     NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
@@ -180,9 +184,9 @@
             
             MPRequest *request = [MPRequest new];
             //request for class results
-            [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"resultdata.html" isMainRequest:NO isAutoLogin:YES expectsPDF:NO];
+            [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"resultdata.html" isMainRequest:NO isAutoLogin:YES expectsPDF:NO showErrors:NO];
             //request for schedule
-            [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schedule.html" isMainRequest:NO isAutoLogin:YES expectsPDF:NO];
+            [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/index.aspx?ReturnUrl=%2fPortailEleves%2fEmploiDuTemps.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schedule.html" isMainRequest:NO isAutoLogin:YES expectsPDF:NO showErrors:NO];
             
             //download snow day data
             [request downloadSnowDayData];
@@ -272,22 +276,37 @@
     //snow day things
     NSArray *snowDayArray = [self getSnowDayStatus];
     
+    @try
+    {
+        schoolStatusLabel.text = [snowDayArray objectAtIndex:0];
+        busStatusLabel.text = [snowDayArray objectAtIndex:1];
+    }
+    @catch (NSException *exception)
+    {
+        schoolStatusLabel.text = @"Échec";
+        busStatusLabel.text = @"Échec";
+    }
     
-    NSString *schoolStatusString = [snowDayArray objectAtIndex:0];
-    NSString *busStatusString = [snowDayArray objectAtIndex:1];
-    schoolStatusLabel.text = schoolStatusString;
-    busStatusLabel.text = busStatusString;
+    if ([schoolStatusLabel.text length] == 0)
+    {
+        schoolStatusLabel.text = @"Chargement...";
+    }
+    
+    if ([busStatusLabel.text length] == 0)
+    {
+        busStatusLabel.text = @"Chargement...";
+    }
     
     //bus status colors
-    if ([busStatusString containsString:@"normal"])
+    if ([busStatusLabel.text containsString:@"normal"])
     {
         busStatusView.backgroundColor = [UIColor colorWithRed:0.49 green:0.83 blue:0.00 alpha:1.0];
     }
-    else if ([busStatusString containsString:@"annulé"])
+    else if ([busStatusLabel.text containsString:@"annulé"])
     {
         busStatusView.backgroundColor = [UIColor colorWithRed:0.86 green:0.00 blue:0.00 alpha:1.0];
     }
-    else if ([busStatusString containsString:@"perturbé"])
+    else if ([busStatusLabel.text containsString:@"perturbé"])
     {
         busStatusView.backgroundColor = [UIColor colorWithRed:0.88 green:0.75 blue:0.00 alpha:1.0];
     }
@@ -298,15 +317,15 @@
     
     
     //school status colors
-    if ([schoolStatusString containsString:@"ouverte"])
+    if ([schoolStatusLabel.text containsString:@"ouverte"])
     {
         schoolStatusView.backgroundColor = [UIColor colorWithRed:0.49 green:0.83 blue:0.00 alpha:1.0];
     }
-    else if ([schoolStatusString containsString:@"annulé"])
+    else if ([schoolStatusLabel.text containsString:@"annulé"])
     {
         schoolStatusView.backgroundColor = [UIColor colorWithRed:0.86 green:0.00 blue:0.00 alpha:1.0];
     }
-    else if ([schoolStatusString containsString:@"perturbé"])
+    else if ([schoolStatusLabel.text containsString:@"perturbé"])
     {
         schoolStatusView.backgroundColor = [UIColor colorWithRed:0.88 green:0.75 blue:0.00 alpha:1.0];
     }
@@ -588,7 +607,7 @@
     NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
     
     MPRequest *request = [MPRequest new];
-    [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/InfoEcole.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schoolinfo.html" isMainRequest:NO isAutoLogin:NO expectsPDF:NO];
+    [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/InfoEcole.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schoolinfo.html" isMainRequest:NO isAutoLogin:NO expectsPDF:NO showErrors:NO];
     
     MPStringFromHTML *getString = [MPStringFromHTML new];
     //get string from data

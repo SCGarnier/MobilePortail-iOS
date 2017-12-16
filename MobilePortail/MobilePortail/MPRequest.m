@@ -17,7 +17,7 @@
 @implementation MPRequest
 
 #pragma mark - Log in and main information
-- (void)requestLoginAtURL:(NSString *)postURL withUsername:(NSString *)username andPassword:(NSString *)password saveResponseToFileName:(NSString *)responseFileName isMainRequest:(BOOL)isMainRequest isAutoLogin:(BOOL)isAutoLogin expectsPDF:(BOOL)expectsPDF
+- (void)requestLoginAtURL:(NSString *)postURL withUsername:(NSString *)username andPassword:(NSString *)password saveResponseToFileName:(NSString *)responseFileName isMainRequest:(BOOL)isMainRequest isAutoLogin:(BOOL)isAutoLogin expectsPDF:(BOOL)expectsPDF showErrors:(BOOL)doesShowErrors
 {
     //parameters, do not touch anything pls
     NSDictionary *parameterDictionary = @{
@@ -101,7 +101,7 @@
     {
         if ([[document firstNodeMatchingSelector:@"title"].textContent containsString:@"portail"])
         {
-            [self autoLoginFailure:isAutoLogin];
+            [self autoLoginFailure:isAutoLogin showErrors:YES];
             
             return NO;
         }
@@ -136,7 +136,7 @@
     {
         if ([[document firstNodeMatchingSelector:@"title"].textContent containsString:@"portail"])
         {
-            [self autoLoginFailure:isAutoLogin];
+            [self autoLoginFailure:isAutoLogin showErrors:NO];
             
             return NO;
         }
@@ -148,7 +148,7 @@
     }
 }
 
-- (void)autoLoginFailure:(BOOL)isAutoLogin
+- (void)autoLoginFailure:(BOOL)isAutoLogin showErrors:(BOOL)doesShowErrors
 {
     //If the title contains "portail", then the login failed due to an incorrect username or password.
     if (isAutoLogin)
@@ -170,7 +170,10 @@
     
     [self resetButtonText];
     
-    [self failureAlert:@"Nom d'utilisateur ou mot de passe incorrect" withMessage:@"Veuillez entrer le bon nom d'utilisateur et mot de passe"];
+    if (doesShowErrors)
+    {
+        [self failureAlert:@"Nom d'utilisateur ou mot de passe incorrect" withMessage:@"Veuillez entrer le bon nom d'utilisateur et mot de passe"];
+    }
 }
 
 
@@ -187,14 +190,23 @@
     //page URL
     NSURL *url = [NSURL URLWithString:@"https://www.cscmonavenir.ca/ecole/"];
     
-    NSError *error;
+    //NSError *error;
     
+    NSURLSessionDownloadTask *downloadTask = [[NSURLSession sharedSession] downloadTaskWithURL:url completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error)
+    {
+        NSData *downloadedData = [NSData dataWithContentsOfURL:location];
+        
+        [downloadedData writeToFile:filePath atomically:YES];
+    }];
+    [downloadTask resume];
+    
+    /*
     //convert HTML to NSData
     NSString *rawHTML = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
     NSData *pageData = [rawHTML dataUsingEncoding:NSUTF8StringEncoding];
     
     //Write data to file
-    [pageData writeToFile:filePath atomically:YES];
+    [pageData writeToFile:filePath atomically:YES];*/
 }
 
 #pragma mark - other
