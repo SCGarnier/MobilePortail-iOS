@@ -269,6 +269,52 @@
         period4Teacher.text = @"Aucun enseignant";
     }
     
+    //snow day things
+    NSArray *snowDayArray = [self getSnowDayStatus];
+    
+    
+    NSString *schoolStatusString = [snowDayArray objectAtIndex:0];
+    NSString *busStatusString = [snowDayArray objectAtIndex:1];
+    schoolStatusLabel.text = schoolStatusString;
+    busStatusLabel.text = busStatusString;
+    
+    //bus status colors
+    if ([busStatusString containsString:@"normal"])
+    {
+        busStatusView.backgroundColor = [UIColor colorWithRed:0.49 green:0.83 blue:0.00 alpha:1.0];
+    }
+    else if ([busStatusString containsString:@"annulé"])
+    {
+        busStatusView.backgroundColor = [UIColor colorWithRed:0.86 green:0.00 blue:0.00 alpha:1.0];
+    }
+    else if ([busStatusString containsString:@"perturbé"])
+    {
+        busStatusView.backgroundColor = [UIColor colorWithRed:0.88 green:0.75 blue:0.00 alpha:1.0];
+    }
+    else
+    {
+        busStatusView.backgroundColor = [UIColor colorWithRed:0.66 green:0.66 blue:0.66 alpha:1.0];
+    }
+    
+    
+    //school status colors
+    if ([schoolStatusString containsString:@"ouverte"])
+    {
+        schoolStatusView.backgroundColor = [UIColor colorWithRed:0.49 green:0.83 blue:0.00 alpha:1.0];
+    }
+    else if ([schoolStatusString containsString:@"annulé"])
+    {
+        schoolStatusView.backgroundColor = [UIColor colorWithRed:0.86 green:0.00 blue:0.00 alpha:1.0];
+    }
+    else if ([schoolStatusString containsString:@"perturbé"])
+    {
+        schoolStatusView.backgroundColor = [UIColor colorWithRed:0.88 green:0.75 blue:0.00 alpha:1.0];
+    }
+    else
+    {
+        schoolStatusView.backgroundColor = [UIColor colorWithRed:0.66 green:0.66 blue:0.66 alpha:1.0];
+    }
+    
     [self refreshTableView];
 }
 
@@ -484,6 +530,76 @@
     NSDictionary * dataDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:dayNumber], @"dayNumber", [NSNumber numberWithBool:foundCurrentDay], @"foundCurrentDay", nil];
     
     return dataDict;
+}
+
+#pragma mark - Snow Day
+- (NSArray *)getSnowDayStatus
+{
+    MPStringFromHTML *getString = [MPStringFromHTML new];
+    
+    //get string from data
+    NSString * rawHTML = [getString getStringFromHTMLWithFileName:@"snowday.html"];
+    
+    //get document for parsing from the string
+    HTMLDocument * snowDayPage = [HTMLDocument documentWithString:rawHTML];
+    
+    HTMLNode *snowDayTable = [snowDayPage firstNodeMatchingSelector:@"div#profile"];
+    
+    NSArray *tempSchoolInfoArray = [[[[[snowDayTable childAtIndex:1] childAtIndex:1] childAtIndex:3] children] array];
+                                                     
+    NSMutableArray *schoolInfoArray = [tempSchoolInfoArray mutableCopy];
+    
+    for (HTMLNode *node in tempSchoolInfoArray)
+    {
+        if ([[node children] count] == 0)
+        {
+            [schoolInfoArray removeObject:node];
+        }
+    }
+    
+    NSString *schoolNameFromPortail = [self getSchoolName];
+    
+    NSString *schoolStatus = [[NSString alloc] init];
+    NSString *busStatus = [[NSString alloc] init];
+    
+    for (HTMLNode *node in schoolInfoArray)
+    {
+        NSString *schoolNameFromSnowDay = [[node firstNodeMatchingSelector:@"span.visible-xs"] textContent];
+        
+        if ([schoolNameFromPortail containsString:schoolNameFromSnowDay])
+        {
+            
+            HTMLNode *school = [node childAtIndex:5];
+            schoolStatus = [[school childAtIndex:1] textContent];
+            busStatus = [[school childAtIndex:3] textContent];
+            
+            break;
+        }
+    }
+    
+    NSArray * snowDayStatusArray = [NSArray arrayWithObjects:schoolStatus, busStatus, nil];
+    
+    return snowDayStatusArray;
+}
+
+- (NSString *)getSchoolName
+{
+    NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
+    NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
+    
+    MPRequest *request = [MPRequest new];
+    [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/InfoEcole.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schoolinfo.html" isMainRequest:NO isAutoLogin:NO expectsPDF:NO];
+    
+    MPStringFromHTML *getString = [MPStringFromHTML new];
+    //get string from data
+    NSString * rawHTML = [getString getStringFromHTMLWithFileName:@"schoolinfo.html"];
+    
+    //get document for parsing from the string
+    HTMLDocument * schoolInfoPage = [HTMLDocument documentWithString:rawHTML];
+    
+    HTMLNode *schoolNameNode = [schoolInfoPage firstNodeMatchingSelector:@"span#LNomEcole"];
+    
+    return [schoolNameNode textContent];
 }
 
 #pragma mark - TableView stuff

@@ -401,27 +401,27 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Ouverture et Annullement" id="AU2-1Z-cJ7">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="86" id="rMC-bq-idz" customClass="BeautifulTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="86" id="rMC-bq-idz" customClass="BeautifulTableViewCell">
                                         <rect key="frame" x="0.0" y="597.5" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rMC-bq-idz" id="Wto-tx-QWZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="86"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="xJL-R7-nf6">
-                                                    <rect key="frame" x="16" y="12" width="317" height="62"/>
+                                                    <rect key="frame" x="16" y="12" width="343" height="62"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSg-Ko-dVr" customClass="TransportRoundedView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="154" height="62"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="167" height="62"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transport Normal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7K-60-q2k">
-                                                                    <rect key="frame" x="8" y="8" width="138" height="46"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chargement..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7K-60-q2k">
+                                                                    <rect key="frame" x="8" y="8" width="151" height="46"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.44554628015062792" green="0.78593046171171177" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="tintColor" red="0.44554628019999998" green="0.78593046170000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="M7K-60-q2k" firstAttribute="top" secondItem="HSg-Ko-dVr" secondAttribute="top" constant="8" id="1Mo-Kh-TJc"/>
@@ -431,16 +431,16 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8DS-dC-Duj" customClass="TransportRoundedView">
-                                                            <rect key="frame" x="163" y="0.0" width="154" height="62"/>
+                                                            <rect key="frame" x="176" y="0.0" width="167" height="62"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="École Ouverte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPI-b4-xHe">
-                                                                    <rect key="frame" x="8" y="8" width="138" height="46"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chargement..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPI-b4-xHe">
+                                                                    <rect key="frame" x="8" y="8" width="151" height="46"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.44554628019999998" green="0.78593046170000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="tintColor" red="0.44554628019999998" green="0.78593046170000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="hPI-b4-xHe" firstAttribute="top" secondItem="8DS-dC-Duj" secondAttribute="top" constant="8" id="AUu-6V-ft4"/>
@@ -487,6 +487,8 @@
                     </refreshControl>
                     <connections>
                         <outlet property="TableView" destination="ZNJ-iT-EiL" id="5nz-6N-3B5"/>
+                        <outlet property="busStatusLabel" destination="M7K-60-q2k" id="bLe-76-BcD"/>
+                        <outlet property="busStatusView" destination="HSg-Ko-dVr" id="BQr-PB-NbJ"/>
                         <outlet property="period1Class" destination="soE-2O-dZq" id="szV-o5-oPk"/>
                         <outlet property="period1Teacher" destination="Asp-bT-MCh" id="J02-5u-1eG"/>
                         <outlet property="period2Class" destination="7G6-OK-stB" id="vvi-nZ-rUL"/>
@@ -495,6 +497,8 @@
                         <outlet property="period3Teacher" destination="5f4-QM-TcZ" id="qEF-ud-WWf"/>
                         <outlet property="period4Class" destination="D7p-I3-Ip1" id="9GR-pK-fjr"/>
                         <outlet property="period4Teacher" destination="HIO-wJ-t6V" id="ssu-3Z-4BS"/>
+                        <outlet property="schoolStatusLabel" destination="hPI-b4-xHe" id="hGx-lN-H7Y"/>
+                        <outlet property="schoolStatusView" destination="8DS-dC-Duj" id="fVk-z5-fNR"/>
                         <outlet property="snowDayRow" destination="rMC-bq-idz" id="DKY-Zq-qXx"/>
                         <outlet property="usernameLabel" destination="2jD-fg-kjc" id="VFc-Po-vNj"/>
                     </connections>

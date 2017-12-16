@@ -27,6 +27,12 @@
     
     IBOutlet UITableView *TableView;
     
+    IBOutlet UILabel *busStatusLabel;
+    IBOutlet UILabel *schoolStatusLabel;
+    
+    IBOutlet UIView *busStatusView;
+    IBOutlet UIView *schoolStatusView;
+    
     BOOL isConnectedToInternet;
     
     @public BOOL cancelRefresh;
