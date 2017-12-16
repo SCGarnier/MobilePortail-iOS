@@ -26,6 +26,10 @@
 #pragma mark - Loading
 - (void)viewDidLoad
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(midnightRefresh) name:NSCalendarDayChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStuff) name:UIApplicationDidBecomeActiveNotification object:[UIApplication sharedApplication]];
+
+    
     NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
     
@@ -38,7 +42,8 @@
     if (@available(iOS 11.0, *))
     {
         self.navigationController.navigationBar.prefersLargeTitles = true;
-    } else
+    }
+    else
     {
         // Fallback on earlier versions
     }
@@ -84,25 +89,23 @@
     }
 }
 
-- (IBAction)pullToRefreshTableView:(id)sender
-{
-    [self checkForAuthentification];
-    
-    [sender endRefreshing];
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self updateStuff];
-    
     BOOL isOnline = [self checkForInternet];
+    
+    [self checkForAuthentification];
     
     MPRequest *request = [MPRequest new];
     BOOL isLoggedIn = [request checkForSuccessfulLogin:@"resultdata.html" isMainRequest:YES isAutoLogin:YES];
     if (isLoggedIn && isOnline)
     {
-        updateNumber = 0;
         [self updateStuff];
+    }
+    
+    NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
+    NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
+    if ([savedPassword length] != 0 && [savedUsername length] != 0)
+    {
         [self updateScheduleInfo];
     }
     
@@ -266,30 +269,20 @@
     [self refreshTableView];
 }
 
-- (void)updateStuff
+- (void)midnightRefresh
 {
-    BOOL isAuthenticated = [self checkForAuthentification];
-    [self refreshTableView];
-    NSLog(@"updated");
+    [self updateStuff];
     
-    BOOL isOnline = [self checkForInternet];
-    if (isAuthenticated && isOnline)
-    {
-        if (updateNumber == 0)
-        {
-            [self setUpdateTimer:3.0];
-        }
-        else
-        {
-            [self setUpdateTimer:30];
-        }
-        updateNumber++;
-    }
+    [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(updateStuff) userInfo:nil repeats:NO];
 }
 
-- (void)setUpdateTimer:(float)interval
+- (void)updateStuff
 {
-    [self performSelector:@selector(updateStuff) withObject:self afterDelay:interval];
+    [self checkForAuthentification];
+    [self refreshTableView];
+    [self performSelector:@selector(updateScheduleInfo) withObject:nil afterDelay:1.0];
+    [self performSelector:@selector(updateScheduleInfo) withObject:nil afterDelay:3.0];
+    NSLog(@"updated");
 }
 
 - (void)refreshTableView

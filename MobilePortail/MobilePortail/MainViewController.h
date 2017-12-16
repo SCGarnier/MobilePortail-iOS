@@ -28,9 +28,12 @@
     
     BOOL isConnectedToInternet;
     
+    @public BOOL cancelRefresh;
+    
     float timerPeriod;
     
     int updateNumber;
+    
 }
 
 - (void)deleteOldData;

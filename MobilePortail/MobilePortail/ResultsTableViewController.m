@@ -22,6 +22,9 @@
 #pragma mark - Information acquisition
 - (void)viewDidLoad
 {
+    MainViewController *mainVC = [MainViewController new];
+    mainVC->cancelRefresh = YES;
+    
     self.tableView.separatorColor = [UIColor clearColor];
     [self.tableView setContentInset:UIEdgeInsetsMake(32, 0, 32, 0)];
     
