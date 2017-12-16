@@ -18,4 +18,6 @@
 
 - (void)deleteOldData;
 
+- (void)downloadSnowDayData;
+
 @end

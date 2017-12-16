@@ -16,6 +16,7 @@
 
 @implementation MPRequest
 
+#pragma mark - Log in and main information
 - (void)requestLoginAtURL:(NSString *)postURL withUsername:(NSString *)username andPassword:(NSString *)password saveResponseToFileName:(NSString *)responseFileName isMainRequest:(BOOL)isMainRequest isAutoLogin:(BOOL)isAutoLogin expectsPDF:(BOOL)expectsPDF
 {
     //parameters, do not touch anything pls
@@ -171,6 +172,32 @@
     
     [self failureAlert:@"Nom d'utilisateur ou mot de passe incorrect" withMessage:@"Veuillez entrer le bon nom d'utilisateur et mot de passe"];
 }
+
+
+#pragma mark - Snow Day
+- (void)downloadSnowDayData
+{
+    //get documents directory
+    NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    
+    //get the data directory
+    NSString *dataDir = [documentsDirectory stringByAppendingPathComponent:@"tempData"];
+    NSString *filePath = [dataDir stringByAppendingPathComponent:@"snowday.html"];
+    
+    //page URL
+    NSURL *url = [NSURL URLWithString:@"https://www.cscmonavenir.ca/ecole/"];
+    
+    NSError *error;
+    
+    //convert HTML to NSData
+    NSString *rawHTML = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSData *pageData = [rawHTML dataUsingEncoding:NSUTF8StringEncoding];
+    
+    //Write data to file
+    [pageData writeToFile:filePath atomically:YES];
+}
+
+#pragma mark - other
 
 - (void)resetButtonText
 {
