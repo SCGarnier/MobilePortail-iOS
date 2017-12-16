@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <SafariServices/SafariServices.h>
 
 @interface MainViewController : UITableViewController
 {
@@ -34,6 +35,7 @@
     
     int updateNumber;
     
+    IBOutlet UITableViewCell *snowDayRow;
 }
 
 - (void)deleteOldData;

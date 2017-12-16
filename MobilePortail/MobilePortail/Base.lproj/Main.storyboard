@@ -7,7 +7,9 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -389,54 +391,72 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="1Pg-gM-lqm" kind="show" id="GhR-oe-O1e"/>
+                                            <segue destination="1Pg-gM-lqm" kind="show" id="GhR-oe-O1e">
+                                                <segue key="commit" inheritsFrom="parent" id="aIJ-Kb-sA6"/>
+                                                <segue key="preview" inheritsFrom="commit" id="vmX-Ih-R6S"/>
+                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Ouverture et Annullement" id="AU2-1Z-cJ7">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="86" id="rMC-bq-idz" customClass="BeautifulTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="86" id="rMC-bq-idz" customClass="BeautifulTableViewCell">
                                         <rect key="frame" x="0.0" y="597.5" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rMC-bq-idz" id="Wto-tx-QWZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glh-Qv-qP6">
-                                                    <rect key="frame" x="16" y="12" width="343" height="62"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="xJL-R7-nf6">
+                                                    <rect key="frame" x="16" y="12" width="317" height="62"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Annullement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15P-OG-7iS">
-                                                            <rect key="frame" x="0.0" y="0.0" width="208.5" height="62"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="xJL-R7-nf6">
-                                                            <rect key="frame" x="208.5" y="0.0" width="134.5" height="62"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSg-Ko-dVr" customClass="TransportRoundedView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="154" height="62"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transport Normal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7K-60-q2k">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="134.5" height="26.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transport Normal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7K-60-q2k">
+                                                                    <rect key="frame" x="8" y="8" width="138" height="46"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="École Ouverte" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPI-b4-xHe">
-                                                                    <rect key="frame" x="0.0" y="35.5" width="134.5" height="26.5"/>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.44554628015062792" green="0.78593046171171177" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="tintColor" red="0.44554628019999998" green="0.78593046170000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="M7K-60-q2k" firstAttribute="top" secondItem="HSg-Ko-dVr" secondAttribute="top" constant="8" id="1Mo-Kh-TJc"/>
+                                                                <constraint firstItem="M7K-60-q2k" firstAttribute="leading" secondItem="HSg-Ko-dVr" secondAttribute="leading" constant="8" id="9Y3-7g-lI1"/>
+                                                                <constraint firstAttribute="trailing" secondItem="M7K-60-q2k" secondAttribute="trailing" constant="8" id="Taa-NB-xdb"/>
+                                                                <constraint firstAttribute="bottom" secondItem="M7K-60-q2k" secondAttribute="bottom" constant="8" id="a3J-D0-wfY"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8DS-dC-Duj" customClass="TransportRoundedView">
+                                                            <rect key="frame" x="163" y="0.0" width="154" height="62"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="École Ouverte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPI-b4-xHe">
+                                                                    <rect key="frame" x="8" y="8" width="138" height="46"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                        </stackView>
+                                                            <color key="backgroundColor" red="0.44554628019999998" green="0.78593046170000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="tintColor" red="0.44554628019999998" green="0.78593046170000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="hPI-b4-xHe" firstAttribute="top" secondItem="8DS-dC-Duj" secondAttribute="top" constant="8" id="AUu-6V-ft4"/>
+                                                                <constraint firstAttribute="bottom" secondItem="hPI-b4-xHe" secondAttribute="bottom" constant="8" id="KZM-E6-bOH"/>
+                                                                <constraint firstAttribute="trailing" secondItem="hPI-b4-xHe" secondAttribute="trailing" constant="8" id="xxx-U3-zJI"/>
+                                                                <constraint firstItem="hPI-b4-xHe" firstAttribute="leading" secondItem="8DS-dC-Duj" secondAttribute="leading" constant="8" id="zCc-Mq-u1R"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="glh-Qv-qP6" firstAttribute="leading" secondItem="Wto-tx-QWZ" secondAttribute="leading" constant="16" id="8TI-2q-dtP"/>
-                                                <constraint firstAttribute="bottom" secondItem="glh-Qv-qP6" secondAttribute="bottom" constant="12" id="K9i-Va-9WU"/>
-                                                <constraint firstItem="glh-Qv-qP6" firstAttribute="top" secondItem="Wto-tx-QWZ" secondAttribute="top" constant="12" id="QNh-i1-6Z4"/>
-                                                <constraint firstAttribute="trailing" secondItem="glh-Qv-qP6" secondAttribute="trailing" constant="16" id="Y8n-8e-q8n"/>
+                                                <constraint firstItem="xJL-R7-nf6" firstAttribute="top" secondItem="Wto-tx-QWZ" secondAttribute="topMargin" constant="1" id="8MO-af-Dhv"/>
+                                                <constraint firstItem="xJL-R7-nf6" firstAttribute="leading" secondItem="Wto-tx-QWZ" secondAttribute="leadingMargin" id="Vbq-Jo-vWo"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="xJL-R7-nf6" secondAttribute="bottom" constant="1" id="g5f-TG-N2r"/>
+                                                <constraint firstItem="xJL-R7-nf6" firstAttribute="trailing" secondItem="Wto-tx-QWZ" secondAttribute="trailingMargin" id="mHW-xs-KdJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -475,6 +495,7 @@
                         <outlet property="period3Teacher" destination="5f4-QM-TcZ" id="qEF-ud-WWf"/>
                         <outlet property="period4Class" destination="D7p-I3-Ip1" id="9GR-pK-fjr"/>
                         <outlet property="period4Teacher" destination="HIO-wJ-t6V" id="ssu-3Z-4BS"/>
+                        <outlet property="snowDayRow" destination="rMC-bq-idz" id="DKY-Zq-qXx"/>
                         <outlet property="usernameLabel" destination="2jD-fg-kjc" id="VFc-Po-vNj"/>
                     </connections>
                 </tableViewController>
@@ -642,4 +663,7 @@
             <point key="canvasLocation" x="-98" y="-571"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="GhR-oe-O1e"/>
+    </inferredMetricsTieBreakers>
 </document>

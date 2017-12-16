@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ResultsTableViewController : UITableViewController
+@interface ResultsTableViewController : UITableViewController <UIViewControllerPreviewingDelegate>
 {
     NSArray *classResults;
     

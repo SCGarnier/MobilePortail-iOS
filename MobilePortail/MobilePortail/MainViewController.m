@@ -483,6 +483,18 @@
     return dataDict;
 }
 
+#pragma mark - TableView stuff
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *clickedCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if (clickedCell == snowDayRow)
+    {
+        SFSafariViewController *safari = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.cscmonavenir.ca/ecole/"] entersReaderIfAvailable:NO];
+        [self presentViewController:safari animated:YES completion:nil];
+        
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
 
 #pragma mark - Other
 
@@ -491,6 +503,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 /*
 #pragma mark - Navigation

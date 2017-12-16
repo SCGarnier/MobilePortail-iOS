@@ -15,6 +15,8 @@
 
 @interface ResultsTableViewController ()
 
+@property (nonatomic, strong) id previewingContext;
+
 @end
 
 @implementation ResultsTableViewController
@@ -22,8 +24,7 @@
 #pragma mark - Information acquisition
 - (void)viewDidLoad
 {
-    MainViewController *mainVC = [MainViewController new];
-    mainVC->cancelRefresh = YES;
+    [self threeDTouchIntialize];
     
     self.tableView.separatorColor = [UIColor clearColor];
     [self.tableView setContentInset:UIEdgeInsetsMake(32, 0, 32, 0)];
@@ -255,45 +256,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //get the result table
-    HTMLNode *scheduleTable = [self getResultTable];
-    
-    NSOrderedSet *markTable = [[[scheduleTable children] objectAtIndex:1] children];
-    
-    BOOL hasData;
-    if ([[[[[markTable objectAtIndex:indexPath.row+1] children] objectAtIndex:4] children] count] != 0)
-    {
-        hasData = YES;
-    }
-    else
-    {
-        hasData = NO;
-    }
+    BOOL hasData = [self checkForData:indexPath.row];
     
     if (hasData == YES)
     {
-        HTMLNode *linkNode = [[[[[markTable objectAtIndex:indexPath.row+1] children] objectAtIndex:4] children] objectAtIndex:0];
-        
-        if ([[linkNode children] count] > 0)
+        ClassSummaryViewController *summaryViewController = [self finishSettingUpMarkDetails:indexPath];
+        if (summaryViewController != nil)
         {
-            //cut off the beginning unnecessary part and fix the ampersands
-            NSString *linkString = [[[linkNode serializedFragment] stringByReplacingOccurrencesOfString:@"<a onclick=\"javascript:window.open('" withString:@""] stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
-            
-            //cut off the end unnecessary part
-            NSRange range = [linkString rangeOfString:@"'"];
-            if (range.location != NSNotFound)
-            {
-                linkString = [@"https://apps.cscmonavenir.ca" stringByAppendingString:[linkString substringToIndex:range.location]];
-            }
-            else
-            {
-                linkString = @"";
-            }
-            
-            [[NSUserDefaults standardUserDefaults] setObject:linkString forKey:@"desiredSummary"];
-            
-            //open class summary view
-            ClassSummaryViewController *summaryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PDFViewer"];
             [self presentViewController:summaryViewController animated:YES completion:nil];
         }
         else
@@ -305,8 +274,6 @@
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
-    
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -314,48 +281,161 @@
     return 86;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (BOOL)checkForData:(long)indexPath
+{
+    //get the result table
+    HTMLNode *scheduleTable = [self getResultTable];
+    
+    NSOrderedSet *markTable = [[[scheduleTable children] objectAtIndex:1] children];
+    
+    BOOL hasData;
+    if ([[[[[markTable objectAtIndex:indexPath+1] children] objectAtIndex:4] children] count] != 0)
+    {
+        hasData = YES;
+    }
+    else
+    {
+        hasData = NO;
+    }
+    
+    return hasData;
 }
-*/
+
+- (ClassSummaryViewController *)finishSettingUpMarkDetails:(NSIndexPath *)indexPath
+{
+    //get the result table
+    HTMLNode *scheduleTable = [self getResultTable];
+    
+    NSOrderedSet *markTable = [[[scheduleTable children] objectAtIndex:1] children];
+    
+    HTMLNode *linkNode = [[[[[markTable objectAtIndex:indexPath.row+1] children] objectAtIndex:4] children] objectAtIndex:0];
+    
+    if ([[linkNode children] count] > 0)
+    {
+        //cut off the beginning unnecessary part and fix the ampersands
+        NSString *linkString = [[[linkNode serializedFragment] stringByReplacingOccurrencesOfString:@"<a onclick=\"javascript:window.open('" withString:@""] stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+        
+        //cut off the end unnecessary part
+        NSRange range = [linkString rangeOfString:@"'"];
+        if (range.location != NSNotFound)
+        {
+            linkString = [@"https://apps.cscmonavenir.ca" stringByAppendingString:[linkString substringToIndex:range.location]];
+        }
+        else
+        {
+            linkString = @"";
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setObject:linkString forKey:@"desiredSummary"];
+        
+        //open class summary view
+        ClassSummaryViewController *summaryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PDFViewer"];
+        
+        return summaryViewController;
+    }
+    else
+    {
+        [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+        return nil;
+    }
+}
+
+#pragma mark - Peek and Pop
+
+-(void)threeDTouchIntialize
+{
+    if ([self is3DTouchAvailable])
+    {
+        self.previewingContext = [self registerForPreviewingWithDelegate:self  sourceView:self.view];
+    }
+}
+
+- (BOOL)is3DTouchAvailable
+{
+    BOOL is3DTouchAvailable = NO;
+    if ([self.traitCollection respondsToSelector:@selector(forceTouchCapability)])
+    {
+        is3DTouchAvailable = self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable;
+    }
+    return is3DTouchAvailable;
+}
+
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing> )previewingContext viewControllerForLocation:(CGPoint)location
+{
+    CGPoint cellPostion = [_tableView convertPoint:location fromView:self.view];
+    
+    NSIndexPath *path = [_tableView indexPathForRowAtPoint:cellPostion];
+    
+    if (path)
+    {
+        UITableViewCell *tableCell = [_tableView cellForRowAtIndexPath:path];
+        
+        ClassSummaryViewController *summaryViewController = [self finishSettingUpMarkDetails:path];
+        
+        if (summaryViewController != nil)
+        {
+            previewingContext.sourceRect = [self.view convertRect:tableCell.frame fromView: _tableView];
+            
+            return summaryViewController;
+        }
+        else
+        {
+            return nil;
+        }
+        
+    }
+    
+    return nil;
+}
+
+-(void)previewingContext:(id )previewingContext commitViewController: (UIViewController *)viewControllerToCommit
+{
+    [self.navigationController showViewController:viewControllerToCommit sender:nil];
+}
+
+
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
 
 /*
-#pragma mark - Navigation
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 @end
