@@ -164,7 +164,10 @@
         @catch (NSException *exception)
         {
             //i don't really trust the code I wrote inside the try statement, which is why it's in a try-catch setup. There's no way to easily test it unless the school board messed up our passwords again, so if it fails, we just handle it gracefully.
-            [self failureAlert:@"Échec de l'application" withMessage:@"S'il ne fonctionne plus, veuillez s'il-vous-plaît supprimer l'application et ensuite la re-télécharger"];
+            if (doesShowErrors)
+            {
+                [self failureAlert:@"Échec de l'application" withMessage:@"S'il ne fonctionne plus, veuillez s'il-vous-plaît supprimer l'application et ensuite la re-télécharger"];
+            }
         }
     }
     

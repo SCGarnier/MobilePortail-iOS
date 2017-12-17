@@ -603,22 +603,31 @@
 
 - (NSString *)getSchoolName
 {
-    NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
-    NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
-    
-    MPRequest *request = [MPRequest new];
-    [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/InfoEcole.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schoolinfo.html" isMainRequest:NO isAutoLogin:NO expectsPDF:NO showErrors:NO];
-    
-    MPStringFromHTML *getString = [MPStringFromHTML new];
-    //get string from data
-    NSString * rawHTML = [getString getStringFromHTMLWithFileName:@"schoolinfo.html"];
-    
-    //get document for parsing from the string
-    HTMLDocument * schoolInfoPage = [HTMLDocument documentWithString:rawHTML];
-    
-    HTMLNode *schoolNameNode = [schoolInfoPage firstNodeMatchingSelector:@"span#LNomEcole"];
-    
-    return [schoolNameNode textContent];
+    //this try-catch is kinda bootleg but it fixes an issue that i can't manage to track down because I can't time reproduction perfectly
+    @try
+    {
+        NSString *savedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
+        NSString *savedPassword = [SAMKeychain passwordForService:@"Portail" account:savedUsername];
+        
+        MPRequest *request = [MPRequest new];
+        
+        [request requestLoginAtURL:@"https://apps.cscmonavenir.ca/PortailEleves/InfoEcole.aspx" withUsername:savedUsername andPassword:savedPassword saveResponseToFileName:@"schoolinfo.html" isMainRequest:NO isAutoLogin:NO expectsPDF:NO showErrors:NO];
+        
+        MPStringFromHTML *getString = [MPStringFromHTML new];
+        //get string from data
+        NSString * rawHTML = [getString getStringFromHTMLWithFileName:@"schoolinfo.html"];
+        
+        //get document for parsing from the string
+        HTMLDocument * schoolInfoPage = [HTMLDocument documentWithString:rawHTML];
+        
+        HTMLNode *schoolNameNode = [schoolInfoPage firstNodeMatchingSelector:@"span#LNomEcole"];
+        
+        return [schoolNameNode textContent];
+    }
+    @catch (NSException *exception)
+    {
+        return @"nil";
+    }
 }
 
 #pragma mark - TableView stuff
