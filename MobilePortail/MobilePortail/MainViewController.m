@@ -26,6 +26,8 @@
 #pragma mark - Loading
 - (void)viewDidLoad
 {
+    shouldIBeUpdating = YES;
+    
     MPRequest *request = [MPRequest new];
     BOOL isLoggedIn = [request checkForSuccessfulLogin:@"resultdata.html" isMainRequest:YES isAutoLogin:YES];
     if (isLoggedIn)
@@ -95,6 +97,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    shouldIBeUpdating = YES;
+    
     BOOL isOnline = [self checkForInternet];
     
     [self checkForAuthentification];
@@ -127,6 +131,8 @@
 
 - (IBAction)logout:(id)sender
 {
+    shouldIBeUpdating = NO;
+    
     //delete saved password
     NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     [SAMKeychain deletePasswordForService:@"Portail" account:username];
@@ -138,10 +144,12 @@
     
     //open login page only after cleaning out all the saved data
     [self openLoginPage];
+    return;
 }
 
 - (void)logOutLogIn
 {
+    shouldIBeUpdating = NO;
     //delete mark info
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"currentMarks"];
     
@@ -404,8 +412,12 @@
         {
             [self logout:nil];
         }
-        MPRequest *request = [MPRequest new];
-        [request failureAlert:@"Échec" withMessage:@"Il y a eu une erreur. Si vous voyez l'écran de login, s'il vous plaît, veuillez re-rentrer votre nom d'utilisateur et votre mot de passe"];
+        
+        if (shouldIBeUpdating)
+        {
+            MPRequest *request = [MPRequest new];
+            [request failureAlert:@"Échec" withMessage:@"Il y a eu une erreur. Si vous voyez l'écran de login, s'il vous plaît, veuillez re-rentrer votre nom d'utilisateur et votre mot de passe"];
+        }
     }
     
     if (dayNumber == 0)

@@ -42,6 +42,8 @@
     int updateNumber;
     
     IBOutlet UITableViewCell *snowDayRow;
+    
+    BOOL shouldIBeUpdating;
 }
 
 - (void)deleteOldData;
