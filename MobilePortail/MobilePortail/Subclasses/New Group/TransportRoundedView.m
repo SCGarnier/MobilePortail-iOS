@@ -18,7 +18,7 @@
 
 -(void)doEdgeRadius
 {
-    self.layer.cornerRadius = self.frame.size.width / 12;
+    self.layer.cornerRadius = self.frame.size.height / 4;
 }
 
 /*
