@@ -110,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="-99" y="181"/>
         </scene>
-        <!--Jour X-->
+        <!--Portail-->
         <scene sceneID="EG3-P4-MZK">
             <objects>
                 <tableViewController id="Bvv-OB-MvT" customClass="MainViewController" sceneMemberID="viewController">
@@ -468,7 +468,7 @@
                             <outlet property="delegate" destination="Bvv-OB-MvT" id="PJH-Cp-H0U"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Jour X" id="VDf-0q-1xc">
+                    <navigationItem key="navigationItem" title="Portail" id="VDf-0q-1xc">
                         <barButtonItem key="backBarButtonItem" title="Horaire" id="N6R-Ju-twe"/>
                         <barButtonItem key="rightBarButtonItem" title="Quitter" id="cwY-eU-5vn">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
