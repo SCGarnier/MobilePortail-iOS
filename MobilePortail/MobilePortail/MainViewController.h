@@ -49,4 +49,6 @@
 - (void)deleteOldData;
 - (BOOL)checkForAuthentification;
 
+- (IBAction)support:(UIBarButtonItem *)sender;
+
 @end

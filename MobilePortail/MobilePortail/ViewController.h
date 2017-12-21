@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SafariServices/SafariServices.h>
 
 @interface ViewController : UIViewController
 
+- (IBAction)support:(UIButton *)sender;
 
 @end
 

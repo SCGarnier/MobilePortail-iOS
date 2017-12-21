@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "BlackSFSafariViewController.h"
 
 @interface ViewController ()
 
@@ -24,6 +25,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)support:(UIButton *)sender
+{
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://"]])
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"twitter://user?screen_name=JustinAlexP"]];
+    }
+    else
+    {
+        BlackSFSafariViewController *safari = [[BlackSFSafariViewController alloc] initWithURL:[NSURL URLWithString: @"https://twitter.com/JustinAlexP"] entersReaderIfAvailable:NO];
+        [self presentViewController:safari animated:YES completion:nil];
+    }
 }
 
 

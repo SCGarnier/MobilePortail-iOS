@@ -18,6 +18,8 @@
     IBOutlet UIView *squircleView;
     
     IBOutlet UILabel *titleLabel;
+    
+    IBOutlet UIButton *supportButton;
 }
 
 - (void)resetLoginButtonText;

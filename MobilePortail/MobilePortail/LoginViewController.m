@@ -126,6 +126,8 @@
      {
          squircleView.frame = CGRectMake(squircleView.frame.origin.x, position - (keyboardSize.height/2), squircleView.frame.size.width, squircleView.frame.size.height);
          
+         supportButton.frame = CGRectMake(supportButton.frame.origin.x, position - (keyboardSize.height/2), supportButton.frame.size.width, supportButton.frame.size.height);
+         
          titleLabel.alpha = 0;
      }];
     

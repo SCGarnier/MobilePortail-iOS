@@ -78,6 +78,15 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KtG-tW-Nl3">
+                                        <rect key="frame" x="100" y="469" width="174" height="30"/>
+                                        <state key="normal" title="Contacter le développeur">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="support:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jgx-Ha-67V"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -85,7 +94,9 @@
                                     <constraint firstItem="OGK-hb-eOO" firstAttribute="centerX" secondItem="PZ0-Cx-m0h" secondAttribute="centerX" id="SQv-Ej-smu"/>
                                     <constraint firstAttribute="trailing" secondItem="pCA-9U-Y0N" secondAttribute="trailing" constant="16" id="XPK-FF-wdM"/>
                                     <constraint firstItem="pCA-9U-Y0N" firstAttribute="leading" secondItem="PZ0-Cx-m0h" secondAttribute="leading" constant="16" id="Xyl-4X-usC"/>
+                                    <constraint firstItem="KtG-tW-Nl3" firstAttribute="centerX" secondItem="PZ0-Cx-m0h" secondAttribute="centerX" id="fCj-k2-KTI"/>
                                     <constraint firstItem="OGK-hb-eOO" firstAttribute="top" secondItem="pCA-9U-Y0N" secondAttribute="bottom" constant="32" id="nJ0-29-5bd"/>
+                                    <constraint firstItem="KtG-tW-Nl3" firstAttribute="top" secondItem="OGK-hb-eOO" secondAttribute="bottom" constant="16" id="qRU-RC-0mn"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -102,13 +113,14 @@
                         <outlet property="loginButton" destination="K4y-40-2mm" id="J0F-FJ-hX9"/>
                         <outlet property="passwordTextField" destination="81H-d3-b6z" id="LN5-Rg-AMe"/>
                         <outlet property="squircleView" destination="OGK-hb-eOO" id="Z5f-NH-h90"/>
+                        <outlet property="supportButton" destination="KtG-tW-Nl3" id="afa-H7-eiH"/>
                         <outlet property="titleLabel" destination="pCA-9U-Y0N" id="eu3-jG-DvQ"/>
                         <outlet property="usernameTextField" destination="9oK-FM-W7x" id="XQP-gn-q93"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-99" y="181"/>
+            <point key="canvasLocation" x="-100" y="180.35982008995504"/>
         </scene>
         <!--Portail-->
         <scene sceneID="EG3-P4-MZK">
@@ -470,6 +482,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Portail" id="VDf-0q-1xc">
                         <barButtonItem key="backBarButtonItem" title="Horaire" id="N6R-Ju-twe"/>
+                        <barButtonItem key="leftBarButtonItem" title="Contacter" id="O7v-5n-Qq4">
+                            <connections>
+                                <action selector="support:" destination="Bvv-OB-MvT" id="1L2-1f-qqu"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Quitter" id="cwY-eU-5vn">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -480,10 +497,6 @@
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Hqw-0D-UkZ">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <connections>
-                            <action selector="pullToRefresh:" destination="Bvv-OB-MvT" eventType="valueChanged" id="7Zn-GL-dSh"/>
-                            <action selector="refreshTableView:" destination="Bvv-OB-MvT" eventType="valueChanged" id="h9W-79-X8O"/>
-                        </connections>
                     </refreshControl>
                     <connections>
                         <outlet property="TableView" destination="ZNJ-iT-EiL" id="5nz-6N-3B5"/>
