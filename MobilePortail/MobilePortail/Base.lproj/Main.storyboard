@@ -482,7 +482,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Portail" id="VDf-0q-1xc">
                         <barButtonItem key="backBarButtonItem" title="Horaire" id="N6R-Ju-twe"/>
-                        <barButtonItem key="leftBarButtonItem" title="Contacter" id="O7v-5n-Qq4">
+                        <barButtonItem key="leftBarButtonItem" title="Aide" id="O7v-5n-Qq4">
                             <connections>
                                 <action selector="support:" destination="Bvv-OB-MvT" id="1L2-1f-qqu"/>
                             </connections>
