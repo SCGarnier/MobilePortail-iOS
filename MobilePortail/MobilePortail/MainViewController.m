@@ -14,6 +14,7 @@
 #import "MPStringFromHTML.h"
 #import "HTMLReader.h"
 #import "Reachability.h"
+#import "BlackSFSafariViewController.h"
 
 @interface MainViewController ()
 
@@ -648,7 +649,10 @@
     UITableViewCell *clickedCell = [self.tableView cellForRowAtIndexPath:indexPath];
     if (clickedCell == snowDayRow)
     {
-        SFSafariViewController *safari = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.cscmonavenir.ca/ecole/"] entersReaderIfAvailable:NO];
+        BlackSFSafariViewController *safari = [[BlackSFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.cscmonavenir.ca/ecole/"] entersReaderIfAvailable:NO];
+        
+        safari.modalPresentationCapturesStatusBarAppearance = true;
+        
         [self presentViewController:safari animated:YES completion:nil];
         
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
