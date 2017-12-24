@@ -20,6 +20,8 @@
 
 - (void)viewDidLoad
 {
+    isShownAlready = NO;
+    
     if (@available(iOS 11.0, *))
     {
         self.navigationController.navigationBar.prefersLargeTitles = true;
@@ -66,7 +68,31 @@
     if ([fileManager fileExistsAtPath:path])
     {
         [checkTimer invalidate];
-        [self showPDF:path];
+        
+        for(UIView *currentView in mainView.subviews)
+        {
+            if (@available(iOS 11.0, *))
+            {
+                if([currentView isKindOfClass:[PDFView class]] || [currentView isKindOfClass:[UIWebView class]])
+                {
+                    isShownAlready = YES;
+                }
+            }
+            else
+            {
+                // Fallback on earlier versions
+                if([currentView isKindOfClass:[UIWebView class]])
+                {
+                    isShownAlready = YES;
+                }
+            }
+        }
+        
+        if (!isShownAlready)
+        {
+            [self showPDF:path];
+            isShownAlready = YES;
+        }
     }
 }
 

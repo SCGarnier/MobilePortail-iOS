@@ -639,6 +639,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
                         <outlet property="loadingIndicator" destination="8vt-CY-TAL" id="a80-Cx-Hng"/>
+                        <outlet property="mainView" destination="dvh-g9-Pzj" id="mX4-uc-kiB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1t-7j-FQE" userLabel="First Responder" sceneMemberID="firstResponder"/>

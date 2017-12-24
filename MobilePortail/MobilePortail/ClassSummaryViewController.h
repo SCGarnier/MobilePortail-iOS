@@ -13,7 +13,11 @@
 {
     IBOutlet UIActivityIndicatorView *loadingIndicator;
     
+    IBOutlet UIView *mainView;
+    
     NSTimer *checkTimer;
+    
+    BOOL isShownAlready;
 }
 
 @end
