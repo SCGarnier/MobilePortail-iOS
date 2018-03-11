@@ -368,21 +368,27 @@
     
     if (path)
     {
-        UITableViewCell *tableCell = [_tableView cellForRowAtIndexPath:path];
-        
-        ClassSummaryViewController *summaryViewController = [self finishSettingUpMarkDetails:path];
-        
-        if (summaryViewController != nil)
+        @try
         {
-            previewingContext.sourceRect = [self.view convertRect:tableCell.frame fromView: _tableView];
+            UITableViewCell *tableCell = [_tableView cellForRowAtIndexPath:path];
             
-            return summaryViewController;
+            ClassSummaryViewController *summaryViewController = [self finishSettingUpMarkDetails:path];
+            
+            if (summaryViewController != nil)
+            {
+                previewingContext.sourceRect = [self.view convertRect:tableCell.frame fromView: _tableView];
+                
+                return summaryViewController;
+            }
+            else
+            {
+                return nil;
+            }
         }
-        else
+        @catch (NSException *exception)
         {
-            return nil;
+            //do nothing if there is no grade
         }
-        
     }
     
     return nil;
