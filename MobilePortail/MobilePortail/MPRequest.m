@@ -21,12 +21,12 @@
 {
     //parameters, do not touch anything pls
     NSDictionary *parameterDictionary = @{
-                                              @"__VIEWSTATE":@"/wEPDwULLTE1OTEzODk5NDRkZHeWIDblnhXfWVgudGFcvrqUrsa8oUjUBNqAwiyC5bQZ",
-                                              @"__VIEWSTATEGENERATOR":@"3738FB10",
-                                              @"__EVENTVALIDATION":@"/wEdAAS/EmKn67wLWprMxhcvNZYzNV4T48EJ76cvY4cUAzjjnR0O4L6f0pzi6oGvFfSn1SztaUkzhlzahAalhIckp3krG4fQXm17dVV5HUDhFMYg3hg06HAD0C/01YYOsiBthV8=",
-                                              @"Tlogin":username,
-                                              @"Tpassword":password,
-                                              @"Blogin":@"Entrer"
+                                            @"__VIEWSTATE":@"/wEPDwULLTE1OTEzODk5NDRkZHeWIDblnhXfWVgudGFcvrqUrsa8oUjUBNqAwiyC5bQZ",
+                                            @"__VIEWSTATEGENERATOR":@"3738FB10",
+                                            @"__EVENTVALIDATION":@"/wEdAAS/EmKn67wLWprMxhcvNZYzNV4T48EJ76cvY4cUAzjjnR0O4L6f0pzi6oGvFfSn1SztaUkzhlzahAalhIckp3krG4fQXm17dVV5HUDhFMYg3hg06HAD0C/01YYOsiBthV8=",
+                                            @"Tlogin":username,
+                                            @"Tpassword":password,
+                                            @"Blogin":@"Entrer"
                                           };
     
     //set up internet connection things
@@ -36,6 +36,27 @@
     responseSerializer.acceptableContentTypes = [NSSet setWithObjects: @"text/html", @"application/pdf", @"application/json", @"text/json", @"text/javascript", @"text/plain", nil];
     
     manager.responseSerializer = responseSerializer;
+    
+    NSString *chosenUserAgent;
+    NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"UA.plist"];
+    //if the user agents lists exists, pick one of them as the user agent. if not, default to Chrome
+    NSFileManager *filemanager = [NSFileManager defaultManager];
+    if ([filemanager fileExistsAtPath:filePath])
+    {
+        NSArray *userAgentArray = [NSArray arrayWithContentsOfFile:filePath];
+        int index = arc4random_uniform((int)[userAgentArray count]);
+        chosenUserAgent = userAgentArray[index];
+    }
+    else
+    {
+        chosenUserAgent = @"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36";
+    }
+    
+    NSLog(@"%@", chosenUserAgent);
+    
+    NSString *userAgent = [manager.requestSerializer  valueForHTTPHeaderField:@"User-Agent"];
+    userAgent = chosenUserAgent;
+    [manager.requestSerializer setValue:userAgent forHTTPHeaderField:@"User-Agent"];
     
     [manager POST:postURL parameters:parameterDictionary progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
      {
@@ -84,6 +105,30 @@
          
          NSLog(@"%@", error);
      }];
+}
+
+- (void)downloadUserAgentList
+{
+    NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    //download current version
+    NSURL *url = [NSURL URLWithString:@"https://raw.githubusercontent.com/Sn0wCh1ld/Various-Files/master/popular-browser-user-agents"];
+    
+    NSURLSessionDownloadTask *downloadTask = [[NSURLSession sharedSession] downloadTaskWithURL:url completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error)
+                                              {
+                                                  plistData = [NSData dataWithContentsOfURL:location];
+                                                  
+                                                  //delete the old version of the file if it already exists
+                                                  if ([fileManager fileExistsAtPath:[documentsDirectory stringByAppendingPathComponent:@"UA.plist"]])
+                                                  {
+                                                      [fileManager removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:@"UA.plist"] error:&error];
+                                                  }
+                                                  
+                                                  [plistData writeToFile:[documentsDirectory stringByAppendingPathComponent:@"UA.plist"] atomically:YES];
+                                              }];
+    [downloadTask resume];
 }
 
 - (BOOL)checkForSuccessfulLogin:(NSString *)fileName isMainRequest:(BOOL)isMainRequest isAutoLogin:(BOOL)isAutoLogin

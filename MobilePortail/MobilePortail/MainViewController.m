@@ -45,6 +45,13 @@
     //sets the name to your username
     usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"PortailUsername"];
     
+    //update user agents
+    [self checkForInternet];
+    if (isConnectedToInternet)
+    {
+        [request downloadUserAgentList];
+    }
+    
     //sexy title
     if (@available(iOS 11.0, *))
     {

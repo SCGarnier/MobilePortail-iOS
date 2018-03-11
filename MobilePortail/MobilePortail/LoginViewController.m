@@ -120,13 +120,14 @@
         keyboardSize = CGSizeMake(width, height);
     }
     
-    int position = squircleView.frame.origin.y;
+    int squircleViewposition = squircleView.frame.origin.y;
+    int supportPosition = supportButton.frame.origin.y;
     
     [UIView animateWithDuration:0.35 animations:^
      {
-         squircleView.frame = CGRectMake(squircleView.frame.origin.x, position - (keyboardSize.height/2), squircleView.frame.size.width, squircleView.frame.size.height);
+         squircleView.frame = CGRectMake(squircleView.frame.origin.x, squircleViewposition - (keyboardSize.height/2), squircleView.frame.size.width, squircleView.frame.size.height);
          
-         supportButton.frame = CGRectMake(supportButton.frame.origin.x, position - (keyboardSize.height/2), supportButton.frame.size.width, supportButton.frame.size.height);
+         supportButton.frame = CGRectMake(supportButton.frame.origin.x, supportPosition - (keyboardSize.height/2), supportButton.frame.size.width, supportButton.frame.size.height);
          
          titleLabel.alpha = 0;
      }];

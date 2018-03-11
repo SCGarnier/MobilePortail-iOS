@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface MPRequest : NSObject
+{
+    NSData *plistData;
+}
 
 - (void)requestLoginAtURL:(NSString *)postURL withUsername:(NSString *)username andPassword:(NSString *)password saveResponseToFileName:(NSString *)responseFileName isMainRequest:(BOOL)isMainRequest isAutoLogin:(BOOL)isAutoLogin expectsPDF:(BOOL)expectsPDF showErrors:(BOOL)doesShowErrors;
 
@@ -19,5 +22,7 @@
 - (void)deleteOldData;
 
 - (void)downloadSnowDayData;
+
+- (void)downloadUserAgentList;
 
 @end
