@@ -40,6 +40,13 @@ static void RecursiveDescriptionHelper(HTMLNode *self, NSMutableString *string, 
     return [fragments componentsJoinedByString:@""];
 }
 
+- (NSString *)selfHTML
+{
+    NSArray *selfArray = [NSArray arrayWithObject:self];
+    NSArray *fragments = [selfArray valueForKey:@"serializedFragment"];
+    return [fragments componentsJoinedByString:@""];
+}
+
 - (NSString *)serializedFragment
 {
     [self doesNotRecognizeSelector:_cmd];

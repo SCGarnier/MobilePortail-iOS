@@ -33,6 +33,8 @@
     IBOutlet UIView *busStatusView;
     IBOutlet UIView *schoolStatusView;
     
+    BOOL isOldSystem;
+    
     BOOL isConnectedToInternet;
     
     @public BOOL cancelRefresh;

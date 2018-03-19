@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (readonly, copy, nonatomic) NSString *innerHTML;
 
+@property (readonly, copy, nonatomic) NSString *selfHTML;
+
 /**
     Returns the serialized HTML fragment of this node.
  

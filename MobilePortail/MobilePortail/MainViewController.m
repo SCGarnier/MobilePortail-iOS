@@ -366,7 +366,7 @@
     [self refreshTableView];
     [self performSelector:@selector(updateScheduleInfo) withObject:nil afterDelay:1.0];
     [self performSelector:@selector(updateScheduleInfo) withObject:nil afterDelay:3.0];
-    NSLog(@"updated");
+    //NSLog(@"updated");
 }
 
 - (void)refreshTableView
@@ -468,19 +468,50 @@
         if ([classInfoOrderedSet count] > 0)
         {
             //get course info
-            NSString *teacherName = [[classInfoOrderedSet objectAtIndex:3] textContent];
+            NSString *teacherName;
+            HTMLNode *node = [[HTMLNode alloc] init];
+            if ([[classInfoOrderedSet objectAtIndex:3] isKindOfClass:[node class]])
+            {
+                teacherName = [[classInfoOrderedSet objectAtIndex:3] textContent];
+            }
+            else
+            {
+                teacherName = [classInfoOrderedSet objectAtIndex:2];
+            }
+            
             if ([teacherName hasPrefix:@" "] && [teacherName length] > 1)
             {
                 teacherName = [teacherName substringFromIndex:1];
             }
             
-            NSString *courseCode = [[classInfoOrderedSet objectAtIndex:1] textContent];
+            NSString *courseCode;
+            if ([[classInfoOrderedSet objectAtIndex:1] isKindOfClass:[node class]])
+            {
+                courseCode = [[classInfoOrderedSet objectAtIndex:1] textContent];
+            }
+            else
+            {
+                courseCode = [classInfoOrderedSet objectAtIndex:1];
+            }
+            
+            
             if ([courseCode hasPrefix:@" "] && [courseCode length] > 1)
             {
                 courseCode = [courseCode substringFromIndex:1];
             }
             
-            NSString *courseName = [[[classInfoOrderedSet objectAtIndex:0] childAtIndex:0] textContent];
+            
+            NSString *courseName;
+            if ([[classInfoOrderedSet objectAtIndex:0] isKindOfClass:[node class]])
+            {
+                courseName = [[[classInfoOrderedSet objectAtIndex:0] childAtIndex:0] textContent];
+            }
+            else
+            {
+                courseName = [classInfoOrderedSet objectAtIndex:0];
+            }
+            
+            
             if ([courseName hasPrefix:@" "] && [courseName length] > 1)
             {
                 courseName = [courseName substringFromIndex:1];
@@ -497,6 +528,7 @@
     }
     @catch (NSException * exception)
     {
+        NSLog(@"%@", exception.description);
         MPRequest *request = [MPRequest new];
         [request failureAlert:@"Échec" withMessage:@"L'application fonctionne actuellement seulement avec Saint-Charles-Garnier. S'il vous plait, re-essayez lorsqu'il y a une mise à jour."];
     }
@@ -508,12 +540,29 @@
 
 - (NSOrderedSet *)getClassInfoWithOverviewList:(HTMLNode *)classOverview andDayNumber:(int)dayNumber
 {
-    NSOrderedSet * classInfo = [[NSOrderedSet alloc] init];
+    NSMutableOrderedSet * classInfo = [[NSMutableOrderedSet alloc] init];
     
     NSOrderedSet * classHead = [[[classOverview children] objectAtIndex:dayNumber+1] children];
     if ([classHead count] > 0)
     {
-        classInfo = [[[[[classOverview children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children];
+        
+        if (isOldSystem)
+        {
+            classInfo = [[[[[[classOverview children] objectAtIndex:dayNumber + 1] children] objectAtIndex:0] children] mutableCopy];
+        }
+        else
+        {
+            NSOrderedSet * courseAtDay = [[[classOverview children] objectAtIndex:dayNumber + 1] children];
+            for (int i = 0; i <= [courseAtDay count] - 1; i++)
+            {
+                //NSLog(@"%@", [courseAtDay objectAtIndex:i]);
+                HTMLNode *node = [courseAtDay objectAtIndex:i];
+                if (![[node textContent] isEqualToString:@""])
+                {
+                    [classInfo addObject:[node textContent]];
+                }
+            }
+        }
     }
     
     return classInfo;
@@ -559,7 +608,18 @@
     {
         HTMLNode * currentColumn = [period childAtIndex:[classList indexOfObject:item]];
         
+        //NSLog(@"%@", [currentColumn selfHTML]);
+        
         if ([[currentColumn innerHTML] containsString:@"<b>"])
+        {
+            isOldSystem = YES;
+        }
+        else
+        {
+            isOldSystem = NO;
+        }
+        
+        if ([[currentColumn innerHTML] containsString:@"<b>"] || [[currentColumn selfHTML] containsString:@"font-weight:bold"])
         {
             foundCurrentDay = YES;
             dayNumber = (int)[classList indexOfObject:item] - 1;
